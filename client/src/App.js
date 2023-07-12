@@ -1,42 +1,48 @@
 import logo from './logo.svg';
-import './App.css';
 
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom'
+
+import { authenticatedRoutes } from './data';
 
 import Sidebar from './components/Sidebar';
+import Books from './pages/books';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
 
-        <Sidebar >
-          fdfdfs
-        </Sidebar>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+{/* <Routes>
+  {authenticatedRoutes.map((path,index) => {
+    
+    {console.log(path)}
+    <Route path="/home" element={<Sidebar/>} key={index} />
+  })}
+\
+</Routes> */}
+        
+         
+
+
+
+        
         {/* <Router> */}
+
+
        <Routes>
-            <Route exact path="/" element={"Home"}>
+       <Route exact path="/" element={<div> <Link to='/home'>Home</Link>  </div>}>
               {/* Home */}
             </Route>
-            <Route exact path="/login" element={"Login"}>
+            <Route exact path="/home" element={<div> <Sidebar/> Home </div>}>
+              {/* Home */}
+            </Route>
+            <Route exact path="/login" element={<div> Login </div>}>
             
             </Route>
-            <Route exact path="/books" element={"Books"}>
+            <Route exact path="/books" element={<div> <Sidebar/> <Books/> </div>}>
             
             </Route>
-            </Routes>
+          </Routes>
         {/* </Router> */}
       </header>
     </div>

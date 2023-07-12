@@ -29,7 +29,7 @@ export default function Sidebar() {
         >
             <div>
 <Typography variant='h5'>
-    <Link to="/">
+    <Link to="/home">
     <ListItemButton>
     Home
     </ListItemButton>
@@ -37,7 +37,7 @@ export default function Sidebar() {
 
 </Typography>
 <Typography variant='h5'>
-<Link to="books">
+<Link to="/books">
 
 
     <ListItemButton>
