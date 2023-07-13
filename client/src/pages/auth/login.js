@@ -4,7 +4,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
+import { Link } from 'react-router-dom';
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -80,8 +81,10 @@ export default function Login() {
           </Link>
         </Grid>
         <Grid item>
-          <Link href="#" variant="body2">
+            <Link to="/register" >
+         
             {"Don't have an account? Sign Up"}
+        
           </Link>
         </Grid>
       </Grid>

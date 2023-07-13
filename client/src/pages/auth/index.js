@@ -14,7 +14,7 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./register";
 
 export default function Auth(props) {
-    console.log(props)
+    // console.log(props)
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
