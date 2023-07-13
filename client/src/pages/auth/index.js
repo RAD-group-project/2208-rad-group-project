@@ -10,8 +10,11 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 import Login from "./login";
+import { Route, Routes } from "react-router-dom";
+import Register from "./register";
 
-export default function Auth() {
+export default function Auth(props) {
+    console.log(props)
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -58,7 +61,13 @@ export default function Auth() {
             elevation={6}
             square
           >
-            <Login />
+            {/* <Routes>
+            <Route exact path="/login" element={<Login />} />
+
+                <Route exact path="/register" element={<Register />} />
+            </Routes> */}
+            {props.login ?  <Login />  : <Register />  }
+           
           
 
           </Grid>
