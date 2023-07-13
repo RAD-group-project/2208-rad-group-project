@@ -6,6 +6,7 @@ import { authenticatedRoutes } from './data';
 
 import Sidebar from './components/Sidebar';
 import Books from './pages/books';
+import Auth from './pages/auth';
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
             <Route exact path="/home" element={<div> <Sidebar/> Home </div>}>
               {/* Home */}
             </Route>
-            <Route exact path="/login" element={<div> Login </div>}>
+            <Route exact path="/login" element={<Auth />}>
             
             </Route>
             <Route exact path="/books" element={<div> <Sidebar/> <Books/> </div>}>
