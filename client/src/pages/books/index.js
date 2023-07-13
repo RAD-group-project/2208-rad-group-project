@@ -26,7 +26,7 @@ export default function Books() {
         <Dialog open={open} onClose={handleClose}>
             <DialogContent>
                 <DialogContentText>
-                    Hey
+                    <Add />
                 </DialogContentText>
             </DialogContent>
         </Dialog>
