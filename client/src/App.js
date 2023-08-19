@@ -1,18 +1,24 @@
 import logo from './logo.svg';
 
-import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, Link, Navigate} from 'react-router-dom'
 
 import { authenticatedRoutes } from './data';
 
 import Sidebar from './components/Sidebar';
 import Books from './pages/books';
 import Auth from './pages/auth';
+import { useAuth } from "./hooks/useAuth";
+
 
 function App() {
+
+  const {user} = useAuth()
+  console.log(user)
   return (
+    
     <div className="App">
       <header className="App-header">
-
+    
 {/* <Routes>
   {authenticatedRoutes.map((path,index) => {
     
@@ -32,12 +38,13 @@ function App() {
 
        <Routes>
        <Route exact path="/" element={<div> <Link to='/home'>Home</Link>  </div>}>
-              {/* Home */}
+         
             </Route>
             <Route exact path="/home" element={<div> <Sidebar/> Home </div>}>
-              {/* Home */}
+            
             </Route>
-            <Route exact path="/login" element={<Auth login/>} />
+            {user ? <Route exact path="/login" element={  <Navigate to="/home" />} />:<Route exact path="/login" element={ <Auth login/>} />}
+            {/* <Route exact path="/login" element={ <Auth login/>} /> */}
             
             <Route exact path="/register" element={<Auth register/>} />
 
@@ -52,3 +59,56 @@ function App() {
 }
 
 export default App;
+
+
+// import logo from './logo.svg';
+// import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+// import { authenticatedRoutes } from './data';
+// import Sidebar from './components/Sidebar';
+// import Books from './pages/books';
+// import Auth from './pages/auth';
+// import { useAuth } from './hooks/useAuth';
+// import {ProtectedRoute,LoginRoute} from './protected-routes'; // Import the ProtectedRoute component
+
+// function App() {
+//   const { user } = useAuth();
+//   console.log(user);
+
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <Router>
+//           <Routes>
+//             {/* {authenticatedRoutes.map((route, index) => (
+//               <Route
+//                 key={index}
+//                 path={route.path}
+//                 element={<div><Sidebar/>{route.component}</div>}
+//               />
+//             ))} */}
+
+//             <Route exact path="/" element={<div><Link to="/home">Home</Link></div>} />
+
+//             {/* Use ProtectedRoute for login and register */}
+//             <ProtectedRoute
+//               exact
+//               path="/login"
+//               auth={user} // Pass user object as auth prop
+//               element={<Auth login />}
+//             />
+//             <ProtectedRoute
+//               exact
+//               path="/register"
+//               auth={user} // Pass user object as auth prop
+//               element={<Auth register />}
+//             />
+
+//             <Route exact path="/books" element={<div><Sidebar /><Books /></div>} />
+//           </Routes>
+//         </Router>
+//       </header>
+//     </div>
+//   );
+// }
+
+// export default App;

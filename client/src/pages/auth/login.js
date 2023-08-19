@@ -12,7 +12,33 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 
+import axios from 'axios'
+import { useAuth } from "../../hooks/useAuth";
+
+
 export default function Login() {
+  const { login, user } = useAuth();
+
+
+  const loginUser = (email, password) => {
+   
+      axios.post(`http://localhost:8083/api/auth/login`, { email, password }, { withCredentials: false })
+        .then((response) => {
+          // handle success
+          if (response.status === 200) {
+            console.log(response.data);
+            login(response.data.user);
+          }
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+        });
+    
+  };
+
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -20,7 +46,8 @@ export default function Login() {
         console.log({
           email: data.get("email"),
           password: data.get("password"),
-        });
+        })
+        loginUser(data.get("email"),data.get("password"));
       };
 
   return (
