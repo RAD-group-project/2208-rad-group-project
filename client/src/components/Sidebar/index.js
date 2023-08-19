@@ -5,6 +5,7 @@ import { Typography, List, ListItem,ListItemButton} from '@mui/material'
 
 import {Link} from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
+import axios from 'axios'
 
 const drawerWidth = 240
 
@@ -23,6 +24,23 @@ export default function Sidebar() {
 
     const {logout} = useAuth()
 
+
+    const logoutUser = () => {
+        // handleClose();
+        axios.get(`http://localhost:8083/api/auth/logout`, { withCredentials: true })
+          .then((response) => {
+            // handle success
+            if (response.status === 200) {
+              console.log(response.data);
+              logout();
+            }
+          })
+          .catch((error) => {
+            // handle error
+            alert(error);
+            console.log(error);
+          })
+      };
 
 
     const classes = useStyles()
@@ -53,8 +71,31 @@ export default function Sidebar() {
 
 </Typography>
 
+<Typography variant='h5'>
+<Link to="/authors">
+
+
+    <ListItemButton>
+    Authors
+    </ListItemButton>
+    </Link>
+
+</Typography>
+
+<Typography variant='h5'>
+<Link to="/authors">
+
+
+    <ListItemButton>
+    Authors
+    </ListItemButton>
+    </Link>
+
+</Typography>
+
+
 <Typography variant="h5" style={{ position: 'absolute', bottom: '10px' }}>
-  <ListItemButton onClick={logout}>
+  <ListItemButton onClick={logoutUser}>
     Logout
   </ListItemButton>
 </Typography>
