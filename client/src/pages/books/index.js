@@ -25,9 +25,9 @@ export default function Books() {
         <Button variant='outlined' onClick={handleClickOpen} >Add Book</Button>
         <Dialog open={open} onClose={handleClose}>
             <DialogContent>
-                <DialogContentText>
+                {/* <DialogContentText> */}
                     <Add />
-                </DialogContentText>
+                {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>
         <Dashboard />

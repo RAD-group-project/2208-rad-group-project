@@ -40,13 +40,13 @@ function App() {
        <Route exact path="/" element={<div> <Link to='/dashboard'>Dashboard</Link> <br/><Link to='/login'>Login</Link>  </div>}>
          
             </Route>
-            <Route exact path="/dashboard" element={<div> <Sidebar/> Home </div>}>
+            {/* <Route exact path="/dashboard" element={<div> <Sidebar/> Home </div>} /> */}
             
-            </Route>
             {user ? <Route exact path="/login" element={  <Navigate to="/" />} />:<Route exact path="/login" element={ <Auth login/>} />}
             {user ? <Route exact path="/register" element={  <Navigate to="/" />} />:<Route exact path="/register" element={ <Auth register/>} />}
 
             {!user ? <Route exact path="/dashboard" element={  <Navigate to="/login" />} />:<Route exact path="/dashboard" element={ <div> <Sidebar/> Home </div>} />}
+            {!user ? <Route exact path="/books" element={  <Navigate to="/login" />} />:<Route exact path="/books" element={ <div> <Sidebar/> <Books/> </div>} />}
 
             {/* <Route exact path="/login" element={ <Auth login/>} /> */}
             
