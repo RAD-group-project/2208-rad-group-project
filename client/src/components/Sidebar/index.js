@@ -4,6 +4,7 @@ import { makeStyles } from '@mui/styles'
 import { Typography, List, ListItem,ListItemButton} from '@mui/material'
 
 import {Link} from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 
 const drawerWidth = 240
 
@@ -19,6 +20,11 @@ const useStyles = makeStyles({
 })
 
 export default function Sidebar() {
+
+    const {logout} = useAuth()
+
+
+
     const classes = useStyles()
   return (
     <div>
@@ -29,9 +35,9 @@ export default function Sidebar() {
         >
             <div>
 <Typography variant='h5'>
-    <Link to="/home">
+    <Link to="/dashboard">
     <ListItemButton>
-    Home
+    Dashboard
     </ListItemButton>
     </Link>
 
@@ -46,6 +52,13 @@ export default function Sidebar() {
     </Link>
 
 </Typography>
+
+<Typography variant="h5" style={{ position: 'absolute', bottom: '10px' }}>
+  <ListItemButton onClick={logout}>
+    Logout
+  </ListItemButton>
+</Typography>
+
             </div>
         </Drawer>
     </div>
