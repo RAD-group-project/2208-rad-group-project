@@ -6,6 +6,8 @@ import { authenticatedRoutes } from './data';
 
 import Sidebar from './components/Sidebar';
 import Books from './pages/books';
+import Users from './pages/users';
+
 import Auth from './pages/auth';
 import { useAuth } from "./hooks/useAuth";
 
@@ -52,9 +54,11 @@ function App() {
             
             {/* <Route exact path="/register" element={<Auth register/>} /> */}
 
-            <Route exact path="/books" element={<div> <Sidebar/> <Books/> </div>}>
-            
-            </Route>
+            <Route exact path="/books" element={<div> <Sidebar/> <Books/> </div>}/>
+            <Route exact path="/users" element={<div> <Sidebar/> <Users/> </div>}/>
+
+              
+      
           </Routes>
         {/* </Router> */}
       </header>

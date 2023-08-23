@@ -48,6 +48,7 @@ const loginUser = async (req, res, next) => {
 const logoutUser = async (req, res, next) => {
   try {
     req.logout();
+    console.log("A")
     return res.status(200).json({ success: true, message: "User logged out" });
   } catch (err) {
     // return next(err);

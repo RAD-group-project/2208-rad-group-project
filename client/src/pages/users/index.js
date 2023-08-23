@@ -21,8 +21,8 @@ export default function Books() {
     <div>
         <Box sx={{ml:24}}>
 
-        <Typography variant='h3'>Books</Typography> 
-        <Button variant='outlined' onClick={handleClickOpen} >Add Books</Button>
+        <Typography variant='h3'>Users</Typography> 
+        <Button variant='outlined' onClick={handleClickOpen} >Add Users</Button>
         <Dialog open={open} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}

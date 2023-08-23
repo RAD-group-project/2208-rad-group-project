@@ -83,16 +83,29 @@ export default function Sidebar() {
 </Typography>
 
 <Typography variant='h5'>
-<Link to="/authors">
+<Link to="/Borrowings">
 
 
     <ListItemButton>
-    Authors
+    Borrowings
+
     </ListItemButton>
     </Link>
 
 </Typography>
 
+
+<Typography variant='h5'>
+<Link to="/Users">
+
+
+    <ListItemButton>
+    Users
+
+    </ListItemButton>
+    </Link>
+
+</Typography>
 
 <Typography variant="h5" style={{ position: 'absolute', bottom: '10px' }}>
   <ListItemButton onClick={logoutUser}>

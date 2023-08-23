@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8080;
 
 // Routes
 const authRouter = require('./routes/authRouter');
+const userRouter = require('./routes/userRouter');
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -42,7 +43,6 @@ app.use(
 
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(express.json());
-
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -50,6 +50,7 @@ const initializePassport = require('./passport-config');
 initializePassport(passport);
 
 app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter)
 
 app.get('/', (req, res) => res.send('Welcome to Library Management System'));
 

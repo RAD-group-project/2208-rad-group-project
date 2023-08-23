@@ -26,7 +26,15 @@ const UserSchema = new mongoose.Schema({
   },
   photoUrl: {
     type: String,
-    required: true,
+    required: false,
+  },
+  booksBorrowed: {
+    type: Number,
+    required: false,
+  },
+  registered: {
+    type: Date,
+    default: Date.now,
   },
   hash: String,
   salt: String,
