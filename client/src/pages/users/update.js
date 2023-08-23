@@ -22,18 +22,19 @@ const updateUserApi = async (userId, userData) => {
   }
 };
 
-const Update = ({ userC }) => {
-  console.log(userC)
-  const userId = 0
-  const [user, setUser] = useState({
-    name: '',
-    dob: '',
-    email: '',
-    password: '',
-    phone: '',
-    isAdmin: false,
-    photoUrl: '',
-  });
+const Update = (data ) => {
+  console.log(data['user']['row']['original']['_id'])
+  const userId = data['user']['row']['original']['_id']
+  // const [user, setUser] = useState({
+  //   name: '',
+  //   dob: '',
+  //   email: '',
+  //   password: '',
+  //   phone: '',
+  //   isAdmin: false,
+  //   photoUrl: '',
+  // });
+  const [user, setUser] = useState(data['user']['row']['original']);
 
   useEffect(() => {
     // Fetch user data using the userId and update the user state

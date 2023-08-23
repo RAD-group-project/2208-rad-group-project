@@ -62,12 +62,13 @@ const addUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     const userId = req.params.id;
+    console.log(userId)
     const updatedUserData = req.body;
 
     try {
         const updatedUser = new User(updatedUserData);
-        updatedUser.setPassword(updatedUserData.password);
-
+        // updatedUser.setPassword(updatedUserData.password);
+        console.log("A")
         const user = await User.findByIdAndUpdate(userId, updatedUser);
         return res.status(200).json({
             success: true,

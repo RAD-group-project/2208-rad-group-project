@@ -1,8 +1,8 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { MaterialReactTable } from 'material-react-table';
 
-import { Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions, ListItemIcon, MenuItem, Typography } from '@mui/material';
-import { AccountCircle, Send } from '@mui/icons-material';
+import { Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions, ListItemIcon, MenuItem, Typography, Tooltip, IconButton } from '@mui/material';
+import { AccountCircle, Send, Delete, Edit } from '@mui/icons-material';
 import Update from './update';
 
 import { backendUrl } from '../../data';
@@ -75,10 +75,23 @@ const Dashboard = () => {
   };
 
 
+  const deleteUser = (userId) => {
+    axios.delete(`${backendUrl}user/delete/${userId}`)
+      .then((response) => {
+        handleClose();
+        console.log(response.data);
+        getAllUsers();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
 
   const [openUpdate,setOpenUpdate] = useState(false);
   const [openDelete,setOpenDelete] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null); // Add selectedUser state
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
 
 
@@ -87,7 +100,9 @@ const Dashboard = () => {
     setOpenUpdate(true);
   }
 
-  const handleClickDelete = () => {
+  const handleClickDelete = (user) => {
+    console.log(user['row']['original']['_id'])
+    setSelectedUserId(user['row']['original']['_id'])
     setOpenDelete(true);
   }
   const handleClose = () => {
@@ -140,6 +155,20 @@ const Dashboard = () => {
   columns={columns}
   data={users}
   enableRowActions
+  renderRowActions={( rowData) => (
+    <Box sx={{ display: 'flex', gap: '1rem' }}>
+      <Tooltip arrow placement="left" title="Edit">
+        <IconButton onClick={() => handleClickUpdate(rowData)}>
+          <Edit />
+        </IconButton>
+      </Tooltip>
+      <Tooltip arrow placement="right" title="Delete">
+        <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
+          <Delete />
+        </IconButton>
+      </Tooltip>
+    </Box>
+  )}
   renderRowActionMenuItems={({ closeMenu, rowData }) => [
     
     <MenuItem
@@ -194,7 +223,7 @@ const Dashboard = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Yes</Button>
+          <Button onClick={() => deleteUser(selectedUserId)}>Yes</Button>
           <Button onClick={handleClose} autoFocus>
             No
           </Button>
