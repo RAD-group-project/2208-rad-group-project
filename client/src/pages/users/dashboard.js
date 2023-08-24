@@ -38,7 +38,8 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        setUsers(response.data.usersList);
+        const members = response.data.usersList.filter(user => !user.isAdmin);
+        setUsers(members);
         setIsTableLoading(false);
       })
       .catch((error) => {
