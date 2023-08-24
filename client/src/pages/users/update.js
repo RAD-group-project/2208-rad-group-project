@@ -54,7 +54,8 @@ const Update = (data ) => {
     onSubmit: async (values) => {
       try {
         await updateUserApi(userId, values);
-        alert('User updated successfully');
+        // alert('User updated successfully');
+        data.handleClose()
       } catch (error) {
         if (error.response && error.response.status === 403) {
           alert('User already exists');

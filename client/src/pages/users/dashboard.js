@@ -208,7 +208,7 @@ const Dashboard = () => {
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}
-                  <Update user={selectedUser}/>
+                  <Update user={selectedUser} handleClose={handleClose}/>
                   {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>
