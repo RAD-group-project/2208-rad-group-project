@@ -8,6 +8,11 @@ import { Box, Typography,Button, Dialog, DialogContent, DialogContentText } from
 
 export default function Books() {
     const [open,setOpen] = React.useState(false);
+    const [trigger, setTrigger] = React.useState(0);
+
+    const updateTrigger = () => {
+    setTrigger((trigger)=> trigger + 1)
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -29,11 +34,11 @@ export default function Books() {
         <Dialog open={open} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}
-                    <Add handleClose={handleClose} />
+                    <Add handleClose={handleClose} updateTrigger={updateTrigger} />
                 {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>
-        <Box sx={{mt:2,mx:2}}>        <Dashboard />
+        <Box sx={{mt:2,mx:2}}>        <Dashboard trigger={trigger} />
 </Box>
 
         </Box>

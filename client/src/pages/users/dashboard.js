@@ -49,7 +49,7 @@ const data = [
 
 
 
-const Dashboard = () => {
+const Dashboard = ({trigger}) => {
 
 
   const [users, setUsers] = useState([]);
@@ -57,7 +57,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getAllUsers();
-  }, []);
+  }, [trigger]);
 
   const getAllUsers = () => {
     console.log(backendUrl + 'user/getAll')
@@ -208,7 +208,7 @@ const Dashboard = () => {
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}
-                  <Update user={selectedUser} handleClose={handleClose}/>
+                  <Update user={selectedUser} handleClose={handleClose} getAllUsers={getAllUsers}/>
                   {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>

@@ -25,7 +25,7 @@ const addUserApi = async (userData) => {
   }
 };
 
-const Add = ({handleClose}) => {
+const Add = ({handleClose, updateTrigger}) => {
   const [user, setUser] = useState({
     name: '',
     dob: '',
@@ -43,7 +43,9 @@ const Add = ({handleClose}) => {
       try {
         await addUserApi(values);
         alert('User added successfully');
+
         handleClose()
+        updateTrigger()
       } catch (error) {
         if (error.response && error.response.status === 403) {
           alert('User already exists');

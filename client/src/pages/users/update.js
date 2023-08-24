@@ -55,7 +55,9 @@ const Update = (data ) => {
       try {
         await updateUserApi(userId, values);
         // alert('User updated successfully');
+        data.getAllUsers()
         data.handleClose()
+        
       } catch (error) {
         if (error.response && error.response.status === 403) {
           alert('User already exists');
