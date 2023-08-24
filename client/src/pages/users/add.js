@@ -14,11 +14,11 @@ const validationSchema = yup.object({
   // Add more validation rules for other fields if needed
 });
 
-const apiUrl = backendUrl + 'user/add'
+// const apiUrl = backendUrl + 'user/add'
 
 const addUserApi = async (userData) => {
   try {
-    const response = await axios.post(apiUrl, userData);
+    const response = await axios.post(`${backendUrl}user/add`, userData);
     return response.data;
   } catch (error) {
     throw error;

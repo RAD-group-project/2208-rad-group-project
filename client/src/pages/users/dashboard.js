@@ -17,34 +17,7 @@ const data = [
     booksBorrowed: 6,
     registered:'03-08-2022'
   },
-  {
-    name: 'Homo Deus: A Brief History of Tomorrow ',
-    author: 'Yuval Noah harari',
-    isbn: '978-0062464316',
-    copies: 6,
-    registered:'03-08-2022'
-  },
-  {
-    name: 'Homo Deus: A Brief History of Tomorrow ',
-    author: 'Yuval Noah harari',
-    isbn: '978-0062464316',
-    copies: 6,
-    registered:'03-08-2022'
-  },
-  {
-    name: 'Homo Deus: A Brief History of Tomorrow ',
-    author: 'Yuval Noah harari',
-    isbn: '978-0062464316',
-    copies: 6,
-    registered:'03-08-2022'
-  },
-  {
-    name: 'Homo Deus: A Brief History of Tomorrow ',
-    author: 'Yuval Noah harari',
-    isbn: '978-0062464316',
-    copies: 6,
-    registered:'03-08-2022'
-  },
+ 
 ];
 
 

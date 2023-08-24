@@ -71,71 +71,65 @@ export default function Sidebar() {
 
 
 
-<Typography variant='h5'>
-    <Link to="/dashboard">
-    <ListItemButton>
-    Dashboard
-    </ListItemButton>
-    </Link>
 
+
+<Typography variant='h5' sx={{ marginBottom: 0 }}>
+  <Link to="/dashboard" style={{ textDecoration: 'none', color: '#333' }}>
+    <ListItemButton sx={{ padding: '8px 20px' ,paddingLeft:2 }}>
+      Dashboard
+    </ListItemButton>
+  </Link>
 </Typography>
-<Typography variant='h5'>
-<Link to="/books">
-
-
-    <ListItemButton>
-    Books
+<Typography variant='h5' sx={{ marginBottom: 0 }}>
+  <Link to="/books" style={{ textDecoration: 'none', color: '#333' }}>
+    <ListItemButton sx={{ padding: '8px 0' ,paddingLeft:2 }}>
+      Books
     </ListItemButton>
-    </Link>
-
+  </Link>
 </Typography>
 
-<Typography variant='h5'>
-<Link to="/authors">
-
-
-    <ListItemButton>
-    Authors
+<Typography variant='h5' sx={{ marginBottom: 0 }}>
+  <Link to="/authors" style={{ textDecoration: 'none', color: '#333' }}>
+    <ListItemButton sx={{ padding: '8px 0' ,paddingLeft:2 }}>
+      Authors
     </ListItemButton>
-    </Link>
-
-</Typography>
-<Typography variant='h5'>
-<Link to="/genres">
-
-
-    <ListItemButton>
-    Genres
-
-    </ListItemButton>
-    </Link>
-
+  </Link>
 </Typography>
 
-<Typography variant='h5'>
-<Link to="/borrowings">
+<Typography variant='h5' sx={{ marginBottom: 0 }}>
+  <Link to="/genres" style={{ textDecoration: 'none', color: '#333' }}>
+    <ListItemButton sx={{ padding: '8px 0' ,paddingLeft:2 }}>
+      Genres
+    </ListItemButton>
+  </Link>
+</Typography>
 
-
-    <ListItemButton>
+<Typography variant='h5' sx={{ marginBottom: 0 }}>
+  <Link to="/borrowings" style={{ textDecoration: 'none', color: '#333' }}>
+    <ListItemButton sx={{ padding: '8px 0' ,paddingLeft:2 }}>
     Borrowings
-
     </ListItemButton>
-    </Link>
-
+  </Link>
 </Typography>
 
-
-<Typography variant='h5'>
-<Link to="/Users">
-
-
-    <ListItemButton>
+<Typography variant='h5' sx={{ marginBottom: 0 }}>
+  <Link to="/users" style={{ textDecoration: 'none', color: '#333' }}>
+    <ListItemButton sx={{ padding: '8px 0' ,paddingLeft:2 }}>
     Users
-
-    </ListItemButton>
-    </Link>
-
+        </ListItemButton>
+  </Link>
 </Typography>
+
+
+
+
+
+
+
+
+
+
+
 
 <Typography variant="h5" style={{ position: 'absolute', bottom: '10px' }}>
   <ListItemButton onClick={logoutUser}>
