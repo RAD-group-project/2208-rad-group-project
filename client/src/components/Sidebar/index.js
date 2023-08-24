@@ -1,7 +1,7 @@
 import React from 'react'
 import Drawer from '@mui/material/Drawer'
 import { makeStyles } from '@mui/styles'
-import { Typography, List, ListItem,ListItemButton} from '@mui/material'
+import { Typography, List, ListItem,ListItemButton, Chip, Avatar, Box} from '@mui/material'
 
 import {Link} from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 export default function Sidebar() {
 
-    const {logout} = useAuth()
+    const {logout,user} = useAuth()
 
 
     const logoutUser = () => {
@@ -38,6 +38,7 @@ export default function Sidebar() {
           .catch((error) => {
             // handle error
             alert(error);
+            
             console.log(error);
           })
       };
@@ -51,7 +52,25 @@ export default function Sidebar() {
         variant='permanent'
         anchor='left'
         >
+
+          <div>
+          <Typography variant='h4'>
+
+            </Typography>
+
+            <Box sx={{ m: 2 }} >
+            <Chip
+              avatar={<Avatar alt={user.name} src="/static/images/avatar/1.jpg" />}
+              label={user.name}
+              variant="outlined"
+/>
+ </Box>
+
+          </div>
             <div>
+
+
+
 <Typography variant='h5'>
     <Link to="/dashboard">
     <ListItemButton>
@@ -81,9 +100,20 @@ export default function Sidebar() {
     </Link>
 
 </Typography>
+<Typography variant='h5'>
+<Link to="/genres">
+
+
+    <ListItemButton>
+    Genres
+
+    </ListItemButton>
+    </Link>
+
+</Typography>
 
 <Typography variant='h5'>
-<Link to="/Borrowings">
+<Link to="/borrowings">
 
 
     <ListItemButton>

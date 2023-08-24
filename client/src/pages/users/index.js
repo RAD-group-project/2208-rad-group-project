@@ -22,15 +22,19 @@ export default function Books() {
         <Box sx={{ml:24}}>
 
         <Typography variant='h3'>Users</Typography> 
+        <Box sx={{mx:2,my:3}}>
         <Button variant='outlined' onClick={handleClickOpen} >Add Users</Button>
+
+        </Box>
         <Dialog open={open} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}
-                    <Add />
+                    <Add handleClose={handleClose} />
                 {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>
-        <Dashboard />
+        <Box sx={{mt:2,mx:2}}>        <Dashboard />
+</Box>
 
         </Box>
 
