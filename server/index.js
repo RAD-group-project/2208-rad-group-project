@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080;
 // Routes
 const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRouter');
+const bookRouter = require('./routes/bookRouter');
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -26,12 +27,12 @@ mongoose
   })
   .catch((err) => console.error('Database Connection error', err));
 
-app.use(
-  cors({
-    origin: 'http://localhost:3001',
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: 'http://localhost:3001',
+//     credentials: true,
+//   })
+// );
 
 app.use(
   session({
@@ -51,6 +52,7 @@ initializePassport(passport);
 
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter)
+app.use('/api/book', bookRouter)
 
 app.get('/', (req, res) => res.send('Welcome to Library Management System'));
 
