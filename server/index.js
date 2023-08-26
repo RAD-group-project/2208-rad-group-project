@@ -27,12 +27,12 @@ mongoose
   })
   .catch((err) => console.error('Database Connection error', err));
 
-// app.use(
-//   cors({
-//     origin: 'http://localhost:3001',
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: 'http://localhost:3001',
+    credentials: true,
+  })
+);
 
 app.use(
   session({
