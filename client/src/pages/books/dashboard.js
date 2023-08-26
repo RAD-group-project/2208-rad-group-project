@@ -8,38 +8,23 @@ import Update from './update';
 import { backendUrl } from '../../data';
 import axios from 'axios';
 
-//nested data is ok, see accessorKeys in ColumnDef below
-const data = [
-  {
-    name: 'Himasha Amandi',
-    email: 'mandy@mandy.lk',
-    phone: '07111111999',
-    booksBorrowed: 6,
-    registered:'03-08-2022'
-  },
- 
-];
-
-
-
 const Dashboard = ({trigger}) => {
 
-
-  const [users, setUsers] = useState([]);
+  const [books, setBooks] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
 
   useEffect(() => {
-    getAllUsers();
+    getAllBooks();
   }, [trigger]);
 
-  const getAllUsers = () => {
-    console.log(backendUrl + 'user/getAll')
-    axios.get(backendUrl + 'user/getAll')
+  const getAllBooks = () => {
+    console.log(backendUrl + 'book/getAll')
+    axios.get(backendUrl + 'book/getAll')
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.usersList.filter(user => !user.isAdmin);
-        setUsers(members);
+        const members = response.data.booksList.filter(book => !book.isAdmin);
+        setBooks(members);
         setIsTableLoading(false);
       })
       .catch((error) => {
@@ -49,12 +34,12 @@ const Dashboard = ({trigger}) => {
   };
 
 
-  const deleteUser = (userId) => {
-    axios.delete(`${backendUrl}user/delete/${userId}`)
+  const deleteBook = (bookId) => {
+    axios.delete(`${backendUrl}book/delete/${bookId}`)
       .then((response) => {
         handleClose();
         console.log(response.data);
-        getAllUsers();
+        getAllBooks();
       })
       .catch((error) => {
         console.log(error);
@@ -64,19 +49,19 @@ const Dashboard = ({trigger}) => {
 
   const [openUpdate,setOpenUpdate] = useState(false);
   const [openDelete,setOpenDelete] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null); // Add selectedUser state
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedBook, setSelectedBook] = useState(null); // Add selectedBook state
+  const [selectedBookId, setSelectedBookId] = useState(null);
 
 
 
-  const handleClickUpdate = (user) => {
-    setSelectedUser(user);
+  const handleClickUpdate = (book) => {
+    setSelectedBook(book);
     setOpenUpdate(true);
   }
 
-  const handleClickDelete = (user) => {
-    console.log(user['row']['original']['_id'])
-    setSelectedUserId(user['row']['original']['_id'])
+  const handleClickDelete = (book) => {
+    console.log(book['row']['original']['_id'])
+    setSelectedBookId(book['row']['original']['_id'])
     setOpenDelete(true);
   }
   const handleClose = () => {
@@ -88,35 +73,42 @@ const Dashboard = ({trigger}) => {
   //should be memoized or stable
   const columns = useMemo(
     () => [
-
-
-
-
       {
-        accessorKey: 'name',
-        header: 'Name',
+        accessorKey: 'title',
+        header: 'Title',
         size: 150
       },
       {
-        accessorKey: 'email',
-        header: 'Email',
+        accessorKey: 'author',
+        header: 'Author',
         size: 150
       },
       {
-        accessorKey: 'phone',
-        header: 'Phone Number',
+        accessorKey: 'ISBN',
+        header: 'ISBN',
         size: 150
       },
       {
-        accessorKey: 'booksBorrowed',
-        header: 'No.of Borrowed Books',
+        accessorKey: 'publisher',
+        header: 'Publisher',
         size: 150
       },
       {
-        accessorKey: 'registered',
-        header: 'Registered Date',
+        accessorKey: 'datePublished',
+        header: 'Date Published',
         size: 150
       },
+      {
+        accessorKey: 'genre',
+        header: 'Genre',
+        size: 150
+      },
+      {
+        accessorKey: 'copies',
+        header: 'Copies',
+        size: 150
+      },
+      
     ],
     [],
   );
@@ -127,7 +119,7 @@ const Dashboard = ({trigger}) => {
   return (
   <div> <MaterialReactTable 
   columns={columns}
-  data={users}
+  data={books}
   enableRowActions
   renderRowActions={( rowData) => (
     <Box sx={{ display: 'flex', gap: '1rem' }}>
@@ -182,22 +174,22 @@ const Dashboard = ({trigger}) => {
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}
-                  <Update user={selectedUser} handleClose={handleClose} getAllUsers={getAllUsers}/>
+                  <Update book={selectedBook} handleClose={handleClose} getAllBooks={getAllBooks}/>
                   {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>
 
       <Dialog open={openDelete} onClose={handleClose}>
       <DialogTitle id="alert-dialog-title">
-          {" Delete This User?"}
+          {" Delete This Book?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Delete This User?
+            Delete This Book?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => deleteUser(selectedUserId)}>Yes</Button>
+          <Button onClick={() => deleteBook(selectedBookId)}>Yes</Button>
           <Button onClick={handleClose} autoFocus>
             No
           </Button>
