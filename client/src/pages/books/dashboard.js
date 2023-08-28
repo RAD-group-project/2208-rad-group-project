@@ -166,8 +166,6 @@ const Dashboard = ({trigger}) => {
       Delete
     </MenuItem>,
   ]}
-
-  
   
   />
 
