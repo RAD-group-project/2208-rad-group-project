@@ -123,6 +123,7 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.datePublished && Boolean(formik.errors.datePublished)}
         helperText={formik.touched.datePublished && formik.errors.datePublished}
+        InputLabelProps={{ shrink: true }} 
       />
 
       <TextField
