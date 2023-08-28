@@ -13,8 +13,7 @@ const validationSchema = yup.object({
   publisher: yup.string('Enter publisher'),
   datePublished: yup.date('Enter date published'),
   genre: yup.string('Enter genre'),
-  copies: yup.number('Enter copies').required('No. of copies are required')
-  
+  copies: yup.number('Enter copies').required('No. of copies are required')  
 });
 
 const updateBookApi = async (bookId, bookData) => {
@@ -25,7 +24,6 @@ const updateBookApi = async (bookId, bookData) => {
     throw error;
   }
 };
-
 
 const Update = (data ) => {
   console.log(data['book']['row']['original']['_id'])
@@ -84,6 +82,7 @@ const Update = (data ) => {
         id="title"
         name="title"
         label="Title"
+        type="string"
         value={formik.values.title}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -96,6 +95,7 @@ const Update = (data ) => {
         id="author"
         name="author"
         label="Author"
+        type="string"
         value={formik.values.author}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -108,6 +108,7 @@ const Update = (data ) => {
         id="ISBN"
         name="ISBN"
         label="ISBN"
+        type="string"
         value={formik.values.ISBN}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -120,6 +121,7 @@ const Update = (data ) => {
         id="publisher"
         name="publisher"
         label="Publisher"
+        type="string"
         value={formik.values.publisher}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -145,6 +147,7 @@ const Update = (data ) => {
         id="genre"
         name="genre"
         label="Genre"
+        type="string"
         value={formik.values.genre}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -164,7 +167,6 @@ const Update = (data ) => {
         error={formik.touched.copies && Boolean(formik.errors.copies)}
         helperText={formik.touched.copies && formik.errors.copies}
       />
-
 
         <Button color="primary" variant="contained" fullWidth type="submit">
           Submit

@@ -24,27 +24,26 @@ export default function Books() {
 
   return (
     <div>
-        <Box sx={{ml:24}}>
+        <Box sx={{ml:28,my:5}}>
 
-        <Typography variant='h3'>Books</Typography> 
-        <Box sx={{mx:2,my:3}}>
-        <Button variant='outlined' onClick={handleClickOpen} >Add Books</Button>
+            <Typography variant='h3'>Books</Typography> 
+            <Box sx={{mx:2,my:3}}>
+            <Button variant='outlined' onClick={handleClickOpen} >Add Books</Button>
+            </Box>
+
+            <Dialog open={open} onClose={handleClose}>
+                <DialogContent>
+                    {/* <DialogContentText> */}
+                        <Add handleClose={handleClose} updateTrigger={updateTrigger} />
+                    {/* </DialogContentText> */}
+                </DialogContent>
+            </Dialog>
+            <Box sx={{mt:2,mx:2}}>
+                <Dashboard trigger={trigger} />
+            </Box>
 
         </Box>
-        <Dialog open={open} onClose={handleClose}>
-            <DialogContent>
-                {/* <DialogContentText> */}
-                    <Add handleClose={handleClose} updateTrigger={updateTrigger} />
-                {/* </DialogContentText> */}
-            </DialogContent>
-        </Dialog>
-        <Box sx={{mt:2,mx:2}}>        <Dashboard trigger={trigger} />
-</Box>
-
-        </Box>
-
-
-      
+     
     </div>
   )
 }
