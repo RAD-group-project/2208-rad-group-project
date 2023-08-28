@@ -175,7 +175,7 @@ const Dashboard = ({trigger}) => {
       }}
     >
       <img
-        alt="avatar"
+        alt={row.original.title}
         height={200}
         src={`https://covers.openlibrary.org/b/isbn/${row.original.ISBN}-M.jpg`}
         loading="lazy"
