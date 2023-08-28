@@ -166,6 +166,30 @@ const Dashboard = ({trigger}) => {
       Delete
     </MenuItem>,
   ]}
+  renderDetailPanel={({ row }) => (
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+      }}
+    >
+      <img
+        alt="avatar"
+        height={200}
+        src={`https://covers.openlibrary.org/b/isbn/${row.original.ISBN}-M.jpg`}
+        loading="lazy"
+        // style={{ borderRadius: '50%' }}
+      />
+      {console.log(row)}
+      <Box sx={{ textAlign: 'center' }}>
+        <Typography variant="h4">{row.original.title}</Typography>
+        <Typography variant="h5">
+          {row.original.author}
+        </Typography>
+      </Box>
+    </Box>
+  )}
   
   />
 
