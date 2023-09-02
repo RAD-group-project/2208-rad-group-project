@@ -31,12 +31,11 @@ const AuthorSchema = new mongoose.Schema({
     },
   ],
 
-  booksWritten: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Book",
-    },
-  ],
+  noOfBooksWritten: {
+    type: Number,
+    required: true,
+
+  },
 });
 
 // Creating the Author model
