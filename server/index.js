@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8080;
 const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRouter');
 const bookRouter = require('./routes/bookRouter');
-const authourRouter = require('./routes/authourRouter');
+const authorRouter = require('./routes/authorRouter');
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -54,7 +54,7 @@ initializePassport(passport);
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/book', bookRouter);
-app.use('/api/authour', authourRouter);
+app.use('/api/author', authorRouter);
 
 app.get('/', (req, res) => res.send('Welcome to Library Management System'));
 

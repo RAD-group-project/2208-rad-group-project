@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getAuthour,
-  getAllAuthours,
-  addAuthour,
-  updateAuthour,
-  deleteAuthour
-} = require('../controllers/authourController');
+  getAuthor,
+  getAllAuthors,
+  addAuthor,
+  updateAuthor,
+  deleteAuthor
+} = require('../controllers/authorController');
 
 router.get("/get/:id", async (req, res) => {
     try {
-      await getAuthour(req, res);
+      await getAuthor(req, res);
     } catch (err) {
       res.status(500).json({ success: false, error: err.message });
     }
@@ -19,7 +19,7 @@ router.get("/get/:id", async (req, res) => {
 
 router.get("/getAll", async (req, res) => {
   try {
-    await getAllAuthours(req, res);
+    await getAllAuthors(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -28,7 +28,7 @@ router.get("/getAll", async (req, res) => {
 
 router.post("/add", async (req, res) => {
   try {
-    await addAuthour(req, res);
+    await addAuthor(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -36,7 +36,7 @@ router.post("/add", async (req, res) => {
 
 router.put("/update/:id", async (req, res) => {
   try {
-    await updateAuthour(req, res);
+    await updateAuthor(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -44,7 +44,7 @@ router.put("/update/:id", async (req, res) => {
 
 router.delete("/delete/:id", async (req, res) => {
   try {
-    await deleteAuthour(req, res);
+    await deleteAuthor(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
