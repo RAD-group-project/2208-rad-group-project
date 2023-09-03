@@ -12,7 +12,7 @@ const validationSchema = yup.object({
   lastName: yup.string('Enter last name').required('Last name is required'),
   nationality: yup.string('Enter nationality').required('Nationality is required'),
   dateOfBirth: yup.string('Enter date of birth').required('Date of Birth is required'),
-  startPublishingDate: yup.date('Enter date published'),
+  sstartDateOfPublishing: yup.date('Enter date published'),
   genres: yup.array().of(yup.string()),
   noOfBooksWritten: yup.number('Enter number').required('No. of books are required')
   
@@ -116,15 +116,15 @@ const Add = ({handleClose, updateTrigger}) => {
 
       <TextField
         fullWidth
-        id="startPublishingDate"
-        name="startPublishingDate"
-        label="Start Publishing Date"
+        id="startDateOfPublishing"
+        name="startDateOfPublishing"
+        label="Start Date of Publishing"
         type="date"
-        value={formik.values.startPublishingDate}
+        value={formik.values.startDateOfPublishing}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.startPublishingDate && Boolean(formik.errors.startPublishingDate)}
-        helperText={formik.touched.startPublishingDate && formik.errors.startPublishingDate}
+        error={formik.touched.startDateOfPublishing && Boolean(formik.errors.sstartDateOfPublishing)}
+        helperText={formik.touched.startDateOfPublishing && formik.errors.sstartDateOfPublishing}
         InputLabelProps={{ shrink: true }} 
       />
 
