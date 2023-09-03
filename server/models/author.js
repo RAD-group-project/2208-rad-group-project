@@ -20,7 +20,7 @@ const AuthorSchema = new mongoose.Schema({
     required: false,
   },
   startDateOfPublishing: {
-    type: Date,
+    type: String,
     required: false,
   },
 
