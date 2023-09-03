@@ -31,7 +31,11 @@ const addAuthor = async (req, res) => {
     const newAuthor = req.body;
 
     try {
-         const existingAuthor = await Author.findOne({ name: newAuthor.name });    
+        const existingAuthor = await Author.findOne({
+            firstName: newAuthor.firstName,
+            lastName: newAuthor.lastName,
+          });
+             
          if (existingAuthor) {
             return res.status(403).json({ success: false, message: "Author already exists" }); 
         }
