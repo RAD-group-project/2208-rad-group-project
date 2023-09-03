@@ -85,11 +85,11 @@ const Dashboard = ({trigger}) => {
       },
       {
         accessorKey: 'nationality',
-        header: 'Natioanlity',
+        header: 'Nationality',
         size: 150
       },
       {
-        accessorKey: 'dateOFBirth',
+        accessorKey: 'dateOfBirth',
         header: 'Date of Birth',
         size: 150
       },

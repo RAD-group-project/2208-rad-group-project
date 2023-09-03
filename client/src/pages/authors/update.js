@@ -140,8 +140,7 @@ const Update = (data ) => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         error={formik.touched.startDateOfPublishing && Boolean(formik.errors.startDateOfPublishing)}
-        helperText={formik.touched.startDateOfPublishing && formik.errors.startDateOfPublishing}
-        InputLabelProps={{ shrink: true }} 
+        helperText={formik.touched.startDateOfPublishing && formik.errors.startDateOfPublishing} 
       />
 
 <TextField
