@@ -13,7 +13,7 @@ const validationSchema = yup.object({
     dateOfBirth: yup.date('Enter date of birth').required('Date of Birth is required'),
     startDateOfPublishing: yup.string('Enter date published'),
     genre: yup.string('Enter the genres'),
-    noOfBooksWritten: yup.number('Enter number').required('No. of books are required'), 
+    noOfBooksWritten: yup.string('Enter number').required('No. of books are required'), 
 });
 
 const updateAuthorApi = async (authorId, authorData) => {
@@ -160,7 +160,7 @@ const Update = (data ) => {
         id="noOfBooksWritten"
         name="noOfBooksWritten"
         label="Number of Books written"
-        type="number"
+        type="string"
         value={formik.values.noOfBooksWritten}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}

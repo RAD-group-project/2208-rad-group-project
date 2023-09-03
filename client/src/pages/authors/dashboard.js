@@ -100,12 +100,12 @@ const Dashboard = ({trigger}) => {
       },
       {
         accessorKey: 'genre',
-        header: 'Genre',
+        header: 'Genres',
         size: 150
       },
       {
         accessorKey: 'noOfBooksWritten',
-        header: 'Number of Books written',
+        header: 'Number of Works',
         size: 150
       },
       

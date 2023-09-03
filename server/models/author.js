@@ -30,7 +30,7 @@ const AuthorSchema = new mongoose.Schema({
   },
 
   noOfBooksWritten: {
-    type: Number,
+    type: String,
     required: true,
 
   },
