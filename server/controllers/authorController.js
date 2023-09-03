@@ -1,4 +1,4 @@
-const Authour = require('../models/author');
+const Author = require('../models/author');
 
 const getAuthor = async (req, res) => {
     const authorId = req.params.id;

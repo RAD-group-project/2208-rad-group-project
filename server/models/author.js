@@ -24,12 +24,10 @@ const AuthorSchema = new mongoose.Schema({
     required: false,
   },
 
-  genres: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Genre",
-    },
-  ],
+  genre: {
+    type: String,
+    required: false,
+  },
 
   noOfBooksWritten: {
     type: Number,

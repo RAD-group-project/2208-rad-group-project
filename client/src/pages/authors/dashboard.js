@@ -99,7 +99,7 @@ const Dashboard = ({trigger}) => {
         size: 150
       },
       {
-        accessorKey: 'genres',
+        accessorKey: 'genre',
         header: 'Genre',
         size: 150
       },
@@ -197,7 +197,7 @@ const Dashboard = ({trigger}) => {
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}
-                  <Update book={selectedBook} handleClose={handleClose} getAllAuthors={getAllAuthors}/>
+                  <Update author={selectedAuthor} handleClose={handleClose} getAllAuthors={getAllAuthors}/>
                   {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>

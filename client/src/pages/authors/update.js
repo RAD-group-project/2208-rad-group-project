@@ -11,8 +11,8 @@ const validationSchema = yup.object({
     lastName: yup.string('Enter last name').required('Last name is required'),
     nationality: yup.string('Enter nationality').required('Nationality is required'),
     dateOfBirth: yup.string('Enter date of birth').required('Date of Birth is required'),
-    sstartDateOfPublishing: yup.date('Enter date published'),
-    genres: yup.array().of(yup.string()),
+    startDateOfPublishing: yup.string('Enter date published'),
+    genre: yup.string('Enter the genres'),
     noOfBooksWritten: yup.number('Enter number').required('No. of books are required'), 
 });
 
@@ -59,7 +59,7 @@ const Update = (data ) => {
     onSubmit: async (values) => {
       try {
         await updateAuthorApi(authorId, values);
-        // alert('Book updated successfully');
+        // alert('Author updated successfully');
         data.getAllAuthors()
         data.handleClose()
         
@@ -144,45 +144,17 @@ const Update = (data ) => {
         InputLabelProps={{ shrink: true }} 
       />
 
-       <TextField
+<TextField
         fullWidth
-        id="genres"
-        name="genres"
-        label="Genre 1"
-        type="string"
-        value={formik.values.genres[0] || ''}
+        id="genre"
+        name="genre"
+        label="Genre"
+        value={formik.values.genre}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.genres && Boolean(formik.errors.genres)}
-        helperText={formik.touched.genres && formik.errors.genres}
+        error={formik.touched.genre && Boolean(formik.errors.genre)}
+        helperText={formik.touched.genre && formik.errors.genre}
       />
-
-       <TextField
-        fullWidth
-        id="genres"
-        name="genres"
-        label="Genre 2"
-        type="string"
-        value={formik.values.genres[1] || ''}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.genres && Boolean(formik.errors.genres)}
-        helperText={formik.touched.genres && formik.errors.genres}
-      />
-
-       <TextField
-        fullWidth
-        id="genres"
-        name="genres"
-        label="Genre 3"
-        type="string"
-        value={formik.values.genres[2] || ''}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.genres && Boolean(formik.errors.genres)}
-        helperText={formik.touched.genres && formik.errors.genres}
-      />
-
 
       <TextField
         fullWidth
