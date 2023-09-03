@@ -10,8 +10,8 @@ const validationSchema = yup.object({
     firstName: yup.string('Enter first name').required('First name is required'),
     lastName: yup.string('Enter last name').required('Last name is required'),
     nationality: yup.string('Enter nationality').required('Nationality is required'),
-    dateOfBirth: yup.string('Enter date of birth').required('Date of Birth is required'),
-    startDateOfPublishing: yup.string('Enter date published'),
+    dateOfBirth: yup.date('Enter date of birth').required('Date of Birth is required'),
+    startDateOfPublishing: yup.date('Enter date published'),
     genre: yup.string('Enter the genres'),
     noOfBooksWritten: yup.number('Enter number').required('No. of books are required'), 
 });
