@@ -17,7 +17,7 @@ const useStyles = makeStyles({
  
     },
     drawer: {
-        width: drawerWidth,
+        // width: drawerWidth,
         backgroundColor: '#202e51',
     },
     navLink: {
@@ -29,6 +29,21 @@ const useStyles = makeStyles({
       },
     },
 });
+
+export const Navitem = ({path, name}) => {
+  const classes = useStyles()
+
+  return (
+  <Typography variant='h5' sx={{  marginBottom: 0 , color: '#fff' }}>
+  <Link to={path} style={{ textDecoration: 'none', color: 'inherit'}}>
+    <ListItemButton className={classes.navLink} sx={{ pl:2, pr:2 }}>
+      {name}
+    </ListItemButton>
+  </Link>
+</Typography>
+
+  )
+}
 
 export default function Sidebar() {
 
@@ -56,6 +71,7 @@ export default function Sidebar() {
   return (
     <div>
         <Drawer
+
         className={classes.drawer}
         variant='permanent'
         anchor='left'
@@ -73,56 +89,16 @@ export default function Sidebar() {
           <div className = {classes.page}>
 
           <div>
-          <Typography variant='h4' sx={{ marginBottom: 0, color: '#fff' }}>
-              <Link
-                to="/dashboard"
-                style={{ textDecoration: 'none', color: 'inherit' }}
-              >
-                <ListItemButton >
-                  Dashboard
-                </ListItemButton>
-              </Link>
-            </Typography>
 
-            <Typography variant='h5' sx={{ marginBottom: 0 , color: '#fff' }}>
-              <Link to="/books" style={{ textDecoration: 'none', color: 'inherit'}}>
-                <ListItemButton className={classes.navLink} sx={{ padding: '8px 0' ,paddingLeft:2 }}>
-                  Books
-                </ListItemButton>
-              </Link>
-            </Typography>
+<Navitem path="/dashboard" name="Dashboard"/>
 
-            <Typography variant='h5' sx={{ marginBottom: 0 , color: '#fff' }}>
-              <Link to="/authors" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <ListItemButton className={classes.navLink} sx={{ padding: '8px 0' ,paddingLeft:2 }}>
-                  Authors
-                </ListItemButton>
-              </Link>
-            </Typography>
+<Navitem path="/books" name="Books"/>
+<Navitem path="/authors" name="Authors"/>
+<Navitem path="/genres" name="Genres"/>
+<Navitem path="/borrowings" name="Borrowings"/>
+<Navitem path="/users" name="Users"/>
 
-            <Typography variant='h5' sx={{ marginBottom: 0 , color: '#fff' }}>
-              <Link to="/genres" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <ListItemButton className={classes.navLink} sx={{ padding: '8px 0' ,paddingLeft:2 }}>
-                  Genres
-                </ListItemButton>
-              </Link>
-            </Typography>
 
-            <Typography variant='h5' sx={{ marginBottom: 0 , color: '#fff' }}>
-              <Link to="/borrowings" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <ListItemButton className={classes.navLink} sx={{ padding: '8px 0' ,paddingLeft:2 }}>
-                Borrowings
-                </ListItemButton>
-              </Link>
-            </Typography>
-
-            <Typography variant='h5' sx={{ marginBottom: 0 , color: '#fff' }}>
-              <Link to="/users" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <ListItemButton className={classes.navLink} sx={{ padding: '8px 0' ,paddingLeft:2 }}>
-                Users
-                </ListItemButton>
-              </Link>
-            </Typography>
 
             <Typography
               variant="h5"
