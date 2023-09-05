@@ -7,27 +7,53 @@ import {Link} from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import axios from 'axios'
 
-const drawerWidth = 210
 
 const useStyles = makeStyles({
-    page: {
-        background: '#202e51',
-        width:'100%',
-        height: '100%'
- 
-    },
-    drawer: {
-        // width: drawerWidth,
-        backgroundColor: '#202e51',
-    },
-    navLink: {
-      padding: '8px 0',
-      paddingLeft: 2,
-      transition: 'background-color 0.3s, color 0.3s','&:hover': {
-        backgroundColor: '#4793d2', // Change to the desired hover background color
+  userSection: {
+    background: 'linear-gradient(to bottom, #003f5c, #2f4b7c)',
+    padding: '20px',
+    color: '#ffffff',
+    maxWidth:"180px",
+    width:"180px"
+  },
+  userName: {
+    fontSize: '24px',
+    marginBottom: '10px',
+    textAlign:'center'
+  },
+  userInfoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center', // Center align horizontally
+  },
+  chip: {
+    borderColor: '#ffffff',
+    color: '#ffffff',
+  },
 
-      },
+  page: {
+    background: 'linear-gradient(to bottom, #003f5c, #2f4b7c)', // Gradient background color
+    width: '100%',
+    height: '100%',
+  },
+  drawer: {
+    backgroundColor: '#003f5c', // Matching color for the drawer background
+  },
+  navLink: {
+    padding: '8px 12px',
+    paddingLeft: '10px',
+    transition: 'background-color 0.3s, color 0.3s',
+    color: '#ffffff', // Default text color (white in this example)
+    '&:hover': {
+      backgroundColor: '#ff6f61', // Hover background color
+      color: '#003f5c', // Text color on hover (matching background color)
     },
+  },
+  avatar: {
+    width: '100px',
+    height: '100px',
+    fontSize: '48px', // Increase font size for larger avatar
+  },
 });
 
 export const Navitem = ({path, name}) => {
@@ -36,7 +62,7 @@ export const Navitem = ({path, name}) => {
   return (
   <Typography variant='h5' sx={{  marginBottom: 0 , color: '#fff' }}>
   <Link to={path} style={{ textDecoration: 'none', color: 'inherit'}}>
-    <ListItemButton className={classes.navLink} sx={{ pl:2, pr:2 }}>
+    <ListItemButton className={classes.navLink} >
       {name}
     </ListItemButton>
   </Link>
@@ -76,16 +102,23 @@ export default function Sidebar() {
         variant='permanent'
         anchor='left'
         >
-          <div>
-            <Typography variant='h4'></Typography>
-              <Box sx={{ m: 2 }} >
-                <Chip
-                  avatar={<Avatar alt={user.name} src="/static/images/avatar/1.jpg" />}
-                  label={user.name}
-                  variant="outlined"
-                />
-              </Box>
-          </div>
+          <div className={classes.userSection}>
+          <Box sx={{ m: 2 }} className={classes.userInfoContainer}>
+        <Avatar
+          alt={user.name}
+          src="/static/images/avatar/1.jpg"
+          className={classes.avatar}
+        />
+        {/* <Chip
+          label={user.name}
+          variant="outlined"
+          className={classes.chip}
+        /> */}
+      </Box>
+      <Typography variant='h4' className={classes.userName}>
+      {user.name} </Typography>
+
+    </div>
           <div className = {classes.page}>
 
           <div>
@@ -102,11 +135,13 @@ export default function Sidebar() {
 
             <Typography
               variant="h5"
-              style={{ position: 'absolute', bottom: '10px', color: '#fff' }}
+              style={{ position: 'absolute', bottom: '10px', color: '#fff',  }}
             >
-              <ListItemButton className={classes.navLink} sx={{width:'100%'}} onClick={logoutUser}>
+              <Link to="#" style={{ textDecoration: 'none', color: 'inherit'}}>
+              <ListItemButton  sx={{ width: '100%', padding: '8px 12px' }}  onClick={logoutUser}>
                 Logout
               </ListItemButton>
+              </Link>
             </Typography>
           </div>
 
