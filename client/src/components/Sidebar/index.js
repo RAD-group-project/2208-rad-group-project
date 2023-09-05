@@ -45,9 +45,9 @@ export default function Sidebar() {
           })
           .catch((error) => {
             // handle error
-            alert(error);
-            
-            console.log(error);
+            // alert(error);
+            logout()
+            // console.log(error);
           })
       };
 
