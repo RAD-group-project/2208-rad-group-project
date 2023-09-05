@@ -33,9 +33,7 @@ export default function Books() {
 
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
-                    {/* <DialogContentText> */}
                         <Add handleClose={handleClose} updateTrigger={updateTrigger} />
-                    {/* </DialogContentText> */}
                 </DialogContent>
             </Dialog>
             <Box sx={{mt:2,mx:2}}>
