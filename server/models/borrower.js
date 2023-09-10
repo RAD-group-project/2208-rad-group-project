@@ -1,7 +1,7 @@
 // Importing modules
 const mongoose = require("mongoose");
 
-// Creating book schema
+// Creating borrower schema
 const BorrowerSchema = new mongoose.Schema({
   userID: {
     type: String,

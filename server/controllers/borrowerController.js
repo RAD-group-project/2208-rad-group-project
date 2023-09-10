@@ -1,4 +1,4 @@
-const Book = require('../models/borrower');
+const Borrower = require('../models/borrower');
 
 const getBorrower = async (req, res) => {
     const borrowerId = req.params.id;
@@ -35,7 +35,7 @@ const addBorrower = async (req, res) => {
          if (existingBorrower) {
            return res
              .status(403)
-             .json({ success: false, message: "Book already exists" });
+             .json({ success: false, message: "Borrower already exists" });
          }
 
         const borrower = new Borrower(newBorrower);
@@ -55,7 +55,7 @@ const updateBorrower = async (req, res) => {
     const updatedBorrowerData = req.body;
 
     try {
-        const updatedBorrower = new Book(updatedBorrowerData);
+        const updatedBorrower = new Borrower(updatedBorrowerData);
 
         const borrower = await Borrower.findByIdAndUpdate(borrowerId, updatedBorrower);
         return res.status(200).json({
