@@ -14,6 +14,7 @@ const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRouter');
 const bookRouter = require('./routes/bookRouter');
 const authorRouter = require('./routes/authorRouter');
+const borrowerRouter = require("./routes/borrowerRouter");
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -55,6 +56,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/book', bookRouter);
 app.use('/api/author', authorRouter);
+app.use("/api/borrower", borrowerRouter);
 
 app.get('/', (req, res) => res.send('Welcome to Library Management System'));
 
