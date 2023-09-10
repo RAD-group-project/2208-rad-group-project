@@ -14,7 +14,7 @@ const Dashboard = ({trigger}) => {
   const [isTableLoading, setIsTableLoading] = useState(true);
 
   useEffect(() => {
-    getAllBooks();
+    getAllBorrowers();
   }, [trigger]);
 
   const getAllBorrowers = () => {
@@ -35,7 +35,7 @@ const Dashboard = ({trigger}) => {
 
 
   const deleteBorrower = (borrowerId) => {
-    axios.delete(`${backendUrl}book/delete/${borrowerId}`)
+    axios.delete(`${backendUrl}borrower/delete/${borrowerId}`)
       .then((response) => {
         handleClose();
         console.log(response.data);
@@ -49,7 +49,7 @@ const Dashboard = ({trigger}) => {
 
   const [openUpdate,setOpenUpdate] = useState(false);
   const [openDelete,setOpenDelete] = useState(false);
-  const [selectedBorrower, setSelectedBorrower] = useState(null); // Add selectedBook state
+  const [selectedBorrower, setSelectedBorrower] = useState(null); // Add selectedBorrower state
   const [selectedBorrowerId, setSelectedBorrowerId] = useState(null);
 
 
@@ -210,7 +210,7 @@ const Dashboard = ({trigger}) => {
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}
-                  <Update book={selectedBorrower} handleClose={handleClose} getAllBorrowers={getAllBorrowers}/>
+                  <Update borrower={selectedBorrower} handleClose={handleClose} getAllBorrowers={getAllBorrowers}/>
                   {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>

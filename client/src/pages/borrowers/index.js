@@ -6,7 +6,7 @@ import Delete from './delete'
 import Update from './update'
 import { Box, Typography,Button, Dialog, DialogContent, DialogContentText } from '@mui/material'
 
-export default function Books() {
+export default function Borrowers() {
     const [open,setOpen] = React.useState(false);
     const [trigger, setTrigger] = React.useState(0);
 

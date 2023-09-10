@@ -65,7 +65,7 @@ const Update = (data ) => {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        await updateBookApi(borrowerId, values);
+        await updateBorrowerApi(borrowerId, values);
         // alert('Borrower updated successfully');
         data.getAllBorrowers()
         data.handleClose()

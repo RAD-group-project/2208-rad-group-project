@@ -20,7 +20,7 @@ const validationSchema = yup.object({
     phone: yup.number("Enter contact number").typeError('Enter a valid number'),
 });
 
-// const apiUrl = backendUrl + 'book/add'
+// const apiUrl = backendUrl + 'borrower/add'
 
 const addBorrowerApi = async (borrowerData) => {
   try {
