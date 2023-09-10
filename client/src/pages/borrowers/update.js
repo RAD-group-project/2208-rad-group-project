@@ -161,6 +161,7 @@ const Update = (data ) => {
           id="checkoutDate"
           name="checkoutDate"
           label="Checkout Date"
+          type="date"
           value={formik.values.checkoutDate}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -175,6 +176,7 @@ const Update = (data ) => {
           id="dueDate"
           name="dueDate"
           label="Due Date"
+          type="date"
           value={formik.values.dueDate}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
