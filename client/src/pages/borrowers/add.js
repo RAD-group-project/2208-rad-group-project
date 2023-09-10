@@ -16,8 +16,8 @@ const validationSchema = yup.object({
     checkoutDate: yup.date("Enter checkout date").required("Checkout date is required"),
     dueDate: yup.date("Enter due date").required("Due date is required"),
     // returnDate: yup.string("Enter returned date").required("Return date is required"),
-    email: yup.string("Enter email address").email("Email is required"),
-    phone: yup.number("Enter contact number").typeError('Enter a valid number'),
+    email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
+    phone: yup.string("Enter contact number"),
 });
 
 // const apiUrl = backendUrl + 'borrower/add'
@@ -186,7 +186,6 @@ const Add = ({ handleClose, updateTrigger }) => {
           id="phone"
           name="phone"
           label="Phone"
-          type="number"
           value={formik.values.phone}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}

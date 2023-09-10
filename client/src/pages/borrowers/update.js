@@ -201,7 +201,6 @@ const Update = (data ) => {
           id="phone"
           name="phone"
           label="Phone"
-          type="number"
           value={formik.values.phone}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
