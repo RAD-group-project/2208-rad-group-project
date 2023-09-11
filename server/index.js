@@ -14,6 +14,7 @@ const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRouter');
 const bookRouter = require('./routes/bookRouter');
 const authorRouter = require('./routes/authorRouter');
+const borrowerRouter = require("./routes/borrowerRouter");
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -30,7 +31,7 @@ mongoose
 
 app.use(
   cors({
-    origin: 'http://localhost:3001',
+    origin: 'http://localhost:3000',
     credentials: true,
   })
 );
@@ -55,6 +56,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/book', bookRouter);
 app.use('/api/author', authorRouter);
+app.use("/api/borrower", borrowerRouter);
 
 app.get('/', (req, res) => res.send('Welcome to Library Management System'));
 

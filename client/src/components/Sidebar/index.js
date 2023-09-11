@@ -128,7 +128,7 @@ export default function Sidebar() {
 <Navitem path="/books" name="Books"/>
 <Navitem path="/authors" name="Authors"/>
 <Navitem path="/genres" name="Genres"/>
-<Navitem path="/borrowings" name="Borrowings"/>
+<Navitem path="/borrowers" name="Borrowers"/>
 <Navitem path="/users" name="Users"/>
 
 
