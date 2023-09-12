@@ -53,16 +53,16 @@ function App() {
             {!user ? <Route exact path="/books" element={  <Navigate to="/login" />} />:<Route exact path="/books" element={ <div> <Sidebar/> <Books/> </div>} />}
             {!user ? <Route exact path="/authors" element={ <Navigate to="/login" />} />:<Route exact path="/authors" element={ <div> <Sidebar/> <Authors/> </div>} />}
             {!user ? <Route exact path="/borrowers" element={ <Navigate to="/login" />} />:<Route exact path="/borrowers" element={ <div> <Sidebar/> <Borrowers/> </div>} />}
-            {!user ? <Route exact path="/users" element={ <Navigate to="/login" />} />:<Route exact path="/borrowers" element={ <div> <Sidebar/> <Borrowers/> </div>} />}
+            {!user ? <Route exact path="/users" element={ <Navigate to="/login" />} />:<Route exact path="/users" element={ <div> <Sidebar/> <Users/> </div>} />}
 
             {/* <Route exact path="/login" element={ <Auth login/>} /> */}
             
             {/* <Route exact path="/register" element={<Auth register/>} /> */}
 
-            {/* <Route exact path="/books" element={<div> <Sidebar/> <Books/> </div>}/>
-            <Route exact path="/users" element={<div> <Sidebar/> <Users/> </div>}/>
+             {/* <Route exact path="/books" element={<div> <Sidebar/> <Books/> </div>}/> */}
+            {/* <Route exact path="/users" element={<div> <Sidebar/> <Users/> </div>}/>
             <Route exact path="/authors" element={<div> <Sidebar/> <Authors/> </div>}/>
-            <Route exact path="/borrowers" element={<div> <Sidebar/> <Borrowers/> </div>}/> */}
+            <Route exact path="/borrowers" element={<div> <Sidebar/> <Borrowers/> </div>}/>  */}
 
               
       

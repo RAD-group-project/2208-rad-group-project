@@ -2,9 +2,30 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Button, TextField } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import axios from 'axios';
 
 import { backendUrl } from '../../data';
+
+
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    backgroundColor: 'white', // Background color
+    borderRadius: '4px',
+    marginBottom: '16px',
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'lightgray', // Border color
+      },
+      '&:hover fieldset': {
+        borderColor: 'blue', // Hover border color
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'green', // Focused border color
+      },
+    },
+  },
+}));
 
 
 const validationSchema = yup.object({
@@ -17,6 +38,7 @@ const validationSchema = yup.object({
 // const apiUrl = backendUrl + 'user/add'
 
 const addUserApi = async (userData) => {
+
   try {
     const response = await axios.post(`${backendUrl}user/add`, userData);
     return response.data;
@@ -26,6 +48,8 @@ const addUserApi = async (userData) => {
 };
 
 const Add = ({handleClose, updateTrigger}) => {
+  const classes = useStyles();
+
   const [user, setUser] = useState({
     name: '',
     dob: '',
@@ -60,7 +84,10 @@ const Add = ({handleClose, updateTrigger}) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
+
+        
         <TextField
+
           fullWidth
           id="name"
           name="name"
@@ -70,6 +97,8 @@ const Add = ({handleClose, updateTrigger}) => {
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
+          className={classes.textField} // Apply the styles here
+
         />
 
         <TextField
@@ -82,6 +111,8 @@ const Add = ({handleClose, updateTrigger}) => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          className={classes.textField} // Apply the styles here
+
         />
 
         <TextField
@@ -95,6 +126,8 @@ const Add = ({handleClose, updateTrigger}) => {
           onBlur={formik.handleBlur}
           error={formik.touched.phone && Boolean(formik.errors.phone)}
           helperText={formik.touched.phone && formik.errors.phone}
+          className={classes.textField} // Apply the styles here
+
         />
 
         {/* Add more fields here as needed */}
