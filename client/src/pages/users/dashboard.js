@@ -8,6 +8,33 @@ import Update from './update';
 import { backendUrl } from '../../data';
 import axios from 'axios';
 
+
+
+
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  actionButtonStyles: {
+    backgroundColor: '#ffffff', // Button background color
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)', // Shadow
+    borderRadius: '4px', // Rounded corners
+    transition: 'transform 0.2s ease-in-out', // Add a subtle hover effect
+    '&:hover': {
+      transform: 'scale(1.05)', // Enlarge the button on hover
+    },
+  },
+  menuItemStyles: {
+    backgroundColor: '#ffffff', // Menu item background color
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)', // Shadow
+    borderRadius: '4px', // Rounded corners
+    '&:hover': {
+      backgroundColor: '#f0f0f0', // Change background color on hover
+    },
+  },
+}));
+
+
+
 //nested data is ok, see accessorKeys in ColumnDef below
 const data = [
   {
@@ -23,6 +50,8 @@ const data = [
 
 
 const Dashboard = ({trigger}) => {
+
+  const classes = useStyles();
 
 
   const [users, setUsers] = useState([]);
@@ -125,34 +154,32 @@ const Dashboard = ({trigger}) => {
 
 
   return (
-  <div> <MaterialReactTable 
+  <div> <MaterialReactTable
   columns={columns}
   data={users}
   enableRowActions
-  renderRowActions={( rowData) => (
+  renderRowActions={(rowData) => (
     <Box sx={{ display: 'flex', gap: '1rem' }}>
       <Tooltip arrow placement="left" title="Edit">
-        <IconButton onClick={() => handleClickUpdate(rowData)}>
+        <IconButton onClick={() => handleClickUpdate(rowData)} sx={classes.actionButtonStyles}>
           <Edit />
         </IconButton>
       </Tooltip>
       <Tooltip arrow placement="right" title="Delete">
-        <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
+        <IconButton color="error" onClick={() => handleClickDelete(rowData)} sx={classes.actionButtonStyles}>
           <Delete />
         </IconButton>
       </Tooltip>
     </Box>
   )}
   renderRowActionMenuItems={({ closeMenu, rowData }) => [
-    
     <MenuItem
       key={0}
       onClick={() => {
-        // View profile logic...
         handleClickUpdate(rowData);
-        closeMenu()
+        closeMenu();
       }}
-      sx={{ m: 0 }}
+      sx={classes.menuItemStyles}
     >
       <ListItemIcon>
         <AccountCircle />
@@ -162,11 +189,10 @@ const Dashboard = ({trigger}) => {
     <MenuItem
       key={1}
       onClick={() => {
-        // Send email logic...
-        handleClickDelete()
+        handleClickDelete(rowData);
         closeMenu();
       }}
-      sx={{ m: 0 }}
+      sx={classes.menuItemStyles}
     >
       <ListItemIcon>
         <Send />
@@ -174,10 +200,8 @@ const Dashboard = ({trigger}) => {
       Delete
     </MenuItem>,
   ]}
+/>
 
-  
-  
-  />
 
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
