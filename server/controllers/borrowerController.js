@@ -31,7 +31,7 @@ const addBorrower = async (req, res) => {
     const newBorrower = req.body;
 
     try {
-         const existingBorrower = await Borrower.findOne({ userID: newBorrower.userID });    
+         const existingBorrower = await Borrower.findOne({ email: newBorrower.email });    
          if (existingBorrower) {
            return res
              .status(403)
