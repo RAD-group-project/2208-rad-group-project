@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Dashboard from './dashboard';
+import Dashboard from './dashboard-1';
 import Add from './add';
 import { Box, Typography, Button, Dialog, DialogContent } from '@mui/material';
 import { makeStyles } from '@mui/styles'

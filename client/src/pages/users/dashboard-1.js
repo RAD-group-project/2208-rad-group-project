@@ -1,21 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { MaterialReactTable } from 'material-react-table';
 
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  DialogActions,
-  ListItemIcon,
-  MenuItem,
-  Typography,
-  Tooltip,
-  IconButton,
-  Paper, // Add Paper component for dialog and container
-} from '@mui/material';
+import { Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions, ListItemIcon, MenuItem, Typography, Tooltip, IconButton } from '@mui/material';
 import { AccountCircle, Send, Delete, Edit } from '@mui/icons-material';
 import Update from './update';
 
@@ -23,43 +9,31 @@ import { backendUrl } from '../../data';
 import axios from 'axios';
 import { format } from 'date-fns';
 
+
+
+
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   actionButtonStyles: {
-    backgroundColor: '#f9f9f9', // Use primary color for buttons
-    color: '#fff', // Text color
-    borderRadius: '4px',
-    transition: 'transform 0.2s ease-in-out',
+    backgroundColor: '#ffffff', // Button background color
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)', // Shadow
+    borderRadius: '4px', // Rounded corners
+    transition: 'transform 0.2s ease-in-out', // Add a subtle hover effect
     '&:hover': {
-      transform: 'scale(1.05)',
+      transform: 'scale(1.05)', // Enlarge the button on hover
     },
   },
   menuItemStyles: {
-    backgroundColor: '#ffffff',
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)',
-    borderRadius: '4px',
+    backgroundColor: '#ffffff', // Menu item background color
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)', // Shadow
+    borderRadius: '4px', // Rounded corners
     '&:hover': {
-      backgroundColor: '#f0f0f0',
-    },
-  },
-  dialogPaper: {
-    padding: '16px',
-    borderRadius: '8px', // Increase border radius for dialogs
-  },
-  tableContainer: {
-    padding: '16px',
-  },
-  tableHeader: {
-    backgroundColor: '#f9f9f9',
-    color: '#fff',
-  },
-  tableRow: {
-    '&:nth-child(even)': {
-      backgroundColor: '#f5f5f5', // Alternate row background color
+      backgroundColor: '#f0f0f0', // Change background color on hover
     },
   },
 }));
+
 
 
 //nested data is ok, see accessorKeys in ColumnDef below
@@ -185,17 +159,10 @@ const Dashboard = ({trigger}) => {
 
 
   return (
-  <div>
-    
-    <Paper className={classes.tableContainer}>
-     <MaterialReactTable
+  <div> <MaterialReactTable
   columns={columns}
   data={users}
   enableRowActions
-  tableOptions={{
-    tableRowClass: classes.tableRow,
-    tableHeaderClass: classes.tableHeader,
-  }}
   renderRowActions={(rowData) => (
     <Box sx={{ display: 'flex', gap: '1rem' }}>
       <Tooltip arrow placement="left" title="Edit">
@@ -238,8 +205,6 @@ const Dashboard = ({trigger}) => {
           </Button>
         </DialogActions>
         </Dialog>
-        </Paper>
-
   </div>
   
   
