@@ -8,7 +8,32 @@ import Update from './update';
 import { backendUrl } from '../../data';
 import axios from 'axios';
 
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  actionButtonStyles: {
+    backgroundColor: '#ffffff', // Button background color
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)', // Shadow
+    borderRadius: '4px', // Rounded corners
+    transition: 'transform 0.2s ease-in-out', // Add a subtle hover effect
+    '&:hover': {
+      transform: 'scale(1.05)', // Enlarge the button on hover
+    },
+  },
+  menuItemStyles: {
+    backgroundColor: '#ffffff', // Menu item background color
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)', // Shadow
+    borderRadius: '4px', // Rounded corners
+    '&:hover': {
+      backgroundColor: '#f0f0f0', // Change background color on hover
+    },
+  },
+}));
+
+
 const Dashboard = ({trigger}) => {
+
+  const classes = useStyles();
 
   const [books, setBooks] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
@@ -124,12 +149,12 @@ const Dashboard = ({trigger}) => {
   renderRowActions={( rowData) => (
     <Box sx={{ display: 'flex', gap: '1rem' }}>
       <Tooltip arrow placement="left" title="Edit">
-        <IconButton onClick={() => handleClickUpdate(rowData)}>
+      <IconButton onClick={() => handleClickUpdate(rowData)} className={classes.actionButtonStyles}>
           <Edit />
         </IconButton>
       </Tooltip>
       <Tooltip arrow placement="right" title="Delete">
-        <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
+      <IconButton color="error" onClick={() => handleClickDelete(rowData)} className={classes.actionButtonStyles}>
           <Delete />
         </IconButton>
       </Tooltip>
@@ -170,7 +195,7 @@ const Dashboard = ({trigger}) => {
     <Box
       sx={{
         display: 'flex',
-        justifyContent: 'space-around',
+        justifyContent: 'flex-start',
         alignItems: 'center',
       }}
     >
@@ -179,10 +204,11 @@ const Dashboard = ({trigger}) => {
         height={200}
         src={`https://covers.openlibrary.org/b/isbn/${row.original.ISBN}-M.jpg`}
         loading="lazy"
+
         // style={{ borderRadius: '50%' }}
       />
       {console.log(row)}
-      <Box sx={{ textAlign: 'center' }}>
+      <Box sx={{ textAlign: 'left', ml: 20 }}>
         <Typography variant="h4">{row.original.title}</Typography>
         <Typography variant="h5">
           {row.original.author}
