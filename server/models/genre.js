@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 // Creating genre schema
-const BookSchema = new mongoose.Schema({
+const GenreSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
