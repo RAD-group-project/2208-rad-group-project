@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff", // Make it white
     marginBottom: "16px", // Replace with your desired pixel value
     marginTop: "20px",
+    textAlign: 'center'
   },
 }));
 
@@ -57,13 +58,13 @@ export default function Auth(props) {
   };
 
   return (
-    <div className={classes.authContainer}>
+    <div className={classes.authContainer} style = {{align: "center",}} >
       <Container component="main" maxWidth="lg">
 
       <Typography className={classes.heading}>
-        Library Website
+        Library Management System
       </Typography>
-      <Box className={classes.authBox}>
+      <Box className={classes.authBox} >
         <CssBaseline />
         {props.login ? <Login /> : <Register />}
       </Box>
