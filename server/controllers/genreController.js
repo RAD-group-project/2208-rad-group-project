@@ -1,13 +1,13 @@
 const Genre = require('../models/genre');
 
 const getGenre = async (req, res) => {
-    const bookId = req.params.id;
+    const genreId = req.params.id;
 
     try {
-        const genre = await Genre.findById(bookId);
+        const genre = await Genre.findById(genreId);
         return res.status(200).json({
             success: true,
-            book
+            genre
         });
     } catch (err) {
         return res.status(400).json({ success: false, err });
@@ -16,15 +16,12 @@ const getGenre = async (req, res) => {
 
 const getAllGenres = async (req, res) => {
     try {
-        const genres = await Genre.find({});
-        return res.status(200).json({
-            success: true,
-            booksList: genres
-        });
+      const genres = await Genre.find();
+      res.status(200).json({ success: true, data: genres });
     } catch (err) {
-        return res.status(400).json({ success: false, err });
+      res.status(500).json({ success: false, error: err.message });
     }
-};
+  };
 
 
 const addGenre = async (req, res) => {
@@ -38,7 +35,7 @@ const addGenre = async (req, res) => {
 
         const genre = new Genre(newGenre);
 
-        const savedGenre = await genre.save();     //Book or book?
+        const savedGenre = await genre.save();    
         return res.status(201).json({
             success: true,
             user: savedGenre
@@ -49,13 +46,13 @@ const addGenre = async (req, res) => {
 };
 
 const updateGenre = async (req, res) => {
-    const bookId = req.params.id;
-    const updatedBookData = req.body;
+    const genreId = req.params.id;
+    const updatedGenreData = req.body;
 
     try {
         const updatedGenre = new Genre(updatedGenreData);
 
-        const genre = await Genre.findByIdAndUpdate(bookId, updatedGenre);
+        const genre = await Genre.findByIdAndUpdate(genreId, updatedGenre);
         return res.status(200).json({
             success: true,
             updatedGenre: genre
@@ -66,10 +63,10 @@ const updateGenre = async (req, res) => {
 };
 
 const deleteGenre = async (req, res) => {
-    const bookId = req.params.id;
+    const genreId = req.params.id;
 
     try {
-        const genre = await Genre.findByIdAndDelete(bookId);
+        const genre = await Genre.findByIdAndDelete(genreId);
         return res.status(200).json({
             success: true,
             deletedUser: genre
@@ -80,9 +77,9 @@ const deleteGenre = async (req, res) => {
 };
 
 module.exports = {
-    getgenre,
-    getAllgenres,
-    addgenre,
-    updategenre,
-    deletegenre
+    getGenre,
+    getAllGenres,
+    addGenre,
+    updateGenre,
+    deleteGenre
 };

@@ -1,28 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const {
-    getgenre,
-    getAllgenres,
-    addgenre,
-    updategenre,
-    deletegenre
+  getGenre,
+  getAllGenres,
+  addGenre,
+  updateGenre,
+  deleteGenre
 } = require('../controllers/genreController');
 
 router.get("/getAll", async (req, res) => {
+  console.log("o")
   try {
     await getAllGenres(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
-/*
-router.get("/getAllMembers", async (req, res) => {
-  try {
-    await getAllMembers(req, res);
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});*/
 
 router.get("/get/:id", async (req, res) => {
   try {
