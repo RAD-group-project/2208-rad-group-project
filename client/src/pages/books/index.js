@@ -2,9 +2,8 @@ import * as React from 'react'
 
 import Dashboard from './dashboard'
 import Add from './add'
-import Delete from './delete'
-import Update from './update'
 import { Box, Typography,Button, Dialog, DialogContent, DialogContentText } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 export default function Books() {
     const [open,setOpen] = React.useState(false);
@@ -21,16 +20,47 @@ export default function Books() {
     const handleClose = () => {
         setOpen(false);
     }
+    const useStyles = makeStyles({
+        booksContainer: {
+            background: `
+            linear-gradient(to bottom, #003f5c, #2f4b7c),
+            radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
+          backgroundBlendMode: 'multiply, normal',
+          minHeight: '100vh', // Adjust as needed
+          padding: '20px',
+          color: '#ffffff',
+          textAlign: 'left',
+        },
+        header: {
+          display: 'flex',
+          justifyContent: 'space-between'
+        },
+        sectionTitle: {
+          fontSize: '50px',
+          marginBottom: '15px',
+        },
+        addButton: {
+          color: '#ffffff',
+          borderColor: '#ffffff',
+        },
+      });
+    
+      const classes = useStyles();
 
   return (
-    <div>
-        <Box sx={{ml:28,my:5}}>
+    <div className={classes.booksContainer}>
+        <Box sx={{ml:28,my:5}} >
 
-            <Typography variant='h3'>Books</Typography> 
+            <Box className={classes.header}  >
+            <Typography variant='h3' className={classes.sectionTitle}>
+                Books
+            </Typography> 
             <Box sx={{mx:2,my:3}}>
-            <Button variant='outlined' onClick={handleClickOpen} >Add Books</Button>
+            <Button variant='outlined' onClick={handleClickOpen} className={classes.addButton}>
+                Add Book
+            </Button>
             </Box>
-
+            </Box>
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
                         <Add handleClose={handleClose} updateTrigger={updateTrigger} />

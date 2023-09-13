@@ -3,8 +3,28 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
+import { makeStyles } from '@mui/styles';
 
 import { backendUrl } from '../../data';
+
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    backgroundColor: 'white', // Background color
+    borderRadius: '4px',
+    marginBottom: '16px',
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'lightgray', // Border color
+      },
+      '&:hover fieldset': {
+        borderColor: 'blue', // Hover border color
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'green', // Focused border color
+      },
+    },
+  },
+}));
 
 const validationSchema = yup.object({
   title: yup.string('Enter title').required('Title is required'),
@@ -26,6 +46,9 @@ const updateBookApi = async (bookId, bookData) => {
 };
 
 const Update = (data ) => {
+
+  const classes = useStyles();
+
   console.log(data['book']['row']['original']['_id'])
   const bookId = data['book']['row']['original']['_id']
 
@@ -88,6 +111,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.title && Boolean(formik.errors.title)}
         helperText={formik.touched.title && formik.errors.title}
+        className={classes.textField} 
       />
 
       <TextField
@@ -101,6 +125,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.author && Boolean(formik.errors.author)}
         helperText={formik.touched.author && formik.errors.author}
+        className={classes.textField} 
       />
 
       <TextField
@@ -114,6 +139,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.ISBN && Boolean(formik.errors.ISBN)}
         helperText={formik.touched.ISBN && formik.errors.ISBN}
+        className={classes.textField} 
       />
 
       <TextField
@@ -127,6 +153,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.publisher && Boolean(formik.errors.publisher)}
         helperText={formik.touched.publisher && formik.errors.publisher}
+        className={classes.textField} 
       />
 
       <TextField
@@ -140,6 +167,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.datePublished && Boolean(formik.errors.datePublished)}
         helperText={formik.touched.datePublished && formik.errors.datePublished}
+        className={classes.textField} 
       />
 
       <TextField
@@ -153,6 +181,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.genre && Boolean(formik.errors.genre)}
         helperText={formik.touched.genre && formik.errors.genre}
+        className={classes.textField} 
       />
 
       <TextField
@@ -166,6 +195,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.copies && Boolean(formik.errors.copies)}
         helperText={formik.touched.copies && formik.errors.copies}
+        className={classes.textField} 
       />
 
         <Button color="primary" variant="contained" fullWidth type="submit">
