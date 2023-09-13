@@ -1,18 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware"); // Import the authMiddleware
-
 const {
-  getBook,
-  getAllBooks,
-  addBook,
-  updateBook,
-  deleteBook
-} = require('../controllers/bookController');
+  getBorrower,
+  getAllBorrowers,
+  addBorrower,
+  updateBorrower,
+  deleteBorrower,
+} = require("../controllers/borrowerController");
 
 router.get("/get/:id", async (req, res) => {
     try {
-      await getBook(req, res);
+      await getBorrower(req, res);
     } catch (err) {
       res.status(500).json({ success: false, error: err.message });
     }
@@ -21,7 +19,7 @@ router.get("/get/:id", async (req, res) => {
 
 router.get("/getAll", async (req, res) => {
   try {
-    await getAllBooks(req, res);
+    await getAllBorrowers(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -30,7 +28,7 @@ router.get("/getAll", async (req, res) => {
 
 router.post("/add", async (req, res) => {
   try {
-    await addBook(req, res);
+    await addBorrower(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -38,7 +36,7 @@ router.post("/add", async (req, res) => {
 
 router.put("/update/:id", async (req, res) => {
   try {
-    await updateBook(req, res);
+    await updateBorrower(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -46,7 +44,7 @@ router.put("/update/:id", async (req, res) => {
 
 router.delete("/delete/:id", async (req, res) => {
   try {
-    await deleteBook(req, res);
+    await deleteBorrower(req, res);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

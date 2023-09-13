@@ -3,8 +3,31 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
+import { makeStyles } from '@mui/styles';
 
 import { backendUrl } from '../../data';
+
+
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    backgroundColor: 'white', // Background color
+    borderRadius: '4px',
+    marginBottom: '16px',
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'lightgray', // Border color
+      },
+      '&:hover fieldset': {
+        borderColor: 'blue', // Hover border color
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'green', // Focused border color
+      },
+    },
+  },
+}));
+
+
 
 const validationSchema = yup.object({
   name: yup.string('Enter user name').required('Name is required'),
@@ -23,6 +46,10 @@ const updateUserApi = async (userId, userData) => {
 };
 
 const Update = (data ) => {
+
+  const classes = useStyles();
+
+
   console.log(data['user']['row']['original']['_id'])
   const userId = data['user']['row']['original']['_id']
   // const [user, setUser] = useState({
@@ -82,6 +109,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
+          className={classes.textField} 
         />
 
         <TextField
@@ -94,6 +122,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          className={classes.textField} 
         />
 
         <TextField
@@ -107,6 +136,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.phone && Boolean(formik.errors.phone)}
           helperText={formik.touched.phone && formik.errors.phone}
+          className={classes.textField} 
         />
 
         {/* Add more fields here as needed */}

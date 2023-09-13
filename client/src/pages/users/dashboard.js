@@ -1,28 +1,75 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { MaterialReactTable } from 'material-react-table';
 
-import { Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions, ListItemIcon, MenuItem, Typography, Tooltip, IconButton } from '@mui/material';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  DialogActions,
+  ListItemIcon,
+  MenuItem,
+  Typography,
+  Tooltip,
+  IconButton,
+  Paper, // Add Paper component for dialog and container
+} from '@mui/material';
 import { AccountCircle, Send, Delete, Edit } from '@mui/icons-material';
 import Update from './update';
 
 import { backendUrl } from '../../data';
 import axios from 'axios';
+import { format } from 'date-fns';
+
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  actionButtonStyles: {
+    backgroundColor: '#f9f9f9', // Use primary color for buttons
+    color: '#fff', // Text color
+    borderRadius: '4px',
+    transition: 'transform 0.2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.05)',
+    },
+  },
+  menuItemStyles: {
+    backgroundColor: '#ffffff',
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)',
+    borderRadius: '4px',
+    '&:hover': {
+      backgroundColor: '#f0f0f0',
+    },
+  },
+  dialogPaper: {
+    padding: '16px',
+    borderRadius: '8px', // Increase border radius for dialogs
+  },
+  tableContainer: {
+    padding: '16px',
+  },
+  tableHeader: {
+    backgroundColor: '#f9f9f9',
+    color: '#fff',
+  },
+  tableRow: {
+    '&:nth-child(even)': {
+      backgroundColor: '#f5f5f5', // Alternate row background color
+    },
+  },
+}));
+
 
 //nested data is ok, see accessorKeys in ColumnDef below
-const data = [
-  {
-    name: 'Himasha Amandi',
-    email: 'mandy@mandy.lk',
-    phone: '07111111999',
-    booksBorrowed: 6,
-    registered:'03-08-2022'
-  },
- 
-];
+
 
 
 
 const Dashboard = ({trigger}) => {
+
+  const classes = useStyles();
 
 
   const [users, setUsers] = useState([]);
@@ -38,7 +85,20 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.usersList.filter(user => !user.isAdmin);
+        var members = response.data.usersList.filter(user => !user.isAdmin);
+
+
+
+        var members = members.map(member => {
+          const formattedJoinDate = format(new Date(member.registered), 'yyyy-MM-dd');
+          return {
+            ...member,
+            registered: formattedJoinDate,
+          };
+        });
+
+
+
         setUsers(members);
         setIsTableLoading(false);
       })
@@ -125,59 +185,34 @@ const Dashboard = ({trigger}) => {
 
 
   return (
-  <div> <MaterialReactTable 
+  <div>
+    
+    <Paper className={classes.tableContainer}>
+     <MaterialReactTable
   columns={columns}
   data={users}
   enableRowActions
-  renderRowActions={( rowData) => (
+  tableOptions={{
+    tableRowClass: classes.tableRow,
+    tableHeaderClass: classes.tableHeader,
+  }}
+  renderRowActions={(rowData) => (
     <Box sx={{ display: 'flex', gap: '1rem' }}>
       <Tooltip arrow placement="left" title="Edit">
-        <IconButton onClick={() => handleClickUpdate(rowData)}>
+        <IconButton onClick={() => handleClickUpdate(rowData)} className={classes.actionButtonStyles}>
           <Edit />
         </IconButton>
       </Tooltip>
       <Tooltip arrow placement="right" title="Delete">
-        <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
+        <IconButton color="error" onClick={() => handleClickDelete(rowData)} className={classes.actionButtonStyles}>
           <Delete />
         </IconButton>
       </Tooltip>
     </Box>
   )}
-  renderRowActionMenuItems={({ closeMenu, rowData }) => [
-    
-    <MenuItem
-      key={0}
-      onClick={() => {
-        // View profile logic...
-        handleClickUpdate(rowData);
-        closeMenu()
-      }}
-      sx={{ m: 0 }}
-    >
-      <ListItemIcon>
-        <AccountCircle />
-      </ListItemIcon>
-      Update
-    </MenuItem>,
-    <MenuItem
-      key={1}
-      onClick={() => {
-        // Send email logic...
-        handleClickDelete()
-        closeMenu();
-      }}
-      sx={{ m: 0 }}
-    >
-      <ListItemIcon>
-        <Send />
-      </ListItemIcon>
-      Delete
-    </MenuItem>,
-  ]}
+  
+/>
 
-  
-  
-  />
 
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
@@ -203,6 +238,8 @@ const Dashboard = ({trigger}) => {
           </Button>
         </DialogActions>
         </Dialog>
+        </Paper>
+
   </div>
   
   

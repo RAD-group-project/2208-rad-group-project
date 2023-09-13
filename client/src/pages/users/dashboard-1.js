@@ -7,6 +7,10 @@ import Update from './update';
 
 import { backendUrl } from '../../data';
 import axios from 'axios';
+import { format } from 'date-fns';
+
+
+
 
 import { makeStyles } from '@mui/styles';
 
@@ -31,25 +35,45 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
+//nested data is ok, see accessorKeys in ColumnDef below
+
+
+
+
 const Dashboard = ({trigger}) => {
 
   const classes = useStyles();
 
-  const [books, setBooks] = useState([]);
+
+  const [users, setUsers] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
 
   useEffect(() => {
-    getAllBooks();
+    getAllUsers();
   }, [trigger]);
 
-  const getAllBooks = () => {
-    console.log(backendUrl + 'book/getAll')
-    axios.get(backendUrl + 'book/getAll')
+  const getAllUsers = () => {
+    console.log(backendUrl + 'user/getAll')
+    axios.get(backendUrl + 'user/getAll')
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.booksList.filter(book => !book.isAdmin);
-        setBooks(members);
+        var members = response.data.usersList.filter(user => !user.isAdmin);
+
+
+
+        var members = members.map(member => {
+          const formattedJoinDate = format(new Date(member.registered), 'yyyy-MM-dd');
+          return {
+            ...member,
+            registered: formattedJoinDate,
+          };
+        });
+
+
+
+        setUsers(members);
         setIsTableLoading(false);
       })
       .catch((error) => {
@@ -59,12 +83,12 @@ const Dashboard = ({trigger}) => {
   };
 
 
-  const deleteBook = (bookId) => {
-    axios.delete(`${backendUrl}book/delete/${bookId}`)
+  const deleteUser = (userId) => {
+    axios.delete(`${backendUrl}user/delete/${userId}`)
       .then((response) => {
         handleClose();
         console.log(response.data);
-        getAllBooks();
+        getAllUsers();
       })
       .catch((error) => {
         console.log(error);
@@ -74,19 +98,19 @@ const Dashboard = ({trigger}) => {
 
   const [openUpdate,setOpenUpdate] = useState(false);
   const [openDelete,setOpenDelete] = useState(false);
-  const [selectedBook, setSelectedBook] = useState(null); // Add selectedBook state
-  const [selectedBookId, setSelectedBookId] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null); // Add selectedUser state
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
 
 
-  const handleClickUpdate = (book) => {
-    setSelectedBook(book);
+  const handleClickUpdate = (user) => {
+    setSelectedUser(user);
     setOpenUpdate(true);
   }
 
-  const handleClickDelete = (book) => {
-    console.log(book['row']['original']['_id'])
-    setSelectedBookId(book['row']['original']['_id'])
+  const handleClickDelete = (user) => {
+    console.log(user['row']['original']['_id'])
+    setSelectedUserId(user['row']['original']['_id'])
     setOpenDelete(true);
   }
   const handleClose = () => {
@@ -98,42 +122,35 @@ const Dashboard = ({trigger}) => {
   //should be memoized or stable
   const columns = useMemo(
     () => [
+
+
+
+
       {
-        accessorKey: 'title',
-        header: 'Title',
+        accessorKey: 'name',
+        header: 'Name',
         size: 150
       },
       {
-        accessorKey: 'author',
-        header: 'Author',
+        accessorKey: 'email',
+        header: 'Email',
         size: 150
       },
       {
-        accessorKey: 'ISBN',
-        header: 'ISBN',
+        accessorKey: 'phone',
+        header: 'Phone Number',
         size: 150
       },
       {
-        accessorKey: 'publisher',
-        header: 'Publisher',
+        accessorKey: 'booksBorrowed',
+        header: 'No.of Borrowed Books',
         size: 150
       },
       {
-        accessorKey: 'datePublished',
-        header: 'Date Published',
+        accessorKey: 'registered',
+        header: 'Registered Date',
         size: 150
       },
-      {
-        accessorKey: 'genre',
-        header: 'Genre',
-        size: 150
-      },
-      {
-        accessorKey: 'copies',
-        header: 'Copies',
-        size: 150
-      },
-      
     ],
     [],
   );
@@ -142,102 +159,47 @@ const Dashboard = ({trigger}) => {
 
 
   return (
-  <div> <MaterialReactTable 
+  <div> <MaterialReactTable
   columns={columns}
-  data={books}
+  data={users}
   enableRowActions
-  renderRowActions={( rowData) => (
+  renderRowActions={(rowData) => (
     <Box sx={{ display: 'flex', gap: '1rem' }}>
       <Tooltip arrow placement="left" title="Edit">
-      <IconButton onClick={() => handleClickUpdate(rowData)} className={classes.actionButtonStyles}>
+        <IconButton onClick={() => handleClickUpdate(rowData)} className={classes.actionButtonStyles}>
           <Edit />
         </IconButton>
       </Tooltip>
       <Tooltip arrow placement="right" title="Delete">
-      <IconButton color="error" onClick={() => handleClickDelete(rowData)} className={classes.actionButtonStyles}>
+        <IconButton color="error" onClick={() => handleClickDelete(rowData)} className={classes.actionButtonStyles}>
           <Delete />
         </IconButton>
       </Tooltip>
     </Box>
   )}
-  renderRowActionMenuItems={({ closeMenu, rowData }) => [
-    
-    <MenuItem
-      key={0}
-      onClick={() => {
-        // View profile logic...
-        handleClickUpdate(rowData);
-        closeMenu()
-      }}
-      sx={{ m: 0 }}
-    >
-      <ListItemIcon>
-        <AccountCircle />
-      </ListItemIcon>
-      Update
-    </MenuItem>,
-    <MenuItem
-      key={1}
-      onClick={() => {
-        // Send email logic...
-        handleClickDelete()
-        closeMenu();
-      }}
-      sx={{ m: 0 }}
-    >
-      <ListItemIcon>
-        <Send />
-      </ListItemIcon>
-      Delete
-    </MenuItem>,
-  ]}
-  renderDetailPanel={({ row }) => (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-      }}
-    >
-      <img
-        alt={row.original.title}
-        height={200}
-        src={`https://covers.openlibrary.org/b/isbn/${row.original.ISBN}-M.jpg`}
-        loading="lazy"
-
-        // style={{ borderRadius: '50%' }}
-      />
-      {console.log(row)}
-      <Box sx={{ textAlign: 'left', ml: 20 }}>
-        <Typography variant="h4">{row.original.title}</Typography>
-        <Typography variant="h5">
-          {row.original.author}
-        </Typography>
-      </Box>
-    </Box>
-  )}
   
-  />
+/>
+
 
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
                 {/* <DialogContentText> */}
-                  <Update book={selectedBook} handleClose={handleClose} getAllBooks={getAllBooks}/>
+                  <Update user={selectedUser} handleClose={handleClose} getAllUsers={getAllUsers}/>
                   {/* </DialogContentText> */}
             </DialogContent>
         </Dialog>
 
       <Dialog open={openDelete} onClose={handleClose}>
       <DialogTitle id="alert-dialog-title">
-          {" Delete This Book?"}
+          {" Delete This User?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Delete This Book?
+            Delete This User?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => deleteBook(selectedBookId)}>Yes</Button>
+          <Button onClick={() => deleteUser(selectedUserId)}>Yes</Button>
           <Button onClick={handleClose} autoFocus>
             No
           </Button>

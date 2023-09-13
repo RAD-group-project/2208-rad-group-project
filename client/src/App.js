@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar';
 import Books from './pages/books';
 import Users from './pages/users';
 import Authors from './pages/authors';
+import Borrowers from "./pages/borrowers";
 
 import Auth from './pages/auth';
 import { useAuth } from "./hooks/useAuth";
@@ -51,15 +52,17 @@ function App() {
             {!user ? <Route exact path="/dashboard" element={  <Navigate to="/login" />} />:<Route exact path="/dashboard" element={ <div> <Sidebar/> Home </div>} />}
             {!user ? <Route exact path="/books" element={  <Navigate to="/login" />} />:<Route exact path="/books" element={ <div> <Sidebar/> <Books/> </div>} />}
             {!user ? <Route exact path="/authors" element={ <Navigate to="/login" />} />:<Route exact path="/authors" element={ <div> <Sidebar/> <Authors/> </div>} />}
+            {!user ? <Route exact path="/borrowers" element={ <Navigate to="/login" />} />:<Route exact path="/borrowers" element={ <div> <Sidebar/> <Borrowers/> </div>} />}
+            {!user ? <Route exact path="/users" element={ <Navigate to="/login" />} />:<Route exact path="/users" element={ <div> <Sidebar/> <Users/> </div>} />}
 
             {/* <Route exact path="/login" element={ <Auth login/>} /> */}
             
             {/* <Route exact path="/register" element={<Auth register/>} /> */}
 
-            <Route exact path="/books" element={<div> <Sidebar/> <Books/> </div>}/>
-            <Route exact path="/users" element={<div> <Sidebar/> <Users/> </div>}/>
+             {/* <Route exact path="/books" element={<div> <Sidebar/> <Books/> </div>}/> */}
+            {/* <Route exact path="/users" element={<div> <Sidebar/> <Users/> </div>}/>
             <Route exact path="/authors" element={<div> <Sidebar/> <Authors/> </div>}/>
-            
+            <Route exact path="/borrowers" element={<div> <Sidebar/> <Borrowers/> </div>}/>  */}
 
               
       
