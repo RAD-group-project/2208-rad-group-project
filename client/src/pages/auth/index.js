@@ -14,7 +14,7 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./register";
 import { makeStyles } from "@mui/styles";
 
-const backgroundImage = 'url("/your-image-path.jpg")'; // Replace with your image path
+const backgroundImage = 'url("/img/library.jpeg")';
 
 const useStyles = makeStyles((theme) => ({
   authContainer: {
@@ -26,21 +26,23 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
-  authPaper: {
-    width: "90%", // Smaller box width
-    padding: "16px", // Replace with your desired pixel value
+  authBox: {
+    width: "40%", // Smaller box width
+    padding: "12px", // Replace with your desired pixel value
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    boxShadow: "none",
-    background: "transparent", // Semi-transparent white background
+    background: "#fff", // Solid white background
+    borderRadius: "10px", // Rounded corners
   },
   heading: {
-    fontSize: "32px",
+    fontSize: "50px",
+    fontWeight: "bold", // Make it bold
+    color: "#fff", // Make it white
     marginBottom: "16px", // Replace with your desired pixel value
+    marginTop: "20px",
   },
 }));
-
 
 export default function Auth(props) {
   const classes = useStyles();
@@ -57,21 +59,14 @@ export default function Auth(props) {
   return (
     <div className={classes.authContainer}>
       <Container component="main" maxWidth="lg">
-        <Paper className={classes.authPaper}>
-          <Typography className={classes.heading}>Library Website</Typography>
-          <CssBaseline />
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
-            component={Paper}
-            elevation={6}
-            square
-          >
-            {props.login ? <Login /> : <Register />}
-          </Grid>
-        </Paper>
+
+      <Typography className={classes.heading}>
+        Library Website
+      </Typography>
+      <Box className={classes.authBox}>
+        <CssBaseline />
+        {props.login ? <Login /> : <Register />}
+      </Box>
       </Container>
     </div>
   );
