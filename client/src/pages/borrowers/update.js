@@ -7,7 +7,7 @@ import axios from 'axios';
 import { backendUrl } from '../../data';
 
 const validationSchema = yup.object({
-  userID: yup.string("Enter member ID number").required("Member ID is required"),
+    // userID: yup.string("Enter member ID number").required("Member ID is required"),
     firstName: yup.string("Enter first name").required("First name is required"),
     lastName: yup.string("Enter last name").required("Last name is required"),
     ISBN: yup.string('Enter ISBN').required('ISBN is required'),
@@ -16,7 +16,7 @@ const validationSchema = yup.object({
     checkoutDate: yup.date("Enter checkout date").required("Checkout date is required"),
     dueDate: yup.date("Enter due date").required("Due date is required"),
     // returnDate: yup.string("Enter returned date").required("Return date is required"),
-    email: yup.string("Enter email address").email("Email is required"),
+    email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
     phone: yup.number("Enter contact number").typeError('Enter a valid number'),  
 });
 
@@ -84,7 +84,7 @@ const Update = (data ) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <TextField
+        {/* <TextField
           fullWidth
           id="userID"
           name="userID"
@@ -94,7 +94,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.userID && Boolean(formik.errors.userID)}
           helperText={formik.touched.userID && formik.errors.userID}
-        />
+        /> */}
 
         <TextField
           fullWidth
