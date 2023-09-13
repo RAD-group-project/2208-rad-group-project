@@ -12,9 +12,39 @@ import { Container } from "@mui/material";
 import Login from "./login";
 import { Route, Routes } from "react-router-dom";
 import Register from "./register";
+import { makeStyles } from "@mui/styles";
+
+const backgroundImage = 'url("/your-image-path.jpg")'; // Replace with your image path
+
+const useStyles = makeStyles((theme) => ({
+  authContainer: {
+    backgroundImage: backgroundImage,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  authPaper: {
+    width: "90%", // Smaller box width
+    padding: "16px", // Replace with your desired pixel value
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    boxShadow: "none",
+    background: "transparent", // Semi-transparent white background
+  },
+  heading: {
+    fontSize: "32px",
+    marginBottom: "16px", // Replace with your desired pixel value
+  },
+}));
+
 
 export default function Auth(props) {
-    // console.log(props)
+  const classes = useStyles();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,33 +55,11 @@ export default function Auth(props) {
   };
 
   return (
-    <Container component="main" maxWidth="lg">
-      <Box
-        sx={{
-          marginTop: 8,
-        }}
-      >
-        <Grid container>
+    <div className={classes.authContainer}>
+      <Container component="main" maxWidth="lg">
+        <Paper className={classes.authPaper}>
+          <Typography className={classes.heading}>Library Website</Typography>
           <CssBaseline />
-          <Grid
-            item
-            xs={false}
-            sm={4}
-            md={7}
-            sx={{
-              backgroundImage: "url(https://source.unsplash.com/random)",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: (t) =>
-                t.palette.mode === "light"
-                  ? t.palette.grey[50]
-                  : t.palette.grey[900],
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-
-
-
           <Grid
             item
             xs={12}
@@ -61,18 +69,10 @@ export default function Auth(props) {
             elevation={6}
             square
           >
-            {/* <Routes>
-            <Route exact path="/login" element={<Login />} />
-
-                <Route exact path="/register" element={<Register />} />
-            </Routes> */}
-            {props.login ?  <Login />  : <Register />  }
-           
-          
-
+            {props.login ? <Login /> : <Register />}
           </Grid>
-        </Grid>
-      </Box>
-    </Container>
+        </Paper>
+      </Container>
+    </div>
   );
 }
