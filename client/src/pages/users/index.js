@@ -26,9 +26,10 @@ export default function Users() {
 
   const useStyles = makeStyles({
     usersContainer: {
-      background: `
-      linear-gradient(to bottom, #272643, #2f2e52),
-      radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
+      backgroundImage: 'url("/img/library.jpeg")',
+      // background: `
+      // linear-gradient(to bottom, #272643, #2f2e52),
+      // radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
       backgroundBlendMode: "multiply, normal",
       minHeight: "100vh", // Adjust as needed
       padding: "20px",
@@ -79,17 +80,17 @@ export default function Users() {
           </DialogContent>
         </Dialog>
         <Box
-          sx={{
-            mt: 2,
-            mx: 2,
-            boxShadow:
-              "0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23)",
-            borderRadius: "8px", // Rounded corners for a card-like appearance
-            backgroundColor: "#cccccc", // Card background color
-            padding: "16px", // Padding within the card
-            opacity: 0.9,
-            margin: "20px"
-          }}
+          // sx={{
+          //   mt: 2,
+          //   mx: 2,
+          //   boxShadow:
+          //     "0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23)",
+          //   borderRadius: "8px", // Rounded corners for a card-like appearance
+          //   backgroundColor: "#cccccc", // Card background color
+          //   padding: "16px", // Padding within the card
+          //   opacity: 0.9,
+          //   margin: "20px"
+          // }}
         >
           <Dashboard trigger={trigger} />
         </Box>

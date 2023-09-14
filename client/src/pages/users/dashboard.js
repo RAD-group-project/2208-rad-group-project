@@ -25,41 +25,7 @@ import { format } from 'date-fns';
 
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles((theme) => ({
-  actionButtonStyles: {
-    backgroundColor: '#f9f9f9', // Use primary color for buttons
-    // color: '#F00', // Text color
-    borderRadius: '4px',
-    transition: 'transform 0.2s ease-in-out',
-    '&:hover': {
-      transform: 'scale(1.05)',
-    },
-  },
-  menuItemStyles: {
-    backgroundColor: '#ffffff',
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)',
-    borderRadius: '4px',
-    '&:hover': {
-      backgroundColor: '#f0f0f0',
-    },
-  },
-  dialogPaper: {
-    padding: '16px',
-    borderRadius: '8px', // Increase border radius for dialogs
-  },
-  tableContainer: {
-    padding: '16px',
-  },
-  tableHeader: {
-    backgroundColor: '#f9f9f9',
-    color: '#fff',
-  },
-  tableRow: {
-    '&:nth-child(even)': {
-      backgroundColor: '#f5f5f5', // Alternate row background color
-    },
-  },
-}));
+
 
 
 //nested data is ok, see accessorKeys in ColumnDef below
@@ -69,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = ({trigger}) => {
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
 
   const [users, setUsers] = useState([]);
@@ -185,26 +151,25 @@ const Dashboard = ({trigger}) => {
 
 
   return (
-  <div>
-    
-    <Paper className={classes.tableContainer}>
+    <div style={{ borderRadius: '10px', overflow: 'hidden' }}>    
+    {/* <Paper className={classes.tableContainer}> */}
      <MaterialReactTable
   columns={columns}
   data={users}
   enableRowActions
-  tableOptions={{
-    tableRowClass: classes.tableRow,
-    tableHeaderClass: classes.tableHeader,
-  }}
+  // tableOptions={{
+  //   tableRowClass: classes.tableRow,
+  //   tableHeaderClass: classes.tableHeader,
+  // }}
   renderRowActions={(rowData) => (
     <Box sx={{ display: 'flex', gap: '1rem' }}>
       <Tooltip arrow placement="left" title="Edit">
-        <IconButton onClick={() => handleClickUpdate(rowData)} className={classes.actionButtonStyles}>
+        <IconButton onClick={() => handleClickUpdate(rowData)} >
           <Edit />
         </IconButton>
       </Tooltip>
       <Tooltip arrow placement="right" title="Delete">
-        <IconButton color="error" onClick={() => handleClickDelete(rowData)} className={classes.actionButtonStyles}>
+        <IconButton color="error" onClick={() => handleClickDelete(rowData)} >
           <Delete />
         </IconButton>
       </Tooltip>
@@ -238,7 +203,7 @@ const Dashboard = ({trigger}) => {
           </Button>
         </DialogActions>
         </Dialog>
-        </Paper>
+        {/* </Paper> */}
 
   </div>
   
