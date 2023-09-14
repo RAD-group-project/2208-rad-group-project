@@ -67,7 +67,7 @@ const Add = ({handleClose, updateTrigger}) => {
     onSubmit: async (values) => {
       try {
         await addBookApi(values);
-        alert('Book added successfully');
+        // alert('Book added successfully');
 
         handleClose()
         updateTrigger()

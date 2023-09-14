@@ -69,7 +69,7 @@ const Add = ({handleClose, updateTrigger}) => {
     onSubmit: async (values) => {
       try {
         await addAuthorApi(values);
-        alert('Author added successfully');
+        // alert('Author added successfully');
 
         handleClose()
         updateTrigger()
