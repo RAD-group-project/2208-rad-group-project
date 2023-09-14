@@ -8,6 +8,9 @@ import Update from './update';
 import { backendUrl } from '../../data';
 import axios from 'axios';
 
+import { format } from 'date-fns';
+
+
 const Dashboard = ({trigger}) => {
 
   const [authors, setAuthors] = useState([]);
@@ -23,8 +26,19 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.authorsList.filter(author => !author.isAdmin);
-        setAuthors(members);
+        // const members = response.data.authorsList.filter(author => !author.isAdmin);
+        var authorList = response.data.authorsList
+
+        var authorList = authorList.map(author => {
+          const formattedDateOfBirth = format(new Date(author.dateOfBirth), 'yyyy-MM-dd');
+
+          return {
+            ...author,
+            dateOfBirth: formattedDateOfBirth,
+          };
+        });
+
+        setAuthors(authorList);
         setIsTableLoading(false);
       })
       .catch((error) => {

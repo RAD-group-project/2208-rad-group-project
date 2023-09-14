@@ -8,6 +8,8 @@ import Update from './update';
 import { backendUrl } from '../../data';
 import axios from 'axios';
 
+import { format } from 'date-fns';
+
 
 const Dashboard = ({trigger}) => {
 
@@ -24,8 +26,20 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.borrowersList;
-        setBorrowers(members);
+        var borrowersList = response.data.borrowersList;
+
+        var borrowersList = borrowersList.map(borrower => {
+          const formattedCheckoutDate = format(new Date(borrower.checkoutDate), 'yyyy-MM-dd');
+          const formattedDueDate = format(new Date(borrower.dueDate), 'yyyy-MM-dd');
+
+          return {
+            ...borrower,
+            checkoutDate: formattedCheckoutDate,
+            dueDate: formattedDueDate,
+          };
+        });
+
+        setBorrowers(borrowersList);
         setIsTableLoading(false);
       })
       .catch((error) => {
