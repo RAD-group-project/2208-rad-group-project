@@ -32,7 +32,7 @@ const validationSchema = yup.object({
     lastName: yup.string("Enter last name").required("Last name is required"),
     ISBN: yup.string('Enter ISBN').required('ISBN is required'),
     title: yup.string("Enter book title").required("Title is required"),
-    author: yup.string("Enter the author").required("Title is required"),
+    author: yup.string("Enter the author").required("Author is required"),
     checkoutDate: yup.date("Enter checkout date").required("Checkout date is required"),
     dueDate: yup.date("Enter due date").required("Due date is required"),
     // returnDate: yup.string("Enter returned date").required("Return date is required"),
