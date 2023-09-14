@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 export default function Dashboard() {
   const useStyles = makeStyles({
     genresContainer: {
       backgroundImage: 'url("/img/library.jpeg")',
+      // backgroundSize: "100%",
       backgroundRepeat: 'round',
       backgroundBlendMode: 'multiply, normal',
       minHeight: '100vh',
@@ -15,7 +16,8 @@ export default function Dashboard() {
     },
     header: {
       display: 'flex',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
+   
     },
     sectionTitle: {
       fontSize: '50px',
@@ -40,10 +42,10 @@ export default function Dashboard() {
       borderRadius: '10px',
     },
     libraryText: {
-      fontSize: '60px',
+      fontSize: '100px',
       fontWeight: 'bold',
       textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
-      color: '#333',
+      color: '#fff',
     },
   });
 
@@ -52,7 +54,10 @@ export default function Dashboard() {
   return (
     <div className={classes.genresContainer}>
       <Box sx={{ ml: 28, my: 5 }}>
-        <Box className={classes.header}></Box>
+         <Box className={classes.header}></Box>
+         <Box className={classes.libraryTextContainer}>
+         <Typography className={classes.libraryText} > Library Management System</Typography> 
+         </Box>
       </Box>
 
       {/* Box for "Library management system" */}
