@@ -176,6 +176,7 @@ const Add = ({ handleClose, updateTrigger }) => {
           name="checkoutDate"
           label="Checkout Date"
           type="date"
+          
           value={formik.values.checkoutDate}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
