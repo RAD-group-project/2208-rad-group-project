@@ -24,6 +24,7 @@ export default function Authors() {
     const useStyles = makeStyles({
         authorsContainer: {
             backgroundImage: 'url("/img/library.jpeg")',
+            backgroundRepeat: 'round',
             // background: `
             // linear-gradient(to bottom, #003f5c, #2f4b7c),
             // radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
