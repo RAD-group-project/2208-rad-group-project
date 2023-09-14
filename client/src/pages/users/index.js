@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Dashboard from './dashboard-1';
+import Dashboard from './dashboard';
 import Add from './add';
 import { Box, Typography, Button, Dialog, DialogContent } from '@mui/material';
 import { makeStyles } from '@mui/styles'
@@ -26,18 +26,25 @@ export default function Users() {
 
   const useStyles = makeStyles({
     usersContainer: {
-        background: `
-        linear-gradient(to bottom, #003f5c, #2f4b7c),
-        radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
-      backgroundBlendMode: 'multiply, normal',
-      minHeight: '100vh', // Adjust as needed
-      padding: '20px',
-      color: '#ffffff',
-      textAlign: 'center',
+      background: `
+      linear-gradient(to bottom, #272643, #2f2e52),
+      radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
+      backgroundBlendMode: "multiply, normal",
+      minHeight: "100vh", // Adjust as needed
+      padding: "20px",
+      color: "#ffffff",
+      textAlign: "left",
+    },
+    header: {
+      display: "flex",
+      justifyContent: "space-between",
+      marginBottom: "10px"
     },
     sectionTitle: {
-      fontSize: '32px',
-      marginBottom: '20px',
+      fontSize: "40px",
+      marginBottom: "20px",
+      marginTop: "20px",
+      paddingLeft: "25px"
     },
     addButton: {
       color: '#ffffff',
@@ -55,6 +62,7 @@ export default function Users() {
   return (
     <div className={classes.usersContainer}>
       <Box sx={{ ml: 28, my: 5 }}>
+      <Box className={classes.header}> 
         <Typography variant='h3' className={classes.sectionTitle}>
           Users
         </Typography>
@@ -62,13 +70,27 @@ export default function Users() {
           <Button variant='outlined' onClick={handleClickOpen} className={classes.addButton}>
             Add Users
           </Button>
+          </Box>
+
         </Box>
         <Dialog open={open} onClose={handleClose}>
           <DialogContent>
             <Add handleClose={handleClose} updateTrigger={updateTrigger} />
           </DialogContent>
         </Dialog>
-        <Box   sx={{ mt: 2,mx: 2}}>
+        <Box
+          sx={{
+            mt: 2,
+            mx: 2,
+            boxShadow:
+              "0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23)",
+            borderRadius: "8px", // Rounded corners for a card-like appearance
+            backgroundColor: "#cccccc", // Card background color
+            padding: "16px", // Padding within the card
+            opacity: 0.9,
+            margin: "20px"
+          }}
+        >
           <Dashboard trigger={trigger} />
         </Box>
       </Box>
