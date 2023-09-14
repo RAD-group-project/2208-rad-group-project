@@ -203,11 +203,11 @@ const Dashboard = ({ trigger }) => {
 
       <Dialog open={openDelete} onClose={handleClose}>
         <DialogTitle id="alert-dialog-title">
-          {" Delete This Book?"}
+          {" Delete Book"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Delete This Book?
+            Are you sure?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

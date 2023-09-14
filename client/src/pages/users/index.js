@@ -66,11 +66,11 @@ export default function Users() {
       <Box sx={{ ml: 28, my: 5 }}>
       <Box className={classes.header}> 
         <Typography variant='h3' className={classes.sectionTitle}>
-          Users
+          Members
         </Typography>
         <Box sx={{ mx: 2, my: 3 }}>
           <Button variant='outlined' onClick={handleClickOpen} className={classes.addButton}>
-            Add Users
+            Add Members
           </Button>
           </Box>
 
