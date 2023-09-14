@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
   },
   authContainer: {
     display: "flex",
@@ -42,13 +41,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     background: "#fff", // Solid white background
     borderRadius: "10px", // Rounded corners
+    borderRadius: "10px", // Rounded corners
   },
   heading: {
     fontSize: "50px",
     fontWeight: "bold", // Make it bold
     color: "#fff", // Make it white
-    marginBottom: "16px", // Replace with your desired pixel value
-    marginTop: "20px",
+    marginBottom: "40px", // Replace with your desired pixel value
+    marginTop: "70px",
     textAlign: 'center'
   },
 }));
