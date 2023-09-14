@@ -189,11 +189,11 @@ const Dashboard = ({trigger}) => {
 
       <Dialog open={openDelete} onClose={handleClose}>
       <DialogTitle id="alert-dialog-title">
-          {" Delete This User?"}
+          {" Delete User"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Delete This User?
+          Are you sure?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

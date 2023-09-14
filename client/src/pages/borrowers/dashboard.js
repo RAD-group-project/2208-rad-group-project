@@ -217,11 +217,11 @@ const Dashboard = ({trigger}) => {
 
       <Dialog open={openDelete} onClose={handleClose}>
       <DialogTitle id="alert-dialog-title">
-          {" Delete This Borrower?"}
+          {" Delete Borrower"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Delete This Borrower?
+          Are you sure?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
