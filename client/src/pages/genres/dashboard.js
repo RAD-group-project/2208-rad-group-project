@@ -8,32 +8,8 @@ import Update from './update';
 import { backendUrl } from '../../data';
 import axios from 'axios';
 
-import { makeStyles } from '@mui/styles';
-
-const useStyles = makeStyles((theme) => ({
-  actionButtonStyles: {
-    backgroundColor: '#ffffff', // Button background color
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)', // Shadow
-    borderRadius: '4px', // Rounded corners
-    transition: 'transform 0.2s ease-in-out', // Add a subtle hover effect
-    '&:hover': {
-      transform: 'scale(1.05)', // Enlarge the button on hover
-    },
-  },
-  menuItemStyles: {
-    backgroundColor: '#ffffff', // Menu item background color
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23)', // Shadow
-    borderRadius: '4px', // Rounded corners
-    '&:hover': {
-      backgroundColor: '#f0f0f0', // Change background color on hover
-    },
-  },
-}));
-
 
 const Dashboard = ({trigger}) => {
-
-  const classes = useStyles();
 
   const [genres, setGenres] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
@@ -119,55 +95,56 @@ const Dashboard = ({trigger}) => {
 
 
   return (
-  <div> <MaterialReactTable 
-  columns={columns}
-  data={genres}
-  enableRowActions
-  renderRowActions={( rowData) => (
-    <Box sx={{ display: 'flex', gap: '1rem' }}>
-      <Tooltip arrow placement="left" title="Edit">
-      <IconButton onClick={() => handleClickUpdate(rowData)} className={classes.actionButtonStyles}>
-          <Edit />
-        </IconButton>
-      </Tooltip>
-      <Tooltip arrow placement="right" title="Delete">
-      <IconButton color="error" onClick={() => handleClickDelete(rowData)} className={classes.actionButtonStyles}>
-          <Delete />
-        </IconButton>
-      </Tooltip>
-    </Box>
-  )}
-  renderRowActionMenuItems={({ closeMenu, rowData }) => [
-    
-    <MenuItem
-      key={0}
-      onClick={() => {
-        // View profile logic...
-        handleClickUpdate(rowData);
-        closeMenu()
-      }}
-      sx={{ m: 0 }}
-    >
-      <ListItemIcon>
-        <AccountCircle />
-      </ListItemIcon>
-      Update
-    </MenuItem>,
-    <MenuItem
-      key={1}
-      onClick={() => {
-        // Send email logic...
-        handleClickDelete(rowData)
-        closeMenu();
-      }}
-      sx={{ m: 0 }}
-    >
-      <ListItemIcon>
-        <Send />
-      </ListItemIcon>
-      Delete
-    </MenuItem>,
-  ]}
+    <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
+    <MaterialReactTable
+      columns={columns}
+      data={genres}
+      enableRowActions
+      renderRowActions={(rowData) => (
+        <Box sx={{ display: 'flex', gap: '1rem' }}>
+          <Tooltip arrow placement="left" title="Edit">
+            <IconButton onClick={() => handleClickUpdate(rowData)} >
+              <Edit />
+            </IconButton>
+          </Tooltip>
+          <Tooltip arrow placement="right" title="Delete">
+            <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
+              <Delete />
+            </IconButton>
+          </Tooltip>
+        </Box>
+      )}
+      renderRowActionMenuItems={({ closeMenu, rowData }) => [
+
+        <MenuItem
+          key={0}
+          onClick={() => {
+            // View profile logic...
+            handleClickUpdate(rowData);
+            closeMenu()
+          }}
+          sx={{ m: 0 }}
+        >
+          <ListItemIcon>
+            <AccountCircle />
+          </ListItemIcon>
+          Update
+        </MenuItem>,
+        <MenuItem
+          key={1}
+          onClick={() => {
+            // Send email logic...
+            handleClickDelete()
+            closeMenu();
+          }}
+          sx={{ m: 0 }}
+        >
+          <ListItemIcon>
+            <Send />
+          </ListItemIcon>
+          Delete
+        </MenuItem>,
+      ]}
 
   
   />
