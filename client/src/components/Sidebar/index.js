@@ -150,7 +150,7 @@ export default function Sidebar() {
             <Navitem path="/users" name="Users" />
             </Box>
 
-        <Box  style={{ position: 'absolute', bottom: '10px', color: '#fff', width:'max' }}>
+        <Box  style={{  bottom: '10px', color: '#fff', width:'max' }}>
             <Typography
               variant="h5"
              
