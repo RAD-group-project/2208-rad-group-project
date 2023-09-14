@@ -74,7 +74,7 @@ const Add = ({ handleClose, updateTrigger }) => {
     onSubmit: async (values) => {
       try {
         await addBorrowerApi(values);
-        alert("Borrower added successfully");
+        // alert("Borrower added successfully");
 
         handleClose();
         updateTrigger();
