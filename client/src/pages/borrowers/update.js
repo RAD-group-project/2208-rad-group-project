@@ -28,8 +28,9 @@ const useStyles = makeStyles((theme) => ({
 
 const validationSchema = yup.object({
     // userID: yup.string("Enter member ID number").required("Member ID is required"),
-    firstName: yup.string("Enter first name").required("First name is required"),
-    lastName: yup.string("Enter last name").required("Last name is required"),
+    // firstName: yup.string("Enter first name").required("First name is required"),
+    // lastName: yup.string("Enter last name").required("Last name is required"),
+    name: yup.string("Enter your name").required("Name is required"),
     ISBN: yup.string('Enter ISBN').required('ISBN is required'),
     title: yup.string("Enter book title").required("Title is required"),
     author: yup.string("Enter the author").required("Author is required"),
@@ -121,27 +122,14 @@ const Update = (data ) => {
 
         <TextField
           fullWidth
-          id="firstName"
-          name="firstName"
-          label="First Name"
-          value={formik.values.firstName}
+          id="name"
+          name="name"
+          label="Name"
+          value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-          helperText={formik.touched.firstName && formik.errors.firstName}
-          className={classes.textField}
-        />
-
-        <TextField
-          fullWidth
-          id="lastName"
-          name="lastName"
-          label="Last Name"
-          value={formik.values.lastName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-          helperText={formik.touched.lastName && formik.errors.lastName}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
           className={classes.textField}
         />
 
