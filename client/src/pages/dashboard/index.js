@@ -1,7 +1,5 @@
 import * as React from 'react'
 
-import Dashboard from './dashboard'
-import Add from './add'
 import { Box, Typography,Button, Dialog, DialogContent, DialogContentText } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
@@ -23,6 +21,7 @@ export default function Dashboard() {
     const useStyles = makeStyles({
         genresContainer: {
           backgroundImage: 'url("/img/library.jpeg")',
+          backgroundRepeat: 'round',
             // background: `
             // linear-gradient(to bottom, #003f5c, #2f4b7c),
             // radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
@@ -58,22 +57,8 @@ export default function Dashboard() {
         <Box sx={{ml:28,my:5}} >
 
             <Box className={classes.header}  >
-            <Typography variant='h3' className={classes.sectionTitle}>
-                Genres
-            </Typography> 
-            <Box sx={{mx:2,my:3}}>
-            <Button variant='outlined' onClick={handleClickOpen} className={classes.addButton}>
-                Add Genre
-            </Button>
-            </Box>
-            </Box>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogContent>
-                        <Add handleClose={handleClose} updateTrigger={updateTrigger} />
-                </DialogContent>
-            </Dialog>
-            <Box sx={{mt:2,mx:2}}>
-                <Dashboard trigger={trigger} />
+           
+
             </Box>
 
         </Box>

@@ -35,8 +35,8 @@ export default function Books() {
         },
         header: {
           display: "flex",
-      justifyContent: "space-between",
-      marginBottom: "10px"
+          justifyContent: "space-between",
+          marginBottom: "10px"
         },
         sectionTitle: {
           fontSize: "40px",
