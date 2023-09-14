@@ -117,79 +117,57 @@ const Dashboard = ({trigger}) => {
 
 
   return (
-  <div> <MaterialReactTable 
-  columns={columns}
-  data={authors}
-  enableRowActions
-  renderRowActions={( rowData) => (
-    <Box sx={{ display: 'flex', gap: '1rem' }}>
-      <Tooltip arrow placement="left" title="Edit">
-        <IconButton onClick={() => handleClickUpdate(rowData)}>
-          <Edit />
-        </IconButton>
-      </Tooltip>
-      <Tooltip arrow placement="right" title="Delete">
-        <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
-          <Delete />
-        </IconButton>
-      </Tooltip>
-    </Box>
-  )}
-  renderRowActionMenuItems={({ closeMenu, rowData }) => [
+  <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
+    <MaterialReactTable
+      columns={columns}
+      data={authors}
+      enableRowActions
+      renderRowActions={(rowData) => (
+        <Box sx={{ display: 'flex', gap: '1rem' }}>
+          <Tooltip arrow placement="left" title="Edit">
+            <IconButton onClick={() => handleClickUpdate(rowData)} >
+              <Edit />
+            </IconButton>
+          </Tooltip>
+          <Tooltip arrow placement="right" title="Delete">
+            <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
+              <Delete />
+            </IconButton>
+          </Tooltip>
+        </Box>
+      )}
+      renderRowActionMenuItems={({ closeMenu, rowData }) => [
     
-    <MenuItem
-      key={0}
-      onClick={() => {
-        // View profile logic...
-        handleClickUpdate(rowData);
-        closeMenu()
-      }}
-      sx={{ m: 0 }}
-    >
-      <ListItemIcon>
-        <AccountCircle />
-      </ListItemIcon>
-      Update
-    </MenuItem>,
-    <MenuItem
-      key={1}
-      onClick={() => {
-        // Send email logic...
-        handleClickDelete()
-        closeMenu();
-      }}
-      sx={{ m: 0 }}
-    >
-      <ListItemIcon>
-        <Send />
-      </ListItemIcon>
-      Delete
-    </MenuItem>,
+      <MenuItem
+        key={0}
+        onClick={() => {
+          // View profile logic...
+          handleClickUpdate(rowData);
+          closeMenu()
+        }}
+        sx={{ m: 0 }}
+      >
+        <ListItemIcon>
+          <AccountCircle />
+        </ListItemIcon>
+        Update
+      </MenuItem>,
+      <MenuItem
+        key={1}
+        onClick={() => {
+          // Send email logic...
+          handleClickDelete()
+          closeMenu();
+        }}
+        sx={{ m: 0 }}
+      >
+        <ListItemIcon>
+          <Send />
+        </ListItemIcon>
+        Delete
+      </MenuItem>,
   ]}
-//   renderDetailPanel={({ row }) => (
-//     <Box
-//       sx={{
-//         display: 'flex',
-//         justifyContent: 'space-around',
-//         alignItems: 'center',
-//       }}
-//     >
-//       <img
-//         alt={row.original.title}
-//         height={200}
-//         src={`https://covers.openlibrary.org/b/isbn/${row.original.ISBN}-M.jpg`}
-//         loading="lazy"
-//         // style={{ borderRadius: '50%' }}
-//       />
-//       {console.log(row)}
-//       <Box sx={{ textAlign: 'center' }}>
-//         <Typography variant="h4">{row.original.title}</Typography>
-//         <Typography variant="h5">
-//           {row.original.author}
-//         </Typography>
-//       </Box>
-//     </Box>
-//   )}
+
 
   
   />
