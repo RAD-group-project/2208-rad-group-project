@@ -45,8 +45,8 @@ const Add = ({handleClose, updateTrigger}) => {
   const classes = useStyles();
 
   const [genre, setGenre] = useState({
-    genre: false,
-    copies: '',
+    category: '', 
+    description: '',
   });
 
   const formik = useFormik({
@@ -78,11 +78,11 @@ const Add = ({handleClose, updateTrigger}) => {
         id="category"
         name="category"
         label="Category"
-        value={formik.values.title}
+        value={formik.values.category}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.title && Boolean(formik.errors.title)}
-        helperText={formik.touched.title && formik.errors.title}
+        error={formik.touched.category && Boolean(formik.errors.category)}
+        helperText={formik.touched.category && formik.errors.category}
         className={classes.textField} // Apply the styles here
       />
 
@@ -91,11 +91,11 @@ const Add = ({handleClose, updateTrigger}) => {
         id="description"
         name="description"
         label="Description"
-        value={formik.values.author}
+        value={formik.values.description}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.author && Boolean(formik.errors.author)}
-        helperText={formik.touched.author && formik.errors.author}
+        error={formik.touched.description && Boolean(formik.errors.description)}
+        helperText={formik.touched.description && formik.errors.description}
         className={classes.textField} // Apply the styles here
       />
 

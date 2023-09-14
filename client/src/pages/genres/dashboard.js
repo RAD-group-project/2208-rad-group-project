@@ -48,8 +48,8 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.booksList.filter(book => !book.isAdmin);
-        setGenres(members);
+        const genres = response.data.genresList.filter(genre => genre);
+        setGenres(genres);
         setIsTableLoading(false);
       })
       .catch((error) => {
@@ -155,7 +155,7 @@ const Dashboard = ({trigger}) => {
       key={1}
       onClick={() => {
         // Send email logic...
-        handleClickDelete()
+        handleClickDelete(rowData)
         closeMenu();
       }}
       sx={{ m: 0 }}
@@ -184,9 +184,9 @@ const Dashboard = ({trigger}) => {
       />
       {console.log(row)}
       <Box sx={{ textAlign: 'left', ml: 20 }}>
-        <Typography variant="h4">{row.original.title}</Typography>
+        <Typography variant="h4">{row.original.category}</Typography>
         <Typography variant="h5">
-          {row.original.author}
+          {row.original.description}
         </Typography>
       </Box>
     </Box>
