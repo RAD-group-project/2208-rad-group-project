@@ -79,14 +79,19 @@ const Dashboard = ({trigger}) => {
       //   header: "User ID",
       //   size: 150,
       // },
+      // {
+      //   accessorKey: "firstName",
+      //   header: "First Name",
+      //   size: 150,
+      // },
+      // {
+      //   accessorKey: "lastName",
+      //   header: "Last Name",
+      //   size: 150,
+      // },
       {
-        accessorKey: "firstName",
-        header: "First Name",
-        size: 150,
-      },
-      {
-        accessorKey: "lastName",
-        header: "Last Name",
+        accessorKey: "name",
+        header: "Name",
         size: 150,
       },
       {

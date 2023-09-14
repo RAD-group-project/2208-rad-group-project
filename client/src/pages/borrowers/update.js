@@ -2,17 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Button, TextField } from '@mui/material';
+import { makeStyles } from "@mui/styles";
 import axios from 'axios';
 
 import { backendUrl } from '../../data';
 
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    backgroundColor: "white", // Background color
+    borderRadius: "4px",
+    marginBottom: "16px",
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "lightgray", // Border color
+      },
+      "&:hover fieldset": {
+        borderColor: "blue", // Hover border color
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "green", // Focused border color
+      },
+    },
+  },
+}));
+
 const validationSchema = yup.object({
     // userID: yup.string("Enter member ID number").required("Member ID is required"),
-    firstName: yup.string("Enter first name").required("First name is required"),
-    lastName: yup.string("Enter last name").required("Last name is required"),
+    // firstName: yup.string("Enter first name").required("First name is required"),
+    // lastName: yup.string("Enter last name").required("Last name is required"),
+    name: yup.string("Enter your name").required("Name is required"),
     ISBN: yup.string('Enter ISBN').required('ISBN is required'),
     title: yup.string("Enter book title").required("Title is required"),
-    author: yup.string("Enter the author").required("Title is required"),
+    author: yup.string("Enter the author").required("Author is required"),
     checkoutDate: yup.date("Enter checkout date").required("Checkout date is required"),
     dueDate: yup.date("Enter due date").required("Due date is required"),
     // returnDate: yup.string("Enter returned date").required("Return date is required"),
@@ -30,6 +51,9 @@ const updateBorrowerApi = async (borrowerId, borrowerData) => {
 };
 
 const Update = (data ) => {
+
+  const classes = useStyles();
+
   console.log(data['borrower']['row']['original']['_id'])
   const borrowerId = data['borrower']['row']['original']['_id']
 
@@ -98,26 +122,15 @@ const Update = (data ) => {
 
         <TextField
           fullWidth
-          id="firstName"
-          name="firstName"
-          label="First Name"
-          value={formik.values.firstName}
+          id="name"
+          name="name"
+          label="Name"
+          value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-          helperText={formik.touched.firstName && formik.errors.firstName}
-        />
-
-        <TextField
-          fullWidth
-          id="lastName"
-          name="lastName"
-          label="Last Name"
-          value={formik.values.lastName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-          helperText={formik.touched.lastName && formik.errors.lastName}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
+          className={classes.textField}
         />
 
         <TextField
@@ -130,6 +143,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.ISBN && Boolean(formik.errors.ISBN)}
           helperText={formik.touched.ISBN && formik.errors.ISBN}
+          className={classes.textField}
         />
 
         <TextField
@@ -142,6 +156,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.title && Boolean(formik.errors.title)}
           helperText={formik.touched.title && formik.errors.title}
+          className={classes.textField}
         />
 
         <TextField
@@ -154,6 +169,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.author && Boolean(formik.errors.author)}
           helperText={formik.touched.author && formik.errors.author}
+          className={classes.textField}
         />
 
         <TextField
@@ -168,7 +184,9 @@ const Update = (data ) => {
           error={
             formik.touched.checkoutDate && Boolean(formik.errors.checkoutDate)
           }
+          InputLabelProps={{ shrink: true }}
           helperText={formik.touched.checkoutDate && formik.errors.checkoutDate}
+          className={classes.textField}
         />
 
         <TextField
@@ -181,7 +199,9 @@ const Update = (data ) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.dueDate && Boolean(formik.errors.dueDate)}
+          InputLabelProps={{ shrink: true }}
           helperText={formik.touched.dueDate && formik.errors.dueDate}
+          className={classes.textField}
         />
 
         <TextField
@@ -194,6 +214,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          className={classes.textField}
         />
 
         <TextField
@@ -206,6 +227,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.phone && Boolean(formik.errors.phone)}
           helperText={formik.touched.phone && formik.errors.phone}
+          className={classes.textField}
         />
 
         <Button color="primary" variant="contained" fullWidth type="submit">
