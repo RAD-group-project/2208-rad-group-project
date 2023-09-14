@@ -139,8 +139,8 @@ export default function Sidebar() {
         </div>
         <div className={classes.page}>
 
-          <div>
-
+          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'95%'}}>
+        <Box>
             <Navitem path="/dashboard" name="Dashboard" />
 
             <Navitem path="/books" name="Books" />
@@ -148,13 +148,14 @@ export default function Sidebar() {
             <Navitem path="/genres" name="Genres" />
             <Navitem path="/borrowers" name="Borrowers" />
             <Navitem path="/users" name="Users" />
+            </Box>
 
-
-
+        <Box  style={{ position: 'absolute', bottom: '10px', color: '#fff', width:'max' }}>
             <Typography
               variant="h5"
-              style={{ position: 'absolute', bottom: '10px', color: '#fff', }}
+             
             >
+              
               <Link to="#" style={{ textDecoration: 'none', color: 'inherit' }}>
 
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -170,6 +171,7 @@ export default function Sidebar() {
                 </div>
               </Link>
             </Typography>
+            </Box>
           </div>
 
         </div>
