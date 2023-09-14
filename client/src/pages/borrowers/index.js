@@ -21,7 +21,7 @@ export default function Borrowers() {
     }
 
     const useStyles = makeStyles({
-      booksContainer: {
+      borrowersContainer: {
         backgroundImage: 'url("/img/library.jpeg")',
         backgroundRepeat: 'round',
         // background: `
