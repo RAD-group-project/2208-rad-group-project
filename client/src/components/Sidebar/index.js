@@ -124,7 +124,7 @@ export default function Sidebar() {
           <Box sx={{ m: 2 }} className={classes.userInfoContainer}>
             <Avatar
               alt={user.name}
-              src="/static/images/avatar/1.jpg"
+              src="/img/avatar.png"
               className={classes.avatar}
             />
             {/* <Chip

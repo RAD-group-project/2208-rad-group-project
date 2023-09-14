@@ -182,11 +182,11 @@ const Dashboard = ({trigger}) => {
 
       <Dialog open={openDelete} onClose={handleClose}>
       <DialogTitle id="alert-dialog-title">
-          {" Delete This Author?"}
+          {" Delete Author"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Delete This Author?
+          Are you sure?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
