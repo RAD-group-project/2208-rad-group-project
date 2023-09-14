@@ -147,7 +147,7 @@ export default function Sidebar() {
             <Navitem path="/authors" name="Authors" />
             <Navitem path="/genres" name="Genres" />
             <Navitem path="/borrowers" name="Borrowers" />
-            <Navitem path="/users" name="Users" />
+            <Navitem path="/users" name="Members" />
             </Box>
 
         <Box  style={{  bottom: '10px', color: '#fff', width:'max' }}>

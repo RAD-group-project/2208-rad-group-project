@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const validationSchema = yup.object({
-  name: yup.string('Enter user name').required('Name is required'),
+  name: yup.string('Enter member name').required('Name is required'),
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
   phone: yup.number('Enter a number').typeError('Enter a valid number'),
   // Add more validation rules for other fields if needed
@@ -66,13 +66,13 @@ const Add = ({handleClose, updateTrigger}) => {
     onSubmit: async (values) => {
       try {
         await addUserApi(values);
-        alert('User added successfully');
+        alert('Member added successfully');
 
         handleClose()
         updateTrigger()
       } catch (error) {
         if (error.response && error.response.status === 403) {
-          alert('User already exists');
+          alert('Member already exists');
         } else {
           console.log(error);
           alert('Something went wrong, please try again');

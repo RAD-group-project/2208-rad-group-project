@@ -134,11 +134,6 @@ const Dashboard = ({trigger}) => {
         size: 150
       },
       {
-        accessorKey: 'booksBorrowed',
-        header: 'No.of Borrowed Books',
-        size: 150
-      },
-      {
         accessorKey: 'registered',
         header: 'Registered Date',
         size: 150
@@ -189,7 +184,7 @@ const Dashboard = ({trigger}) => {
 
       <Dialog open={openDelete} onClose={handleClose}>
       <DialogTitle id="alert-dialog-title">
-          {" Delete User"}
+          {" Delete Member"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
