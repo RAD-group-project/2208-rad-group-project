@@ -32,6 +32,7 @@ const UserSchema = new mongoose.Schema({
   booksBorrowed: {
     type: Number,
     required: false,
+    default: 0
   },
   registered: {
     type: Date,
