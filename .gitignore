@@ -3,3 +3,4 @@
 .metals
 **/.env
 .yarn
+server/.env
