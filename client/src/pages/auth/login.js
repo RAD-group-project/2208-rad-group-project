@@ -94,12 +94,12 @@ export default function Login() {
         >
           Sign In
         </Button>
-        <Grid item xs={12} sm={6} align="left" style={{ marginBottom: "20px" }}>
+        {/* <Grid item xs={12} sm={6} align="left" style={{ marginBottom: "20px" }}>
 
             <Link href="#" variant="body2" style={{textDecoration: "none"}}>
               Forgot password?
             </Link>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={6} align="center" style={{ marginTop: "20px" }}>
             <Link to="/register" style={{textDecoration: "none"}}>
               {"Don't have an account? Sign Up"}

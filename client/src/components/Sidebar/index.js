@@ -11,16 +11,17 @@ import axios from 'axios'
 const useStyles = makeStyles({
   userSection: {
 
-    background: "linear-gradient(to bottom, #3783ae, #3783ae)",
+    background: "linear-gradient(to bottom, #061119, #07344f)",
     padding: "20px",
     color: "#ffffff",
     maxWidth: "180px",
     width: "180px",
   },
   userName: {
-    fontSize: "24px",
+    fontSize: "20px",
     marginBottom: "10px",
     textAlign: "center",
+    fontWeight: "bold",
   },
   userInfoContainer: {
     display: "flex",
@@ -34,12 +35,12 @@ const useStyles = makeStyles({
 
   page: {
 
-    background: "linear-gradient(to bottom, #3783ae, #3783ae)", // Gradient background color
+    background: "linear-gradient(to bottom, #07344f, #061119 )", // Gradient background color
     width: "100%",
     height: "100%",
   },
   drawer: {
-    backgroundColor: "#3783ae", // Matching color for the drawer background
+    backgroundColor: "#07344f", // Matching color for the drawer background
   },
   navLink: {
     padding: "8px 12px",
@@ -47,14 +48,15 @@ const useStyles = makeStyles({
     transition: "background-color 0.3s, color 0.3s",
     color: "#ffffff", // Default text color (white in this example)
     "&:hover": {
-      backgroundColor: "#272643", // Hover background color
-      color: "#3783ae", // Text color on hover (matching background color)
+      backgroundColor: "#0670b5", // Hover background color
+      color: "#ffffff", // Text color on hover (matching background color)
     },
   },
   avatar: {
-    width: "100px",
-    height: "100px",
-    fontSize: "48px", // Increase font size for larger avatar
+    width: "80px",
+    height: "80px",
+    fontSize: "30px", // Increase font size for larger avatar
+    
   },
 });
 
@@ -103,6 +105,11 @@ export default function Sidebar() {
         className={classes.drawer}
         variant='permanent'
         anchor='left'
+        PaperProps={{
+          sx: {
+            backgroundColor: "transparent",
+          }
+        }}
         >
           <div className={classes.userSection}>
           <Box sx={{ m: 2 }} className={classes.userInfoContainer}>

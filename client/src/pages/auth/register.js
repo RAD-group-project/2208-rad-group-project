@@ -41,27 +41,23 @@ export default function Registration() {
   };
 
   return (
-    // <Grid container component="main" sx={{ height: '100vh' }}>
-    //   <CssBaseline />
-    //   <Grid item xs={false} sm={4} md={7} sx={{ backgroundImage: 'url(your-background-image-url)', backgroundRepeat: 'no-repeat', backgroundColor: (theme) => theme.palette.grey[50], backgroundSize: 'cover', backgroundPosition: 'center' }} />
-    //   <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <Box
           sx={{
-            my: 8,
+            my: 4,
             mx: 4,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" style={{ fontSize: '35px' }}>
             Sign up
           </Typography>
           <Box
             component="form"
             noValidate
             onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
+            sx={{ mt: 1 }}
           >
             <TextField
               margin="normal"
@@ -106,13 +102,11 @@ export default function Registration() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link to="/login" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
+            <Grid item xs={12} sm={6} align="center" style={{ marginTop: "20px" }}>
+            <Link to="/login" style={{textDecoration: "none"}}>
+              {"Already have an account? Sign In"}
+            </Link>
+          </Grid>
           </Box>
         </Box>
     //   </Grid>

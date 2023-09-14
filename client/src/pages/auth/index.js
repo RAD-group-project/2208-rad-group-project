@@ -42,8 +42,11 @@ const useStyles = makeStyles((theme) => ({
     background: "#fff", // Solid white background
     borderRadius: "10px", // Rounded corners
     borderRadius: "10px", // Rounded corners
+    boxShadow: '0 0 20px 2px #000000',
+
   },
   heading: {
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', // Add shadow
     fontSize: "50px",
     fontWeight: "bold", // Make it bold
     color: "#fff", // Make it white
