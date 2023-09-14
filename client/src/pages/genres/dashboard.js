@@ -35,7 +35,7 @@ const Dashboard = ({trigger}) => {
 
   const classes = useStyles();
 
-  const [genre, setGenres] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const Dashboard = ({trigger}) => {
         // handle success
         console.log(response.data);
         const members = response.data.booksList.filter(book => !book.isAdmin);
-        setBooks(members);
+        setGenres(members);
         setIsTableLoading(false);
       })
       .catch((error) => {
@@ -64,7 +64,7 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         handleClose();
         console.log(response.data);
-        getAllBooks();
+        getAllGenres();
       })
       .catch((error) => {
         console.log(error);
