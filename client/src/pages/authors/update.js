@@ -3,8 +3,28 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
+import { makeStyles } from '@mui/styles';
 
 import { backendUrl } from '../../data';
+
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    backgroundColor: 'white', // Background color
+    borderRadius: '4px',
+    marginBottom: '16px',
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'lightgray', // Border color
+      },
+      '&:hover fieldset': {
+        borderColor: 'blue', // Hover border color
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'green', // Focused border color
+      },
+    },
+  },
+}));
 
 const validationSchema = yup.object({
     firstName: yup.string('Enter first name').required('First name is required'),
@@ -26,6 +46,9 @@ const updateAuthorApi = async (authorId, authorData) => {
 };
 
 const Update = (data ) => {
+
+  const classes = useStyles();
+
   console.log(data['author']['row']['original']['_id'])
   const authorId = data['author']['row']['original']['_id']
 
@@ -88,6 +111,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.firstName && Boolean(formik.errors.firstName)}
         helperText={formik.touched.firstName && formik.errors.firstName}
+        className={classes.textField} 
       />
 
       <TextField
@@ -101,6 +125,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.lastName && Boolean(formik.errors.lastName)}
         helperText={formik.touched.lastName && formik.errors.lastName}
+        className={classes.textField} 
       />
 
       <TextField
@@ -114,6 +139,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.nationality && Boolean(formik.errors.nationality)}
         helperText={formik.touched.nationality && formik.errors.nationality}
+        className={classes.textField} 
       />
 
       <TextField
@@ -128,6 +154,7 @@ const Update = (data ) => {
         error={formik.touched.dateOfBirth && Boolean(formik.errors.dateOfBirth)}
         helperText={formik.touched.dateOfBirth && formik.errors.dateOfBirth}
         InputLabelProps={{ shrink: true }} 
+        className={classes.textField} 
       />
 
       <TextField
@@ -141,6 +168,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.startDateOfPublishing && Boolean(formik.errors.startDateOfPublishing)}
         helperText={formik.touched.startDateOfPublishing && formik.errors.startDateOfPublishing} 
+        className={classes.textField} 
       />
 
 <TextField
@@ -153,6 +181,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.genre && Boolean(formik.errors.genre)}
         helperText={formik.touched.genre && formik.errors.genre}
+        className={classes.textField} 
       />
 
       <TextField
@@ -166,6 +195,7 @@ const Update = (data ) => {
         onBlur={formik.handleBlur}
         error={formik.touched.noOfBooksWritten && Boolean(formik.errors.noOfBooksWritten)}
         helperText={formik.touched.noOfBooksWritten && formik.errors.noOfBooksWritten}
+        className={classes.textField} 
       />
 
         <Button color="primary" variant="contained" fullWidth type="submit">
