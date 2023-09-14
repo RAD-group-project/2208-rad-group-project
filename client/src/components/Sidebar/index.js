@@ -1,9 +1,9 @@
 import React from 'react'
 import Drawer from '@mui/material/Drawer'
 import { makeStyles } from '@mui/styles'
-import { Typography, List, ListItem,ListItemButton, Chip, Avatar, Box} from '@mui/material'
+import { Typography, Button, List, ListItem, ListItemButton, Chip, Avatar, Box } from '@mui/material'
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import axios from 'axios'
 
@@ -56,51 +56,60 @@ const useStyles = makeStyles({
     width: "80px",
     height: "80px",
     fontSize: "30px", // Increase font size for larger avatar
-    
+
+  },
+  addButton: {
+    color: '#ffffff',
+    backgroundColor: "#07344f", // Professional button color
+    '&:hover': {
+      backgroundColor: "#005d9d", // Hover color
+
+    },
+    boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
   },
 });
 
-export const Navitem = ({path, name}) => {
+export const Navitem = ({ path, name }) => {
   const classes = useStyles()
 
   return (
-  <Typography variant='h5' sx={{  marginBottom: 0 , color: '#fff' }}>
-  <Link to={path} style={{ textDecoration: 'none', color: 'inherit'}}>
-    <ListItemButton className={classes.navLink} >
-      {name}
-    </ListItemButton>
-  </Link>
-</Typography>
+    <Typography variant='h5' sx={{ marginBottom: 0, color: '#fff' }}>
+      <Link to={path} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <ListItemButton className={classes.navLink} >
+          {name}
+        </ListItemButton>
+      </Link>
+    </Typography>
 
   )
 }
 
 export default function Sidebar() {
 
-    const {logout,user} = useAuth()
-    const logoutUser = () => {
-        // handleClose();
-        axios.get(`http://localhost:8083/api/auth/logout`, { withCredentials: true })
-          .then((response) => {
-            // handle success
-            if (response.status === 200) {
-              console.log(response.data);
-              logout();
-            }
-          })
-          .catch((error) => {
-            // handle error
-            // alert(error);
-            logout()
-            // console.log(error);
-          })
-      };
+  const { logout, user } = useAuth()
+  const logoutUser = () => {
+    // handleClose();
+    axios.get(`http://localhost:8083/api/auth/logout`, { withCredentials: true })
+      .then((response) => {
+        // handle success
+        if (response.status === 200) {
+          console.log(response.data);
+          logout();
+        }
+      })
+      .catch((error) => {
+        // handle error
+        // alert(error);
+        logout()
+        // console.log(error);
+      })
+  };
 
 
-    const classes = useStyles()
+  const classes = useStyles()
   return (
     <div>
-        <Drawer
+      <Drawer
 
         className={classes.drawer}
         variant='permanent'
@@ -110,56 +119,65 @@ export default function Sidebar() {
             backgroundColor: "transparent",
           }
         }}
-        >
-          <div className={classes.userSection}>
+      >
+        <div className={classes.userSection}>
           <Box sx={{ m: 2 }} className={classes.userInfoContainer}>
-        <Avatar
-          alt={user.name}
-          src="/static/images/avatar/1.jpg"
-          className={classes.avatar}
-        />
-        {/* <Chip
+            <Avatar
+              alt={user.name}
+              src="/static/images/avatar/1.jpg"
+              className={classes.avatar}
+            />
+            {/* <Chip
           label={user.name}
           variant="outlined"
           className={classes.chip}
         /> */}
-      </Box>
-      <Typography variant='h4' className={classes.userName}>
-      {user.name} </Typography>
+          </Box>
+          <Typography variant='h4' className={classes.userName}>
+            {user.name} </Typography>
 
-    </div>
-          <div className = {classes.page}>
+        </div>
+        <div className={classes.page}>
 
           <div>
 
-<Navitem path="/dashboard" name="Dashboard"/>
+            <Navitem path="/dashboard" name="Dashboard" />
 
-<Navitem path="/books" name="Books"/>
-<Navitem path="/authors" name="Authors"/>
-<Navitem path="/genres" name="Genres"/>
-<Navitem path="/borrowers" name="Borrowers"/>
-<Navitem path="/users" name="Users"/>
+            <Navitem path="/books" name="Books" />
+            <Navitem path="/authors" name="Authors" />
+            <Navitem path="/genres" name="Genres" />
+            <Navitem path="/borrowers" name="Borrowers" />
+            <Navitem path="/users" name="Users" />
 
 
 
             <Typography
               variant="h5"
-              style={{ position: 'absolute', bottom: '10px', color: '#fff',  }}
+              style={{ position: 'absolute', bottom: '10px', color: '#fff', }}
             >
-              <Link to="#" style={{ textDecoration: 'none', color: 'inherit'}}>
-              <ListItemButton  sx={{ width: '100%', padding: '8px 12px' }}  onClick={logoutUser}>
-                Logout
-              </ListItemButton>
+              <Link to="#" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <Button
+                    className={classes.addButton}
+                    sx={{
+                      padding: '8px 12px',
+                    }}
+                    onClick={logoutUser}
+                  >
+                    Logout
+                  </Button>
+                </div>
               </Link>
             </Typography>
           </div>
 
-          </div>
+        </div>
 
-        </Drawer>
+      </Drawer>
 
 
-{/* <div>
+      {/* <div>
   <Box sx={{px:"100%",py:1}}> 
       <Box sx={{ mr:10, pr:10 , display: 'flex', justifyContent: 'flex-end' }} >
         <Chip
