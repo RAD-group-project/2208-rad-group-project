@@ -24,8 +24,8 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const genresList = response.data
-        setGenres(genresList.data);
+        const genresList = response.data.data
+        setGenres(genresList);
         setIsTableLoading(false);
       })
       .catch((error) => {
