@@ -42,10 +42,12 @@ function App() {
 
 
        <Routes>
-       <Route exact path="/" element={<div> <Link to='/dashboard'>Dashboard</Link> <br/><Link to='/login'>Login</Link>  </div>}>
+       {/* <Route exact path="/" element={<div> <Link to='/dashboard'>Dashboard</Link> <br/><Link to='/login'>Login</Link>  </div>}>
          
-            </Route>
+            </Route> */}
             {/* <Route exact path="/dashboard" element={<div> <Sidebar/> Home </div>} /> */}
+            {user ? <Route exact path="/" element={  <Navigate to="/dashboard" />} />:<Route exact path="/" element={  <Navigate to="/login" />} />}
+
             
             {user ? <Route exact path="/login" element={  <Navigate to="/" />} />:<Route exact path="/login" element={ <Auth login/>} />}
             {user ? <Route exact path="/register" element={  <Navigate to="/" />} />:<Route exact path="/register" element={ <Auth register/>} />}
