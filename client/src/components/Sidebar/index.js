@@ -10,6 +10,7 @@ import axios from 'axios'
 
 const useStyles = makeStyles({
   userSection: {
+
     background: "linear-gradient(to bottom, #3783ae, #3783ae)",
     padding: "20px",
     color: "#ffffff",
@@ -32,6 +33,7 @@ const useStyles = makeStyles({
   },
 
   page: {
+
     background: "linear-gradient(to bottom, #3783ae, #3783ae)", // Gradient background color
     width: "100%",
     height: "100%",

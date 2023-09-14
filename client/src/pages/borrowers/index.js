@@ -45,9 +45,13 @@ export default function Borrowers() {
         paddingLeft: "25px"
       },
       addButton: {
-        color: "#ffffff",
-        borderColor: "#ffffff",
-        marginRight: "20px"
+        color: '#ffffff',
+        backgroundColor: "#007acc", // Professional button color
+        '&:hover': {
+        backgroundColor: "#005d9d", // Hover color
+        
+        },
+        boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
       },
     });
 

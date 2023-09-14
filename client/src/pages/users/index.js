@@ -41,7 +41,12 @@ export default function Users() {
     },
     addButton: {
       color: '#ffffff',
-      borderColor: '#ffffff',
+      backgroundColor: "#007acc", // Professional button color
+      '&:hover': {
+      backgroundColor: "#005d9d", // Hover color
+      
+      },
+      boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
     },
   });
 
