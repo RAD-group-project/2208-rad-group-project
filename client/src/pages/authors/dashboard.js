@@ -23,8 +23,10 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.authorsList.filter(author => !author.isAdmin);
-        setAuthors(members);
+        // const members = response.data.authorsList.filter(author => !author.isAdmin);
+        const authorList = response.data.authorsList
+
+        setAuthors(authorList);
         setIsTableLoading(false);
       })
       .catch((error) => {
