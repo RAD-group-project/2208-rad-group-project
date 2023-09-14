@@ -48,8 +48,10 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const genres = response.data.genresList.filter(genre => genre);
-        setGenres(genres);
+        // const genres = response.data.genresList.filter(genre => genre);
+        const genresList = response.data
+        // console.log(genresList.data)
+        setGenres(genresList.data);
         setIsTableLoading(false);
       })
       .catch((error) => {
@@ -166,31 +168,7 @@ const Dashboard = ({trigger}) => {
       Delete
     </MenuItem>,
   ]}
-  renderDetailPanel={({ row }) => (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-      }}
-    >
-      <img
-        alt={row.original.title}
-        height={200}
-        src={`https://covers.openlibrary.org/b/isbn/${row.original.ISBN}-M.jpg`}
-        loading="lazy"
 
-        // style={{ borderRadius: '50%' }}
-      />
-      {console.log(row)}
-      <Box sx={{ textAlign: 'left', ml: 20 }}>
-        <Typography variant="h4">{row.original.category}</Typography>
-        <Typography variant="h5">
-          {row.original.description}
-        </Typography>
-      </Box>
-    </Box>
-  )}
   
   />
 
