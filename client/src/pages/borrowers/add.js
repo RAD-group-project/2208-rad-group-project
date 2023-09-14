@@ -185,6 +185,7 @@ const Add = ({ handleClose, updateTrigger }) => {
           }
           helperText={formik.touched.checkoutDate && formik.errors.checkoutDate}
           className={classes.textField}
+          InputLabelProps={{ shrink: true }} 
         />
 
         <TextField
@@ -199,6 +200,7 @@ const Add = ({ handleClose, updateTrigger }) => {
           error={formik.touched.dueDate && Boolean(formik.errors.dueDate)}
           helperText={formik.touched.dueDate && formik.errors.dueDate}
           className={classes.textField}
+          InputLabelProps={{ shrink: true }} 
         />
 
         <TextField
