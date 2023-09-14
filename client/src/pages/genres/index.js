@@ -22,9 +22,10 @@ export default function Genres() {
     }
     const useStyles = makeStyles({
         genresContainer: {
-            background: `
-            linear-gradient(to bottom, #003f5c, #2f4b7c),
-            radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
+          backgroundImage: 'url("/img/library.jpeg")',
+            // background: `
+            // linear-gradient(to bottom, #003f5c, #2f4b7c),
+            // radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
           backgroundBlendMode: 'multiply, normal',
           minHeight: '100vh', // Adjust as needed
           padding: '20px',
@@ -41,7 +42,12 @@ export default function Genres() {
         },
         addButton: {
           color: '#ffffff',
-          borderColor: '#ffffff',
+          backgroundColor: "#007acc", // Professional button color
+          '&:hover': {
+          backgroundColor: "#005d9d", // Hover color
+          
+          },
+          boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
         },
       });
     
