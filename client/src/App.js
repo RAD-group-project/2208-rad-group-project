@@ -9,6 +9,7 @@ import Books from './pages/books';
 import Users from './pages/users';
 import Authors from './pages/authors';
 import Borrowers from "./pages/borrowers";
+import Genre from "./pages/genres"
 
 import Auth from './pages/auth';
 import { useAuth } from "./hooks/useAuth";
@@ -54,6 +55,7 @@ function App() {
             {!user ? <Route exact path="/authors" element={ <Navigate to="/login" />} />:<Route exact path="/authors" element={ <div> <Sidebar/> <Authors/> </div>} />}
             {!user ? <Route exact path="/borrowers" element={ <Navigate to="/login" />} />:<Route exact path="/borrowers" element={ <div> <Sidebar/> <Borrowers/> </div>} />}
             {!user ? <Route exact path="/users" element={ <Navigate to="/login" />} />:<Route exact path="/users" element={ <div> <Sidebar/> <Users/> </div>} />}
+            {!user ? <Route exact path="/genres" element={ <Navigate to="/login" />} />:<Route exact path="/genres" element={ <div> <Sidebar/> <Genre/> </div>} />}
 
             {/* <Route exact path="/login" element={ <Auth login/>} /> */}
             
