@@ -179,7 +179,7 @@ const Add = ({ handleClose, updateTrigger }) => {
           helperText={formik.touched.checkoutDate && formik.errors.checkoutDate}
           InputLabelProps={{ shrink: true }}
           className={classes.textField}
-          InputLabelProps={{ shrink: true }} 
+          inputLabelProps={{ shrink: true }} 
         />
 
         <TextField
@@ -195,7 +195,7 @@ const Add = ({ handleClose, updateTrigger }) => {
           helperText={formik.touched.dueDate && formik.errors.dueDate}
           InputLabelProps={{ shrink: true }}
           className={classes.textField}
-          InputLabelProps={{ shrink: true }} 
+          inputLabelProps={{ shrink: true }} 
         />
 
         <TextField
