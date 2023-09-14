@@ -24,8 +24,8 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.borrowersList;
-        setBorrowers(members);
+        const borrowersList = response.data.borrowersList;
+        setBorrowers(borrowersList);
         setIsTableLoading(false);
       })
       .catch((error) => {
