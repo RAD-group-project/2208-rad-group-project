@@ -17,7 +17,7 @@ import { makeStyles } from "@mui/styles";
 const backgroundImage = 'url("/img/library.jpeg")';
 
 const useStyles = makeStyles((theme) => ({
-  authContainer: {
+  authPage: {
     backgroundImage: backgroundImage,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -25,6 +25,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  authContainer: {
+    display: "flex",
+    // alignContent:"center",
+    alignItems:"center",
+    // flexWrap:"wrap-reverse",
+    flexDirection:"column"
+
   },
   authBox: {
     width: "40%", // Smaller box width
@@ -58,8 +66,8 @@ export default function Auth(props) {
   };
 
   return (
-    <div className={classes.authContainer} style = {{align: "center",}} >
-      <Container component="main" maxWidth="lg">
+    <div className={classes.authPage} style = {{align: "center",}} >
+      <Container component="main" maxWidth="lg" className={classes.authContainer} >
 
       <Typography className={classes.heading}>
         Library Management System
