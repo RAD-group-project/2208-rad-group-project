@@ -66,9 +66,9 @@ const Update = (data ) => {
   const formik = useFormik({
     initialValues: genre,
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (genreData) => {
       try {
-        await updateGenreApi(genreId, values);
+        await updateGenreApi(genreId, genreData);
         // alert('Genre updated successfully');
         data.getAllGenres()
         data.handleClose()
@@ -93,11 +93,11 @@ const Update = (data ) => {
         name="category"
         label="Category"
         type="string"
-        value={formik.values.title}
+        value={formik.values.category}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.title && Boolean(formik.errors.title)}
-        helperText={formik.touched.title && formik.errors.title}
+        error={formik.touched.category && Boolean(formik.errors.category)}
+        helperText={formik.touched.category && formik.errors.category}
         className={classes.textField} 
       />
 
@@ -107,11 +107,11 @@ const Update = (data ) => {
         name="description"
         label="Description"
         type="string"
-        value={formik.values.author}
+        value={formik.genreData.description}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.author && Boolean(formik.errors.author)}
-        helperText={formik.touched.author && formik.errors.author}
+        error={formik.touched.description && Boolean(formik.errors.description)}
+        helperText={formik.touched.description && formik.errors.description}
         className={classes.textField} 
       />
 

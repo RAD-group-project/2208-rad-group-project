@@ -35,7 +35,7 @@ const Dashboard = ({trigger}) => {
 
   const classes = useStyles();
 
-  const [genre, setGenres] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
 
   useEffect(() => {
@@ -48,8 +48,8 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.booksList.filter(book => !book.isAdmin);
-        setBooks(members);
+        const members = response.data.genresList.filter(genre => !genre.isAdmin);
+        setGenres(members);
         setIsTableLoading(false);
       })
       .catch((error) => {
@@ -155,7 +155,7 @@ const Dashboard = ({trigger}) => {
       key={1}
       onClick={() => {
         // Send email logic...
-        handleClickDelete()
+        handleClickDelete(rowData)
         closeMenu();
       }}
       sx={{ m: 0 }}
@@ -184,9 +184,9 @@ const Dashboard = ({trigger}) => {
       />
       {console.log(row)}
       <Box sx={{ textAlign: 'left', ml: 20 }}>
-        <Typography variant="h4">{row.original.title}</Typography>
+        <Typography variant="h4">{row.original.category}</Typography>
         <Typography variant="h5">
-          {row.original.author}
+          {row.original.description}
         </Typography>
       </Box>
     </Box>
