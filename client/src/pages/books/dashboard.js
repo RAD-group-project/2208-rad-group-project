@@ -23,8 +23,8 @@ const Dashboard = ({ trigger }) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.booksList.filter(book => !book.isAdmin);
-        setBooks(members);
+        const booksList = response.data.booksList
+        setBooks(booksList);
         setIsTableLoading(false);
       })
       .catch((error) => {
