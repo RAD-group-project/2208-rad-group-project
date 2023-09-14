@@ -28,7 +28,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme) => ({
   actionButtonStyles: {
     backgroundColor: '#f9f9f9', // Use primary color for buttons
-    color: '#fff', // Text color
+    // color: '#F00', // Text color
     borderRadius: '4px',
     transition: 'transform 0.2s ease-in-out',
     '&:hover': {

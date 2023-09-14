@@ -12,9 +12,50 @@ import { Container } from "@mui/material";
 import Login from "./login";
 import { Route, Routes } from "react-router-dom";
 import Register from "./register";
+import { makeStyles } from "@mui/styles";
+
+const backgroundImage = 'url("/img/library.jpeg")';
+
+const useStyles = makeStyles((theme) => ({
+  authPage: {
+    backgroundImage: backgroundImage,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  authContainer: {
+    display: "flex",
+    // alignContent:"center",
+    alignItems:"center",
+    // flexWrap:"wrap-reverse",
+    flexDirection:"column"
+
+  },
+  authBox: {
+    width: "40%", // Smaller box width
+    padding: "12px", // Replace with your desired pixel value
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    background: "#fff", // Solid white background
+    borderRadius: "10px", // Rounded corners
+  },
+  heading: {
+    fontSize: "50px",
+    fontWeight: "bold", // Make it bold
+    color: "#fff", // Make it white
+    marginBottom: "16px", // Replace with your desired pixel value
+    marginTop: "20px",
+    textAlign: 'center'
+  },
+}));
 
 export default function Auth(props) {
-    // console.log(props)
+  const classes = useStyles();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,54 +66,17 @@ export default function Auth(props) {
   };
 
   return (
-    <Container component="main" maxWidth="lg">
-      <Box
-        sx={{
-          marginTop: 8,
-        }}
-      >
-        <Grid container>
-          <CssBaseline />
-          <Grid
-            item
-            xs={false}
-            sm={4}
-            md={7}
-            sx={{
-              backgroundImage: "url(https://source.unsplash.com/random)",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: (t) =>
-                t.palette.mode === "light"
-                  ? t.palette.grey[50]
-                  : t.palette.grey[900],
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
+    <div className={classes.authPage} style = {{align: "center",}} >
+      <Container component="main" maxWidth="lg" className={classes.authContainer} >
 
-
-
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
-            component={Paper}
-            elevation={6}
-            square
-          >
-            {/* <Routes>
-            <Route exact path="/login" element={<Login />} />
-
-                <Route exact path="/register" element={<Register />} />
-            </Routes> */}
-            {props.login ?  <Login />  : <Register />  }
-           
-          
-
-          </Grid>
-        </Grid>
+      <Typography className={classes.heading}>
+        Library Management System
+      </Typography>
+      <Box className={classes.authBox} >
+        <CssBaseline />
+        {props.login ? <Login /> : <Register />}
       </Box>
-    </Container>
+      </Container>
+    </div>
   );
 }

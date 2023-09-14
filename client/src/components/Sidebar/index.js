@@ -10,49 +10,49 @@ import axios from 'axios'
 
 const useStyles = makeStyles({
   userSection: {
-    background: 'linear-gradient(to bottom, #003f5c, #2f4b7c)',
-    padding: '20px',
-    color: '#ffffff',
-    maxWidth:"180px",
-    width:"180px"
+    background: "linear-gradient(to bottom, #3783ae, #3783ae)",
+    padding: "20px",
+    color: "#ffffff",
+    maxWidth: "180px",
+    width: "180px",
   },
   userName: {
-    fontSize: '24px',
-    marginBottom: '10px',
-    textAlign:'center'
+    fontSize: "24px",
+    marginBottom: "10px",
+    textAlign: "center",
   },
   userInfoContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center', // Center align horizontally
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center", // Center align horizontally
   },
   chip: {
-    borderColor: '#ffffff',
-    color: '#ffffff',
+    borderColor: "#ffffff",
+    color: "#ffffff",
   },
 
   page: {
-    background: 'linear-gradient(to bottom, #003f5c, #2f4b7c)', // Gradient background color
-    width: '100%',
-    height: '100%',
+    background: "linear-gradient(to bottom, #3783ae, #3783ae)", // Gradient background color
+    width: "100%",
+    height: "100%",
   },
   drawer: {
-    backgroundColor: '#003f5c', // Matching color for the drawer background
+    backgroundColor: "#3783ae", // Matching color for the drawer background
   },
   navLink: {
-    padding: '8px 12px',
-    paddingLeft: '10px',
-    transition: 'background-color 0.3s, color 0.3s',
-    color: '#ffffff', // Default text color (white in this example)
-    '&:hover': {
-      backgroundColor: '#ff6f61', // Hover background color
-      color: '#003f5c', // Text color on hover (matching background color)
+    padding: "8px 12px",
+    paddingLeft: "15px",
+    transition: "background-color 0.3s, color 0.3s",
+    color: "#ffffff", // Default text color (white in this example)
+    "&:hover": {
+      backgroundColor: "#272643", // Hover background color
+      color: "#3783ae", // Text color on hover (matching background color)
     },
   },
   avatar: {
-    width: '100px',
-    height: '100px',
-    fontSize: '48px', // Increase font size for larger avatar
+    width: "100px",
+    height: "100px",
+    fontSize: "48px", // Increase font size for larger avatar
   },
 });
 

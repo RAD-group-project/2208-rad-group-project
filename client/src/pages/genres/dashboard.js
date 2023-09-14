@@ -48,8 +48,8 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const members = response.data.genresList.filter(genre => !genre.isAdmin);
-        setGenres(members);
+        const genres = response.data.genresList.filter(genre => genre);
+        setGenres(genres);
         setIsTableLoading(false);
       })
       .catch((error) => {
@@ -64,7 +64,7 @@ const Dashboard = ({trigger}) => {
       .then((response) => {
         handleClose();
         console.log(response.data);
-        getAllBooks();
+        getAllGenres();
       })
       .catch((error) => {
         console.log(error);

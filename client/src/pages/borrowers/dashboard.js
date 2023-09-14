@@ -73,11 +73,11 @@ const Dashboard = ({trigger}) => {
   //should be memoized or stable
   const columns = useMemo(
     () => [
-      {
-        accessorKey: "userID",
-        header: "User ID",
-        size: 150,
-      },
+      // {
+      //   accessorKey: "userID",
+      //   header: "User ID",
+      //   size: 150,
+      // },
       {
         accessorKey: "firstName",
         header: "First Name",

@@ -12,6 +12,7 @@
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "axios": "^1.4.0",
+    "date-fn": "^0.0.2",
     "date-fns": "^2.30.0",
     "formik": "^2.4.2",
     "material-react-table": "^1.14.0",
