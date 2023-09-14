@@ -33,12 +33,15 @@ export default function Books() {
           textAlign: 'left',
         },
         header: {
-          display: 'flex',
-          justifyContent: 'space-between'
+          display: "flex",
+      justifyContent: "space-between",
+      marginBottom: "10px"
         },
         sectionTitle: {
-          fontSize: '50px',
-          marginBottom: '15px',
+          fontSize: "40px",
+          marginBottom: "20px",
+          marginTop: "20px",
+          paddingLeft: "25px"
         },
         addButton: {
           color: '#ffffff',
