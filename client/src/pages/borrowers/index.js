@@ -21,11 +21,10 @@ export default function Borrowers() {
     }
 
     const useStyles = makeStyles({
-      borrowersContainer: {
+      booksContainer: {
         backgroundImage: 'url("/img/library.jpeg")',
-        // background: `
-        // linear-gradient(to bottom, #272643, #2f2e52),
-        // radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
+        backgroundRepeat: 'round',
+
         backgroundBlendMode: "multiply, normal",
         minHeight: "100vh", // Adjust as needed
         padding: "20px",
