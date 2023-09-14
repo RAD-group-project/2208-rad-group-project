@@ -10,8 +10,9 @@ const registerUser = async (req, res) => {
 
     const newUser = new User(req.body);
     newUser.setPassword(req.body.password);
-
     const savedUser = await newUser.save();
+    console.log("a")
+
     return res.status(201).json({ success: true, user: savedUser });
   } catch (err) {
     return res.status(400).json({ success: false, err });
