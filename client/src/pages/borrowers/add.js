@@ -176,7 +176,6 @@ const Add = ({ handleClose, updateTrigger }) => {
           name="checkoutDate"
           label="Checkout Date"
           type="date"
-          
           value={formik.values.checkoutDate}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -184,6 +183,7 @@ const Add = ({ handleClose, updateTrigger }) => {
             formik.touched.checkoutDate && Boolean(formik.errors.checkoutDate)
           }
           helperText={formik.touched.checkoutDate && formik.errors.checkoutDate}
+          InputLabelProps={{ shrink: true }}
           className={classes.textField}
         />
 
@@ -198,6 +198,7 @@ const Add = ({ handleClose, updateTrigger }) => {
           onBlur={formik.handleBlur}
           error={formik.touched.dueDate && Boolean(formik.errors.dueDate)}
           helperText={formik.touched.dueDate && formik.errors.dueDate}
+          InputLabelProps={{ shrink: true }}
           className={classes.textField}
         />
 
