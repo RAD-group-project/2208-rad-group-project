@@ -107,7 +107,7 @@ const Update = (data ) => {
         name="description"
         label="Description"
         type="string"
-        value={formik.genreData.description}
+        value={formik.values.description}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         error={formik.touched.description && Boolean(formik.errors.description)}
