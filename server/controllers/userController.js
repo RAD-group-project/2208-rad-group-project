@@ -41,6 +41,10 @@ const getAllMembers = async (req, res) => {
 const addUser = async (req, res) => {
     const newUser = req.body;
 
+    if (!isValidUser(newUser)) {
+        return res.status(400).json({ success: false, message: "Invalid user data" });
+    }
+
     try {
         const existingUser = await User.findOne({ email: newUser.email });
         if (existingUser) {
@@ -92,6 +96,18 @@ const deleteUser = async (req, res) => {
         return res.status(400).json({ success: false, err });
     }
 };
+
+
+const isValidUser = (user) => {
+    return user && user.email && isValidEmail(user.email);
+}
+
+const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+
 
 module.exports = {
     getUser,
