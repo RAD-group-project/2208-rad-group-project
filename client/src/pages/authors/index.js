@@ -25,11 +25,8 @@ export default function Authors() {
         authorsContainer: {
             backgroundImage: 'url("/img/library.jpeg")',
             backgroundRepeat: 'round',
-            // background: `
-            // linear-gradient(to bottom, #003f5c, #2f4b7c),
-            // radial-gradient(circle, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0) 70%)`,
             backgroundBlendMode: 'multiply, normal',
-            minHeight: '100vh', // Adjust as needed
+            minHeight: '100vh', 
             padding: '20px',
             color: '#ffffff',
             textAlign: 'left',
@@ -47,10 +44,9 @@ export default function Authors() {
         },
         addButton: {
             color: '#ffffff',
-            backgroundColor: "#007acc", // Professional button color
+            backgroundColor: "#007acc", 
             '&:hover': {
-                backgroundColor: "#005d9d", // Hover color
-
+                backgroundColor: "#005d9d", 
             },
             boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
     },

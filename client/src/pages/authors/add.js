@@ -9,18 +9,18 @@ import { backendUrl } from '../../data';
 
 const useStyles = makeStyles((theme) => ({
   textField: {
-    backgroundColor: 'white', // Background color
+    backgroundColor: 'white', 
     borderRadius: '4px',
     marginBottom: '16px',
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: 'lightgray', // Border color
+        borderColor: 'lightgray', 
       },
       '&:hover fieldset': {
-        borderColor: 'blue', // Hover border color
+        borderColor: 'blue', 
       },
       '&.Mui-focused fieldset': {
-        borderColor: 'green', // Focused border color
+        borderColor: 'green', 
       },
     },
   },
@@ -38,7 +38,6 @@ const validationSchema = yup.object({
   
 });
 
-// const apiUrl = backendUrl + 'book/add'
 
 const addAuthorApi = async (authorData) => {
   try {
@@ -69,7 +68,6 @@ const Add = ({handleClose, updateTrigger}) => {
     onSubmit: async (values) => {
       try {
         await addAuthorApi(values);
-        // alert('Author added successfully');
 
         handleClose()
         updateTrigger()

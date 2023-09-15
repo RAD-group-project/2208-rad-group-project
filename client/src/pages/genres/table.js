@@ -9,7 +9,7 @@ import { backendUrl } from '../../data';
 import axios from 'axios';
 
 
-const Table = ({trigger}) => {
+const Table = ({ trigger }) => {
 
   const [genres, setGenres] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
@@ -48,9 +48,9 @@ const Table = ({trigger}) => {
   };
 
 
-  const [openUpdate,setOpenUpdate] = useState(false);
-  const [openDelete,setOpenDelete] = useState(false);
-  const [selectedGenre, setSelectedGenre] = useState(null); // Add selectedBook state
+  const [openUpdate, setOpenUpdate] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [selectedGenre, setSelectedGenre] = useState(null);
   const [selectedGenreId, setSelectedGenreId] = useState(null);
 
 
@@ -70,8 +70,6 @@ const Table = ({trigger}) => {
     setOpenDelete(false);
   }
 
-  
-  //should be memoized or stable
   const columns = useMemo(
     () => [
       {
@@ -84,84 +82,81 @@ const Table = ({trigger}) => {
         header: 'Description',
         size: 150
       },
-      
+
     ],
     [],
   );
 
-  
+
 
 
   return (
     <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
-    <MaterialReactTable
-      columns={columns}
-      data={genres}
-      enableRowActions
-      renderRowActions={(rowData) => (
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
-          <Tooltip arrow placement="left" title="Edit">
-            <IconButton onClick={() => handleClickUpdate(rowData)} >
-              <Edit />
-            </IconButton>
-          </Tooltip>
-          <Tooltip arrow placement="right" title="Delete">
-            <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
-              <Delete />
-            </IconButton>
-          </Tooltip>
-        </Box>
-      )}
-      renderRowActionMenuItems={({ closeMenu, rowData }) => [
+      <MaterialReactTable
+        columns={columns}
+        data={genres}
+        enableRowActions
+        renderRowActions={(rowData) => (
+          <Box sx={{ display: 'flex', gap: '1rem' }}>
+            <Tooltip arrow placement="left" title="Edit">
+              <IconButton onClick={() => handleClickUpdate(rowData)} >
+                <Edit />
+              </IconButton>
+            </Tooltip>
+            <Tooltip arrow placement="right" title="Delete">
+              <IconButton color="error" onClick={() => handleClickDelete(rowData)}>
+                <Delete />
+              </IconButton>
+            </Tooltip>
+          </Box>
+        )}
+        renderRowActionMenuItems={({ closeMenu, rowData }) => [
 
-        <MenuItem
-          key={0}
-          onClick={() => {
-            // View profile logic...
-            handleClickUpdate(rowData);
-            closeMenu()
-          }}
-          sx={{ m: 0 }}
-        >
-          <ListItemIcon>
-            <AccountCircle />
-          </ListItemIcon>
-          Update
-        </MenuItem>,
-        <MenuItem
-          key={1}
-          onClick={() => {
-            // Send email logic...
-            handleClickDelete()
-            closeMenu();
-          }}
-          sx={{ m: 0 }}
-        >
-          <ListItemIcon>
-            <Send />
-          </ListItemIcon>
-          Delete
-        </MenuItem>,
-      ]}
+          <MenuItem
+            key={0}
+            onClick={() => {
+              handleClickUpdate(rowData);
+              closeMenu()
+            }}
+            sx={{ m: 0 }}
+          >
+            <ListItemIcon>
+              <AccountCircle />
+            </ListItemIcon>
+            Update
+          </MenuItem>,
+          <MenuItem
+            key={1}
+            onClick={() => {
+              handleClickDelete()
+              closeMenu();
+            }}
+            sx={{ m: 0 }}
+          >
+            <ListItemIcon>
+              <Send />
+            </ListItemIcon>
+            Delete
+          </MenuItem>,
+        ]}
 
-  
-  />
 
-<Dialog open={openUpdate} onClose={handleClose}>
-            <DialogContent>
-                {/* <DialogContentText> */}
-                  <Update genre={selectedGenre} handleClose={handleClose} getAllGenres={getAllGenres}/>
-                  {/* </DialogContentText> */}
-            </DialogContent>
-        </Dialog>
+      />
+
+      <Dialog open={openUpdate} onClose={handleClose}>
+        <DialogContent>
+          <Update genre={selectedGenre} handleClose={handleClose} getAllGenres={getAllGenres} />
+
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={openDelete} onClose={handleClose}>
-      <DialogTitle id="alert-dialog-title">
+        <DialogTitle id="alert-dialog-title">
           {" Delete Genre"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          Are you sure?
+            Are you sure?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -170,11 +165,11 @@ const Table = ({trigger}) => {
             No
           </Button>
         </DialogActions>
-        </Dialog>
-  </div>
-  
-  
-  
+      </Dialog>
+    </div>
+
+
+
   );
 };
 

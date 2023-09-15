@@ -6,7 +6,6 @@ export default function Dashboard() {
   const useStyles = makeStyles({
     genresContainer: {
       backgroundImage: 'url("/img/library.jpeg")',
-      // backgroundSize: "100%",
       backgroundRepeat: 'round',
       backgroundBlendMode: 'multiply, normal',
       minHeight: '100vh',
@@ -37,7 +36,6 @@ export default function Dashboard() {
       alignItems: 'center',
       justifyContent: 'center',
       height: '100vh',
-      boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
       padding: '20px',
       borderRadius: '10px',
     },
@@ -60,11 +58,6 @@ export default function Dashboard() {
          <Typography className={classes.libraryText} > Library Management System</Typography> 
          </Box>
       </Box>
-
-      {/* Box for "Library management system" */}
-      {/* <Box className={classes.libraryTextContainer}>
-        <div className={classes.libraryText}>Library management system</div>
-      </Box> */}
     </div>
   );
 }

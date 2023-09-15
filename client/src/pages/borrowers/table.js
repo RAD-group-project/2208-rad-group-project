@@ -64,7 +64,7 @@ const Table = ({trigger}) => {
 
   const [openUpdate,setOpenUpdate] = useState(false);
   const [openDelete,setOpenDelete] = useState(false);
-  const [selectedBorrower, setSelectedBorrower] = useState(null); // Add selectedBorrower state
+  const [selectedBorrower, setSelectedBorrower] = useState(null); 
   const [selectedBorrowerId, setSelectedBorrowerId] = useState(null);
 
 
@@ -84,25 +84,8 @@ const Table = ({trigger}) => {
     setOpenDelete(false);
   }
 
-  
-  //should be memoized or stable
   const columns = useMemo(
     () => [
-      // {
-      //   accessorKey: "userID",
-      //   header: "User ID",
-      //   size: 150,
-      // },
-      // {
-      //   accessorKey: "firstName",
-      //   header: "First Name",
-      //   size: 150,
-      // },
-      // {
-      //   accessorKey: "lastName",
-      //   header: "Last Name",
-      //   size: 150,
-      // },
       {
         accessorKey: "name",
         header: "Name",
@@ -154,10 +137,6 @@ const Table = ({trigger}) => {
         columns={columns}
         data={borrowers}
         enableRowActions
-        // tableOptions={{
-        //   tableRowClass: classes.tableRow,
-        //   tableHeaderClass: classes.tableHeader,
-        // }}
         renderRowActions={(rowData) => (
           <Box sx={{ display: "flex", gap: "1rem" }}>
             <Tooltip arrow placement="left" title="Edit">
@@ -182,7 +161,6 @@ const Table = ({trigger}) => {
           <MenuItem
             key={0}
             onClick={() => {
-              // View profile logic...
               handleClickUpdate(rowData);
               closeMenu();
             }}
@@ -196,7 +174,6 @@ const Table = ({trigger}) => {
           <MenuItem
             key={1}
             onClick={() => {
-              // Send email logic...
               handleClickDelete();
               closeMenu();
             }}
@@ -209,41 +186,15 @@ const Table = ({trigger}) => {
           </MenuItem>,
         ]}
 
-        //   renderDetailPanel={({ row }) => (
-        //     <Box
-        //       sx={{
-        //         display: 'flex',
-        //         justifyContent: 'space-around',
-        //         alignItems: 'center',
-        //       }}
-        //     >
-        //       <img
-        //         alt={row.original.title}
-        //         height={200}
-        //         src={`https://covers.openlibrary.org/b/isbn/${row.original.ISBN}-M.jpg`}
-        //         loading="lazy"
-        //         // style={{ borderRadius: '50%' }}
-        //       />
-        //       {console.log(row)}
-        //       <Box sx={{ textAlign: 'center' }}>
-        //         <Typography variant="h4">{row.original.title}</Typography>
-        //         <Typography variant="h5">
-        //           {row.original.author}
-        //         </Typography>
-        //       </Box>
-        //     </Box>
-        //   )}
       />
 
       <Dialog open={openUpdate} onClose={handleClose}>
         <DialogContent>
-          {/* <DialogContentText> */}
           <Update
             borrower={selectedBorrower}
             handleClose={handleClose}
             getAllBorrowers={getAllBorrowers}
           />
-          {/* </DialogContentText> */}
         </DialogContent>
       </Dialog>
 

@@ -9,12 +9,8 @@ import {
   DialogContentText,
   DialogTitle,
   DialogActions,
-  ListItemIcon,
-  MenuItem,
-  Typography,
   Tooltip,
   IconButton,
-  Paper, // Add Paper component for dialog and container
 } from '@mui/material';
 import { AccountCircle, Send, Delete, Edit } from '@mui/icons-material';
 import Update from './update';
@@ -22,21 +18,7 @@ import Update from './update';
 import { backendUrl } from '../../data';
 import axios from 'axios';
 import { format } from 'date-fns';
-
-import { makeStyles } from '@mui/styles';
-
-
-
-
-//nested data is ok, see accessorKeys in ColumnDef below
-
-
-
-
 const Table = ({trigger}) => {
-
-  // const classes = useStyles();
-
 
   const [users, setUsers] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
@@ -53,8 +35,6 @@ const Table = ({trigger}) => {
         console.log(response.data);
         var members = response.data.usersList.filter(user => !user.isAdmin);
 
-
-
         var members = members.map(member => {
           const formattedJoinDate = format(new Date(member.registered), 'yyyy-MM-dd');
           return {
@@ -62,8 +42,6 @@ const Table = ({trigger}) => {
             registered: formattedJoinDate,
           };
         });
-
-
 
         setUsers(members);
         setIsTableLoading(false);
@@ -90,10 +68,8 @@ const Table = ({trigger}) => {
 
   const [openUpdate,setOpenUpdate] = useState(false);
   const [openDelete,setOpenDelete] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null); // Add selectedUser state
+  const [selectedUser, setSelectedUser] = useState(null); 
   const [selectedUserId, setSelectedUserId] = useState(null);
-
-
 
   const handleClickUpdate = (user) => {
     setSelectedUser(user);
@@ -110,14 +86,8 @@ const Table = ({trigger}) => {
     setOpenDelete(false);
   }
 
-  
-  //should be memoized or stable
   const columns = useMemo(
     () => [
-
-
-
-
       {
         accessorKey: 'name',
         header: 'Name',
@@ -142,20 +112,13 @@ const Table = ({trigger}) => {
     [],
   );
 
-  
-
 
   return (
     <div style={{ borderRadius: '10px', overflow: 'hidden' }}>    
-    {/* <Paper className={classes.tableContainer}> */}
      <MaterialReactTable
   columns={columns}
   data={users}
   enableRowActions
-  // tableOptions={{
-  //   tableRowClass: classes.tableRow,
-  //   tableHeaderClass: classes.tableHeader,
-  // }}
   renderRowActions={(rowData) => (
     <Box sx={{ display: 'flex', gap: '1rem' }}>
       <Tooltip arrow placement="left" title="Edit">
@@ -176,9 +139,8 @@ const Table = ({trigger}) => {
 
 <Dialog open={openUpdate} onClose={handleClose}>
             <DialogContent>
-                {/* <DialogContentText> */}
                   <Update user={selectedUser} handleClose={handleClose} getAllUsers={getAllUsers}/>
-                  {/* </DialogContentText> */}
+              
             </DialogContent>
         </Dialog>
 
@@ -198,11 +160,8 @@ const Table = ({trigger}) => {
           </Button>
         </DialogActions>
         </Dialog>
-        {/* </Paper> */}
 
   </div>
-  
-  
   
   );
 };

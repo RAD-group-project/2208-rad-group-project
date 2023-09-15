@@ -1,13 +1,11 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { MaterialReactTable } from 'material-react-table';
 
+import { MaterialReactTable } from 'material-react-table';
 import { Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions, ListItemIcon, MenuItem, Typography, Tooltip, IconButton } from '@mui/material';
 import { AccountCircle, Send, Delete, Edit } from '@mui/icons-material';
 import Update from './update';
-
 import { backendUrl } from '../../data';
 import axios from 'axios';
-
 import format from 'date-fns/format';
 
 
@@ -36,7 +34,6 @@ const Table = ({ trigger }) => {
           };
         });
 
-
         setBooks(booksList);
         setIsTableLoading(false);
       })
@@ -62,7 +59,7 @@ const Table = ({ trigger }) => {
 
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
-  const [selectedBook, setSelectedBook] = useState(null); // Add selectedBook state
+  const [selectedBook, setSelectedBook] = useState(null);
   const [selectedBookId, setSelectedBookId] = useState(null);
 
 
@@ -82,8 +79,6 @@ const Table = ({ trigger }) => {
     setOpenDelete(false);
   }
 
-
-  //should be memoized or stable
   const columns = useMemo(
     () => [
       {
@@ -151,7 +146,6 @@ const Table = ({ trigger }) => {
           <MenuItem
             key={0}
             onClick={() => {
-              // View profile logic...
               handleClickUpdate(rowData);
               closeMenu()
             }}
@@ -165,7 +159,6 @@ const Table = ({ trigger }) => {
           <MenuItem
             key={1}
             onClick={() => {
-              // Send email logic...
               handleClickDelete()
               closeMenu();
             }}
@@ -186,7 +179,7 @@ const Table = ({ trigger }) => {
               ml: "50px",
             }}
           >
-            <img 
+            <img
               alt={row.original.title}
               height={200}
               src={`https://covers.openlibrary.org/b/isbn/${row.original.ISBN}-M.jpg`}
@@ -208,9 +201,8 @@ const Table = ({ trigger }) => {
 
       <Dialog open={openUpdate} onClose={handleClose}>
         <DialogContent>
-          {/* <DialogContentText> */}
           <Update book={selectedBook} handleClose={handleClose} getAllBooks={getAllBooks} />
-          {/* </DialogContentText> */}
+
         </DialogContent>
       </Dialog>
 

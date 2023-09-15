@@ -33,7 +33,6 @@ const validationSchema = yup.object({
   name: yup.string('Enter user name').required('Name is required'),
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
   phone: yup.number('Enter a number').typeError('Enter a valid number'),
-  // Add more validation rules for other fields if needed
 });
 
 const updateUserApi = async (userId, userData) => {
@@ -45,34 +44,16 @@ const updateUserApi = async (userId, userData) => {
   }
 };
 
-const Update = (data ) => {
+const Update = (data) => {
 
   const classes = useStyles();
 
 
   console.log(data['user']['row']['original']['_id'])
   const userId = data['user']['row']['original']['_id']
-  // const [user, setUser] = useState({
-  //   name: '',
-  //   dob: '',
-  //   email: '',
-  //   password: '',
-  //   phone: '',
-  //   isAdmin: false,
-  //   photoUrl: '',
-  // });
   const [user, setUser] = useState(data['user']['row']['original']);
 
   useEffect(() => {
-    // Fetch user data using the userId and update the user state
-    // For example:
-    // axios.get(`${backendUrl}user/get/${userId}`)
-    //   .then(response => {
-    //     setUser(response.data.user);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   }, [userId]);
 
   const formik = useFormik({
@@ -81,10 +62,9 @@ const Update = (data ) => {
     onSubmit: async (values) => {
       try {
         await updateUserApi(userId, values);
-        // alert('User updated successfully');
         data.getAllUsers()
         data.handleClose()
-        
+
       } catch (error) {
         if (error.response && error.response.status === 403) {
           alert('User already exists');
@@ -109,7 +89,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
-          className={classes.textField} 
+          className={classes.textField}
         />
 
         <TextField
@@ -122,7 +102,7 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
-          className={classes.textField} 
+          className={classes.textField}
         />
 
         <TextField
@@ -136,10 +116,8 @@ const Update = (data ) => {
           onBlur={formik.handleBlur}
           error={formik.touched.phone && Boolean(formik.errors.phone)}
           helperText={formik.touched.phone && formik.errors.phone}
-          className={classes.textField} 
+          className={classes.textField}
         />
-
-        {/* Add more fields here as needed */}
 
         <Button color="primary" variant="contained" fullWidth type="submit">
           Update
