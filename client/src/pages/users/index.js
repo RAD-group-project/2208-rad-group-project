@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Dashboard from './dashboard';
+import Table from './table';
 import Add from './add';
 import { Box, Typography, Button, Dialog, DialogContent } from '@mui/material';
 import { makeStyles } from '@mui/styles'
@@ -93,7 +93,7 @@ export default function Users() {
           //   margin: "20px"
           // }}
         >
-          <Dashboard trigger={trigger} />
+          <Table trigger={trigger} />
         </Box>
       </Box>
     </div>

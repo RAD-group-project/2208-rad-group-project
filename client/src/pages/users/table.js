@@ -33,7 +33,7 @@ import { makeStyles } from '@mui/styles';
 
 
 
-const Dashboard = ({trigger}) => {
+const Table = ({trigger}) => {
 
   // const classes = useStyles();
 
@@ -207,4 +207,4 @@ const Dashboard = ({trigger}) => {
   );
 };
 
-export default Dashboard;
+export default Table;

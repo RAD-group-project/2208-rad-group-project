@@ -11,7 +11,7 @@ import axios from 'axios';
 import { format } from 'date-fns';
 
 
-const Dashboard = ({trigger}) => {
+const Table = ({trigger}) => {
 
   const [borrowers, setBorrowers] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
@@ -270,4 +270,4 @@ const Dashboard = ({trigger}) => {
   );
 };
 
-export default Dashboard;
+export default Table;
