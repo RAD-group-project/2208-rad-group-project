@@ -1,7 +1,5 @@
-// Importing modules
 const mongoose = require("mongoose");
 
-// Creating genre schema
 const GenreSchema = new mongoose.Schema({
   category: {
     type: String,
