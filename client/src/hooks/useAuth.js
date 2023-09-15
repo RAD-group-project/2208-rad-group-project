@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     if (data.isAdmin) {
       navigate("/dashboard", { replace: true });
     } else {
-      navigate("/books", { replace: true });
+      navigate("/dashboard", { replace: true });
     }
   };
 
