@@ -8,6 +8,8 @@ import Update from './update';
 import { backendUrl } from '../../data';
 import axios from 'axios';
 
+import format from 'date-fns/format';
+
 
 const Table = ({ trigger }) => {
   const [books, setBooks] = useState([]);
@@ -23,7 +25,18 @@ const Table = ({ trigger }) => {
       .then((response) => {
         // handle success
         console.log(response.data);
-        const booksList = response.data.booksList
+        var booksList = response.data.booksList
+
+        var booksList = booksList.map(book => {
+          const formattedDatePublished = format(new Date(book.datePublished), 'yyyy-MM-dd');
+
+          return {
+            ...book,
+            datePublished: formattedDatePublished,
+          };
+        });
+
+
         setBooks(booksList);
         setIsTableLoading(false);
       })
