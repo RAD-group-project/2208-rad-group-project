@@ -1,10 +1,8 @@
 import React from 'react'
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-// import Link from "@mui/material/Link";
 import { Link } from 'react-router-dom';
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -94,12 +92,6 @@ export default function Login() {
         >
           Sign In
         </Button>
-        {/* <Grid item xs={12} sm={6} align="left" style={{ marginBottom: "20px" }}>
-
-            <Link href="#" variant="body2" style={{textDecoration: "none"}}>
-              Forgot password?
-            </Link>
-          </Grid> */}
           <Grid item xs={12} sm={6} align="center" style={{ marginTop: "20px" }}>
             <Link to="/register" style={{textDecoration: "none"}}>
               {"Don't have an account? Sign Up"}

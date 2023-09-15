@@ -33,7 +33,7 @@ const validationSchema = yup.object({
   publisher: yup.string('Enter publisher'),
   datePublished: yup.date('Enter date published'),
   genre: yup.string('Enter genre'),
-  copies: yup.number('Enter copies').required('No. of copies are required')  
+  copies: yup.number('Enter copies').required('No. of copies are required')
 });
 
 const updateBookApi = async (bookId, bookData) => {
@@ -45,35 +45,15 @@ const updateBookApi = async (bookId, bookData) => {
   }
 };
 
-const Update = (data ) => {
+const Update = (data) => {
 
   const classes = useStyles();
 
   console.log(data['book']['row']['original']['_id'])
   const bookId = data['book']['row']['original']['_id']
-
-    // const [book, setBook] = useState({
-    //   title: '',
-    //   author: '',
-    //   ISBN: '',
-    //   publisher: '',
-    //   datePublished: '',
-    //   genre: false,
-    //   copies: '',
-    // });
-  
   const [book, setBook] = useState(data['book']['row']['original']);
 
   useEffect(() => {
-    // Fetch book data using the bookId and update the book state
-    // For example:
-    // axios.get(`${backendUrl}book/get/${bookId}`)
-    //   .then(response => {
-    //     setBook(response.data.book);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   }, [bookId]);
 
   const formik = useFormik({
@@ -82,10 +62,9 @@ const Update = (data ) => {
     onSubmit: async (values) => {
       try {
         await updateBookApi(bookId, values);
-        // alert('Book updated successfully');
         data.getAllBooks()
         data.handleClose()
-        
+
       } catch (error) {
         if (error.response && error.response.status === 403) {
           alert('Book already exists');
@@ -100,103 +79,103 @@ const Update = (data ) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-      <TextField
-        fullWidth
-        id="title"
-        name="title"
-        label="Title"
-        type="string"
-        value={formik.values.title}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.title && Boolean(formik.errors.title)}
-        helperText={formik.touched.title && formik.errors.title}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="title"
+          name="title"
+          label="Title"
+          type="string"
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.title && Boolean(formik.errors.title)}
+          helperText={formik.touched.title && formik.errors.title}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="author"
-        name="author"
-        label="Author"
-        type="string"
-        value={formik.values.author}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.author && Boolean(formik.errors.author)}
-        helperText={formik.touched.author && formik.errors.author}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="author"
+          name="author"
+          label="Author"
+          type="string"
+          value={formik.values.author}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.author && Boolean(formik.errors.author)}
+          helperText={formik.touched.author && formik.errors.author}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="ISBN"
-        name="ISBN"
-        label="ISBN"
-        type="string"
-        value={formik.values.ISBN}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.ISBN && Boolean(formik.errors.ISBN)}
-        helperText={formik.touched.ISBN && formik.errors.ISBN}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="ISBN"
+          name="ISBN"
+          label="ISBN"
+          type="string"
+          value={formik.values.ISBN}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.ISBN && Boolean(formik.errors.ISBN)}
+          helperText={formik.touched.ISBN && formik.errors.ISBN}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="publisher"
-        name="publisher"
-        label="Publisher"
-        type="string"
-        value={formik.values.publisher}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.publisher && Boolean(formik.errors.publisher)}
-        helperText={formik.touched.publisher && formik.errors.publisher}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="publisher"
+          name="publisher"
+          label="Publisher"
+          type="string"
+          value={formik.values.publisher}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.publisher && Boolean(formik.errors.publisher)}
+          helperText={formik.touched.publisher && formik.errors.publisher}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="datePublished"
-        name="datePublished"
-        label="Date Published"
-        type="date"
-        value={formik.values.datePublished}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.datePublished && Boolean(formik.errors.datePublished)}
-        helperText={formik.touched.datePublished && formik.errors.datePublished}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="datePublished"
+          name="datePublished"
+          label="Date Published"
+          type="date"
+          value={formik.values.datePublished}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.datePublished && Boolean(formik.errors.datePublished)}
+          helperText={formik.touched.datePublished && formik.errors.datePublished}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="genre"
-        name="genre"
-        label="Genre"
-        type="string"
-        value={formik.values.genre}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.genre && Boolean(formik.errors.genre)}
-        helperText={formik.touched.genre && formik.errors.genre}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="genre"
+          name="genre"
+          label="Genre"
+          type="string"
+          value={formik.values.genre}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.genre && Boolean(formik.errors.genre)}
+          helperText={formik.touched.genre && formik.errors.genre}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="copies"
-        name="copies"
-        label="Copies"
-        type="number"
-        value={formik.values.copies}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.copies && Boolean(formik.errors.copies)}
-        helperText={formik.touched.copies && formik.errors.copies}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="copies"
+          name="copies"
+          label="Copies"
+          type="number"
+          value={formik.values.copies}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.copies && Boolean(formik.errors.copies)}
+          helperText={formik.touched.copies && formik.errors.copies}
+          className={classes.textField}
+        />
 
         <Button color="primary" variant="contained" fullWidth type="submit">
           Submit

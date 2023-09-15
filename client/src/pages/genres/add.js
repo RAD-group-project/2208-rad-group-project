@@ -83,7 +83,7 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.category && Boolean(formik.errors.category)}
         helperText={formik.touched.category && formik.errors.category}
-        className={classes.textField} // Apply the styles here
+        className={classes.textField} 
       />
 
       <TextField
@@ -96,7 +96,7 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.description && Boolean(formik.errors.description)}
         helperText={formik.touched.description && formik.errors.description}
-        className={classes.textField} // Apply the styles here
+        className={classes.textField}
       />
 
       

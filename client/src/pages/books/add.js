@@ -37,8 +37,6 @@ const validationSchema = yup.object({
   
 });
 
-// const apiUrl = backendUrl + 'book/add'
-
 const addBookApi = async (bookData) => {
   try {
     const response = await axios.post(`${backendUrl}book/add`, bookData);
@@ -67,7 +65,6 @@ const Add = ({handleClose, updateTrigger}) => {
     onSubmit: async (values) => {
       try {
         await addBookApi(values);
-        // alert('Book added successfully');
 
         handleClose()
         updateTrigger()
@@ -95,7 +92,7 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.title && Boolean(formik.errors.title)}
         helperText={formik.touched.title && formik.errors.title}
-        className={classes.textField} // Apply the styles here
+        className={classes.textField} 
       />
 
       <TextField
@@ -108,7 +105,7 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.author && Boolean(formik.errors.author)}
         helperText={formik.touched.author && formik.errors.author}
-        className={classes.textField} // Apply the styles here
+        className={classes.textField} 
       />
 
       <TextField
@@ -121,7 +118,7 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.ISBN && Boolean(formik.errors.ISBN)}
         helperText={formik.touched.ISBN && formik.errors.ISBN}
-        className={classes.textField} // Apply the styles here
+        className={classes.textField} 
       />
 
       <TextField
@@ -134,7 +131,7 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.publisher && Boolean(formik.errors.publisher)}
         helperText={formik.touched.publisher && formik.errors.publisher}
-        className={classes.textField} // Apply the styles here
+        className={classes.textField} 
       />
 
       <TextField
@@ -149,7 +146,7 @@ const Add = ({handleClose, updateTrigger}) => {
         error={formik.touched.datePublished && Boolean(formik.errors.datePublished)}
         helperText={formik.touched.datePublished && formik.errors.datePublished}
         InputLabelProps={{ shrink: true }} 
-        className={classes.textField} // Apply the styles here
+        className={classes.textField}
       />
 
       <TextField
@@ -162,7 +159,7 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.genre && Boolean(formik.errors.genre)}
         helperText={formik.touched.genre && formik.errors.genre}
-        className={classes.textField} // Apply the styles here
+        className={classes.textField}
       />
 
       <TextField
@@ -176,10 +173,9 @@ const Add = ({handleClose, updateTrigger}) => {
         onBlur={formik.handleBlur}
         error={formik.touched.copies && Boolean(formik.errors.copies)}
         helperText={formik.touched.copies && formik.errors.copies}
-        className={classes.textField} // Apply the styles here
+        className={classes.textField} 
       />
-
-
+      
         <Button color="primary" variant="contained" fullWidth type="submit">
           Submit
         </Button>

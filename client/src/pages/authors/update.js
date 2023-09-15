@@ -9,31 +9,31 @@ import { backendUrl } from '../../data';
 
 const useStyles = makeStyles((theme) => ({
   textField: {
-    backgroundColor: 'white', // Background color
+    backgroundColor: 'white',
     borderRadius: '4px',
     marginBottom: '16px',
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: 'lightgray', // Border color
+        borderColor: 'lightgray',
       },
       '&:hover fieldset': {
-        borderColor: 'blue', // Hover border color
+        borderColor: 'blue',
       },
       '&.Mui-focused fieldset': {
-        borderColor: 'green', // Focused border color
+        borderColor: 'green',
       },
     },
   },
 }));
 
 const validationSchema = yup.object({
-    firstName: yup.string('Enter first name').required('First name is required'),
-    lastName: yup.string('Enter last name').required('Last name is required'),
-    nationality: yup.string('Enter nationality').required('Nationality is required'),
-    dateOfBirth: yup.date('Enter date of birth').required('Date of Birth is required'),
-    startDateOfPublishing: yup.string('Enter date published'),
-    genre: yup.string('Enter the genres'),
-    noOfBooksWritten: yup.string('Enter number').required('No. of books are required'), 
+  firstName: yup.string('Enter first name').required('First name is required'),
+  lastName: yup.string('Enter last name').required('Last name is required'),
+  nationality: yup.string('Enter nationality').required('Nationality is required'),
+  dateOfBirth: yup.date('Enter date of birth').required('Date of Birth is required'),
+  startDateOfPublishing: yup.string('Enter date published'),
+  genre: yup.string('Enter the genres'),
+  noOfBooksWritten: yup.string('Enter number').required('No. of books are required'),
 });
 
 const updateAuthorApi = async (authorId, authorData) => {
@@ -45,36 +45,16 @@ const updateAuthorApi = async (authorId, authorData) => {
   }
 };
 
-const Update = (data ) => {
+const Update = (data) => {
 
   const classes = useStyles();
 
   console.log(data['author']['row']['original']['_id'])
   const authorId = data['author']['row']['original']['_id']
 
-    // const [book, setBook] = useState({
-    //   title: '',
-    //   author: '',
-    //   ISBN: '',
-    //   publisher: '',
-    //   datePublished: '',
-    //   genre: false,
-    //   copies: '',
-    // });
-  
   const [author, setAuthor] = useState(data['author']['row']['original']);
 
-  useEffect(() => {
-    // Fetch book data using the bookId and update the book state
-    // For example:
-    // axios.get(`${backendUrl}book/get/${bookId}`)
-    //   .then(response => {
-    //     setBook(response.data.book);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-  }, [authorId]);
+  useEffect(() => { }, [authorId]);
 
   const formik = useFormik({
     initialValues: author,
@@ -82,10 +62,9 @@ const Update = (data ) => {
     onSubmit: async (values) => {
       try {
         await updateAuthorApi(authorId, values);
-        // alert('Author updated successfully');
         data.getAllAuthors()
         data.handleClose()
-        
+
       } catch (error) {
         if (error.response && error.response.status === 403) {
           alert('Author already exists');
@@ -100,103 +79,103 @@ const Update = (data ) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-      <TextField
-        fullWidth
-        id="firstName"
-        name="firstName"
-        label="First Name"
-        type="string"
-        value={formik.values.firstName}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-        helperText={formik.touched.firstName && formik.errors.firstName}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="firstName"
+          name="firstName"
+          label="First Name"
+          type="string"
+          value={formik.values.firstName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+          helperText={formik.touched.firstName && formik.errors.firstName}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="lastName"
-        name="lastName"
-        label="Last Name"
-        type="string"
-        value={formik.values.lastName}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-        helperText={formik.touched.lastName && formik.errors.lastName}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="lastName"
+          name="lastName"
+          label="Last Name"
+          type="string"
+          value={formik.values.lastName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+          helperText={formik.touched.lastName && formik.errors.lastName}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="nationality"
-        name="nationality"
-        label="Nationality"
-        type="string"
-        value={formik.values.nationality}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.nationality && Boolean(formik.errors.nationality)}
-        helperText={formik.touched.nationality && formik.errors.nationality}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="nationality"
+          name="nationality"
+          label="Nationality"
+          type="string"
+          value={formik.values.nationality}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.nationality && Boolean(formik.errors.nationality)}
+          helperText={formik.touched.nationality && formik.errors.nationality}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="dateOfBirth"
-        name="dateOfBirth"
-        label="Date of Birth"
-        type="date"
-        value={formik.values.dateOfBirth}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.dateOfBirth && Boolean(formik.errors.dateOfBirth)}
-        helperText={formik.touched.dateOfBirth && formik.errors.dateOfBirth}
-        InputLabelProps={{ shrink: true }} 
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="dateOfBirth"
+          name="dateOfBirth"
+          label="Date of Birth"
+          type="date"
+          value={formik.values.dateOfBirth}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.dateOfBirth && Boolean(formik.errors.dateOfBirth)}
+          helperText={formik.touched.dateOfBirth && formik.errors.dateOfBirth}
+          InputLabelProps={{ shrink: true }}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="startDateOfPublishing"
-        name="startDateOfPublishing"
-        label="Start Date of Publishing"
-        type="string"
-        value={formik.values.startDateOfPublishing}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.startDateOfPublishing && Boolean(formik.errors.startDateOfPublishing)}
-        helperText={formik.touched.startDateOfPublishing && formik.errors.startDateOfPublishing} 
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="startDateOfPublishing"
+          name="startDateOfPublishing"
+          label="Start Date of Publishing"
+          type="string"
+          value={formik.values.startDateOfPublishing}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.startDateOfPublishing && Boolean(formik.errors.startDateOfPublishing)}
+          helperText={formik.touched.startDateOfPublishing && formik.errors.startDateOfPublishing}
+          className={classes.textField}
+        />
 
-<TextField
-        fullWidth
-        id="genre"
-        name="genre"
-        label="Genre"
-        value={formik.values.genre}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.genre && Boolean(formik.errors.genre)}
-        helperText={formik.touched.genre && formik.errors.genre}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="genre"
+          name="genre"
+          label="Genre"
+          value={formik.values.genre}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.genre && Boolean(formik.errors.genre)}
+          helperText={formik.touched.genre && formik.errors.genre}
+          className={classes.textField}
+        />
 
-      <TextField
-        fullWidth
-        id="noOfBooksWritten"
-        name="noOfBooksWritten"
-        label="Number of Books written"
-        type="string"
-        value={formik.values.noOfBooksWritten}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched.noOfBooksWritten && Boolean(formik.errors.noOfBooksWritten)}
-        helperText={formik.touched.noOfBooksWritten && formik.errors.noOfBooksWritten}
-        className={classes.textField} 
-      />
+        <TextField
+          fullWidth
+          id="noOfBooksWritten"
+          name="noOfBooksWritten"
+          label="Number of Books written"
+          type="string"
+          value={formik.values.noOfBooksWritten}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.noOfBooksWritten && Boolean(formik.errors.noOfBooksWritten)}
+          helperText={formik.touched.noOfBooksWritten && formik.errors.noOfBooksWritten}
+          className={classes.textField}
+        />
 
         <Button color="primary" variant="contained" fullWidth type="submit">
           Submit

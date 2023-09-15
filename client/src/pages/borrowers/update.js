@@ -27,18 +27,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const validationSchema = yup.object({
-    // userID: yup.string("Enter member ID number").required("Member ID is required"),
-    // firstName: yup.string("Enter first name").required("First name is required"),
-    // lastName: yup.string("Enter last name").required("Last name is required"),
-    name: yup.string("Enter your name").required("Name is required"),
-    ISBN: yup.string('Enter ISBN').required('ISBN is required'),
-    title: yup.string("Enter book title").required("Title is required"),
-    author: yup.string("Enter the author").required("Author is required"),
-    checkoutDate: yup.date("Enter checkout date").required("Checkout date is required"),
-    dueDate: yup.date("Enter due date").required("Due date is required"),
-    // returnDate: yup.string("Enter returned date").required("Return date is required"),
-    email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
-    phone: yup.number("Enter contact number").typeError('Enter a valid number'),  
+  // userID: yup.string("Enter member ID number").required("Member ID is required"),
+  // firstName: yup.string("Enter first name").required("First name is required"),
+  // lastName: yup.string("Enter last name").required("Last name is required"),
+  name: yup.string("Enter your name").required("Name is required"),
+  ISBN: yup.string('Enter ISBN').required('ISBN is required'),
+  title: yup.string("Enter book title").required("Title is required"),
+  author: yup.string("Enter the author").required("Author is required"),
+  checkoutDate: yup.date("Enter checkout date").required("Checkout date is required"),
+  dueDate: yup.date("Enter due date").required("Due date is required"),
+  // returnDate: yup.string("Enter returned date").required("Return date is required"),
+  email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
+  phone: yup.number("Enter contact number").typeError('Enter a valid number'),
 });
 
 const updateBorrowerApi = async (borrowerId, borrowerData) => {
@@ -50,38 +50,15 @@ const updateBorrowerApi = async (borrowerId, borrowerData) => {
   }
 };
 
-const Update = (data ) => {
+const Update = (data) => {
 
   const classes = useStyles();
 
   console.log(data['borrower']['row']['original']['_id'])
   const borrowerId = data['borrower']['row']['original']['_id']
-
-    // const [borrower, setBorrower] = useState({
-    //     userID: "",
-    //     firstName: "",
-    //     lastName: "",
-    //     ISBN: "",
-    //     title: "",
-    //     author: "",
-    //     checkoutDate: "",
-    //     dueDate: "",
-    //     email: "",
-    //     phone: "",
-    // });
-  
   const [borrower, setBorrower] = useState(data['borrower']['row']['original']);
 
   useEffect(() => {
-    // Fetch borrower data using the borrowerId and update the borrower state
-    // For example:
-    // axios.get(`${backendUrl}borrower/get/${borrowerId}`)
-    //   .then(response => {
-    //     setBorrower(response.data.borrower);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   }, [borrowerId]);
 
   const formik = useFormik({
@@ -90,10 +67,9 @@ const Update = (data ) => {
     onSubmit: async (values) => {
       try {
         await updateBorrowerApi(borrowerId, values);
-        // alert('Borrower updated successfully');
         data.getAllBorrowers()
         data.handleClose()
-        
+
       } catch (error) {
         if (error.response && error.response.status === 403) {
           alert('Borrower already exists');
@@ -108,17 +84,6 @@ const Update = (data ) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        {/* <TextField
-          fullWidth
-          id="userID"
-          name="userID"
-          label="User ID"
-          value={formik.values.userID}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.userID && Boolean(formik.errors.userID)}
-          helperText={formik.touched.userID && formik.errors.userID}
-        /> */}
 
         <TextField
           fullWidth

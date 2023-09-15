@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -30,7 +28,7 @@ export default function Registration() {
 
     try {
       const response = await axios.post('http://localhost:8083/api/auth/register', formData);
-      // Handle registration success, e.g., redirect to login page
+      // Handle registration success
       console.log(response.data);
       navigate("/books", { replace: true });
       
@@ -109,7 +107,5 @@ export default function Registration() {
           </Grid>
           </Box>
         </Box>
-    //   </Grid>
-    // </Grid>
   );
 }

@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   userInfoContainer: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center", // Center align horizontally
+    alignItems: "center", 
   },
   chip: {
     borderColor: "#ffffff",
@@ -35,27 +35,27 @@ const useStyles = makeStyles({
 
   page: {
 
-    background: "linear-gradient(to bottom, #07344f, #061119 )", // Gradient background color
+    background: "linear-gradient(to bottom, #07344f, #061119 )", 
     width: "100%",
     height: "100%",
   },
   drawer: {
-    backgroundColor: "#07344f", // Matching color for the drawer background
+    backgroundColor: "#07344f", 
   },
   navLink: {
     padding: "8px 12px",
     paddingLeft: "15px",
     transition: "background-color 0.3s, color 0.3s",
-    color: "#ffffff", // Default text color (white in this example)
+    color: "#ffffff", 
     "&:hover": {
-      backgroundColor: "#0670b5", // Hover background color
-      color: "#ffffff", // Text color on hover (matching background color)
+      backgroundColor: "#0670b5", 
+      color: "#ffffff", 
     },
   },
   avatar: {
     width: "80px",
     height: "80px",
-    fontSize: "30px", // Increase font size for larger avatar
+    fontSize: "30px", 
 
   },
   addButton: {
@@ -88,20 +88,15 @@ export default function Sidebar() {
 
   const { logout, user } = useAuth()
   const logoutUser = () => {
-    // handleClose();
     axios.get(`http://localhost:8083/api/auth/logout`, { withCredentials: true })
       .then((response) => {
-        // handle success
         if (response.status === 200) {
           console.log(response.data);
           logout();
         }
       })
       .catch((error) => {
-        // handle error
-        // alert(error);
         logout()
-        // console.log(error);
       })
   };
 
@@ -127,11 +122,7 @@ export default function Sidebar() {
               src="/img/avatar.png"
               className={classes.avatar}
             />
-            {/* <Chip
-          label={user.name}
-          variant="outlined"
-          className={classes.chip}
-        /> */}
+            
           </Box>
           <Typography variant='h4' className={classes.userName}>
             {user.name} </Typography>
@@ -178,18 +169,6 @@ export default function Sidebar() {
 
       </Drawer>
 
-
-      {/* <div>
-  <Box sx={{px:"100%",py:1}}> 
-      <Box sx={{ mr:10, pr:10 , display: 'flex', justifyContent: 'flex-end' }} >
-        <Chip
-          avatar={<Avatar alt={user.name} src="/static/images/avatar/1.jpg" />}
-          label={user.name}
-          variant="outlined"
-        />
-      </Box>
-  </Box>
-</div> */}
     </div>
   )
 }

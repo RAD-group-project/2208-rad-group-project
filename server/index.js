@@ -30,6 +30,7 @@ mongoose
   })
   .catch((err) => console.error('Database Connection error', err));
 
+  //to not allow request other than client requests
 app.use(
   cors({
     origin: 'http://localhost:3000',

@@ -1,16 +1,8 @@
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 import Login from "./login";
-import { Route, Routes } from "react-router-dom";
 import Register from "./register";
 import { makeStyles } from "@mui/styles";
 
@@ -34,23 +26,22 @@ const useStyles = makeStyles((theme) => ({
 
   },
   authBox: {
-    width: "40%", // Smaller box width
-    padding: "12px", // Replace with your desired pixel value
+    width: "40%",
+    padding: "12px", 
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    background: "#fff", // Solid white background
-    borderRadius: "10px", // Rounded corners
-    borderRadius: "10px", // Rounded corners
+    background: "#fff", 
+    borderRadius: "10px", 
     boxShadow: '0 0 20px 2px #000000',
 
   },
   heading: {
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', // Add shadow
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', 
     fontSize: "50px",
-    fontWeight: "bold", // Make it bold
-    color: "#fff", // Make it white
-    marginBottom: "40px", // Replace with your desired pixel value
+    fontWeight: "bold", 
+    color: "#fff", 
+    marginBottom: "40px", 
     marginTop: "70px",
     textAlign: 'center'
   },
