@@ -9,7 +9,7 @@ import { backendUrl } from '../../data';
 import axios from 'axios';
 
 
-const Dashboard = ({trigger}) => {
+const Table = ({trigger}) => {
 
   const [genres, setGenres] = useState([]);
   const [isTableLoading, setIsTableLoading] = useState(true);
@@ -178,4 +178,4 @@ const Dashboard = ({trigger}) => {
   );
 };
 
-export default Dashboard;
+export default Table;

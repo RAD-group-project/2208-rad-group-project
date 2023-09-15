@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import Dashboard from './dashboard'
+import Table from './table'
 import Add from './add'
 import { Box, Typography, Button, Dialog, DialogContent, DialogContentText } from '@mui/material'
 import { makeStyles } from '@mui/styles'
@@ -77,7 +77,7 @@ export default function Genres() {
           </DialogContent>
         </Dialog>
         <Box sx={{ mt: 2, mx: 2 }}>
-          <Dashboard trigger={trigger} />
+          <Table trigger={trigger} />
         </Box>
 
       </Box>
