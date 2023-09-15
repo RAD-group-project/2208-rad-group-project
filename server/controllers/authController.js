@@ -2,7 +2,13 @@ const User = require('../models/user');
 const passport = require("passport");
 
 const registerUser = async (req, res) => {
+
+  if (!isValidUser(newUser)) {
+    return res.status(400).json({ success: false, message: "Invalid user data" });
+}
+
   try {
+
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
       return res.status(403).json({ success: false, message: "User already exists" });
@@ -56,6 +62,15 @@ const logoutUser = async (req, res, next) => {
     return res.status(500).json({ success: false });
   }
 };
+
+const isValidUser = (user) => {
+  return user && user.email && isValidEmail(user.email);
+}
+
+const isValidEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
 module.exports = {
   registerUser,
