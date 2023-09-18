@@ -38,7 +38,7 @@ const addBook = async (req, res) => {
 
         const book = new Book(newBook);
 
-        const savedBook = await book.save();     //Book or book?
+        const savedBook = await book.save();     
         return res.status(201).json({
             success: true,
             user: savedBook

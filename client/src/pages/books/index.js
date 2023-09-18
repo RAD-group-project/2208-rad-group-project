@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import Table from './table'
 import Add from './add'
-import { Box, Typography, Button, Dialog, DialogContent, DialogContentText } from '@mui/material'
+import { Box, Typography, Button, Dialog, DialogContent, } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 export default function Books() {
